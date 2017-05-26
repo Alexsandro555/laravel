@@ -9,6 +9,8 @@ require('./bootstrap');
 window.CKEDITOR_BASEPATH = '/js/ckeditor/';
 require('ckeditor');
 window.Vue = require('vue');
+import VeeValidate from 'vee-validate';
+import VeeValidateMessagesRU from "vee-validate/dist/locale/ru";
 
 //import wysiwyg from "vue-wysiwyg";
 
@@ -18,6 +20,9 @@ window.Vue = require('vue');
         uploadURL: "../storage/app/img"
     }
 });*/
+
+VeeValidate.Validator.addLocale(VeeValidateMessagesRU);
+Vue.use(VeeValidate, {locale: 'ru'});
 
 //window.Vue.use(wysiwyg, {});
 /**
@@ -29,6 +34,7 @@ window.Vue = require('vue');
 Vue.component('example', require('./components/Example.vue'));
 //Vue.component('textarea-wysiwyg', require('./components/Textarea_wysiwyg.vue'));
 Vue.component('ck-wysiwyg', require('./Components/Ck_wysiwyg.vue'));
+Vue.component('table-generator', require('./Components/generatorTables/index.vue'));
 
 // create a root instance
 new Vue({

@@ -66,3 +66,6 @@ Route::post('/admin/catalog/add',
     ]);
 
 
+Route::get('/admin/testAdminLTE', function(){
+   return view('test.adminlte');
+});

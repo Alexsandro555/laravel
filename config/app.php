@@ -180,6 +180,9 @@ return [
         /*Form Provider*/
         Collective\Html\HtmlServiceProvider::class,
 
+        /*Admin LTE*/
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+
     ],
 
     /*
