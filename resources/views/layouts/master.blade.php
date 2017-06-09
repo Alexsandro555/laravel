@@ -8,6 +8,7 @@
     <title>Wacker - @yield('title')</title>
 
     <!-- Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="/css/app.css" rel="stylesheet" type="text/css">
 </head>
@@ -42,6 +43,12 @@
     </div>
 </div>
 <!--<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>-->
+<script>
+    window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+    ]);
+    ?>;
+</script>
 <script src="/js/app.js" type="application/javascript"></script>
 
 @yield('view.scripts')

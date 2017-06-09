@@ -1,0 +1,58 @@
+.menu-left-wrapper {
+  position: absolute;
+  padding-left: 20px;
+  width: 263px;
+  height: 761px;
+  z-index: 9;
+  padding-top: 5px;
+  background: url(img/menu-left-bottom-layout.png) no-repeat left bottom;
+}
+
+.menu-left {
+  background-color: white;
+  z-index: 10;
+  margin: 0;
+  @include box-shadow(0, 10px, 10px, rgba(0,0,0,0.5));
+}
+
+.menu-left ul {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.menu-left ul li {
+  list-style: none;
+  padding-left: 25px;
+  font-size: 0.75em;
+  line-height: 2.5;
+  text-transform: uppercase;
+  border-bottom: 1px dashed lightgrey;
+  z-index: 12;
+  position: relative;
+  font-weight: bold;
+}
+
+.menu-left ul li:before {
+  content: '';
+  background: url(img/menu-left-list.png) no-repeat left top;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 10px;
+  top: 13px;
+}
+
+.menu-left ul li:nth-child(even) {
+  background-color: #F3F4F6;
+}
+
+.menu-left ul li:last-child() {
+   border-bottom: none;
+ }
+
+.menu-left ul li:first-child() {
+  font-size: 1em;
+  background: url(img/menu-left-layout-first.png) no-repeat right bottom, url(img/menu-left-arrow.png) no-repeat left top;
+  line-height: 3.5;
+}

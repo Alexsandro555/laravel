@@ -1,0 +1,26 @@
+.logo {
+	height: 143px;
+	width: 168px;
+	background: url(img/logo-wrapper.png) top center no-repeat;
+	z-index:6;
+	display: inline-block;
+}
+.logo__layer {
+	@extend .logo;
+	background: url(img/logo-layer.png) top center no-repeat, url(img/logo-row.png) bottom center no-repeat;
+}
+
+.logo__row {
+	/*width:165px;
+	height: 10px;
+	background: url(img/logo-row.png) top center no-repeat;*/
+}
+
+.logo__layer img {
+	width: 119px;
+	height: 101px;
+	margin: 0 auto;
+	display: block;
+	padding-top: 11px;
+	text-align: center;
+}

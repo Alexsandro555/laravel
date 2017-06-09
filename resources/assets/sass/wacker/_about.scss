@@ -1,0 +1,65 @@
+.about-wrapper {
+	height: 380px;
+	width: 100%;
+	background: url(img/about.png) repeat 0 0;
+	margin: auto;
+	min-width: $min-width;
+}
+
+
+.about {
+	height: 98%;
+	width: $main-width;
+	margin: auto;
+	display: block;
+}
+
+.about-main {
+	position: relative;
+	display: block;
+	float: right;
+	background: url(img/about-img.png) bottom left no-repeat, url(img/content-layout-bottom.png) top right no-repeat;
+	width: 918px;
+	height: inherit;
+	padding-top:8px;
+}
+
+.about__header {
+	margin-top: 10px;
+	display: inline-block;
+	width: 300px;
+	background: url(img/about-h2-image.png) top right no-repeat;
+}
+
+.about__header h2 {
+	color: $color-yell;
+	font-size: 1.2em;
+	margin-left: 30px;
+}
+
+.about__content {
+	color: white;
+	width: 560px;
+	font-size: 1em;
+	margin-left: 30px;
+}
+
+.about-button {
+	display: block;
+	margin: 10px 0px;
+	background: none;
+	position: relative;
+	border: 1px solid $color-yell;
+	@include border-radius(6px);
+	height: 30px;
+	font-size:0.9em;
+	font-weight: bold;
+	line-height: 30px;
+	color: $color-yell;
+	margin-left: 30px;
+}
+
+.about__image {
+	float: right;
+	margin-top: -329px;
+}

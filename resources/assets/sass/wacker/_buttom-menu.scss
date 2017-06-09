@@ -1,0 +1,40 @@
+.bottom-menu-wrapper {
+	height: 80px;
+	background-color: black;
+	min-width: $min-width;
+}
+
+.buttom-menu-container{
+	width: $main-width;
+	margin: auto;
+	display: block;
+	
+}
+
+.bottom-menu {
+	height: inherit;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+.bottom-menu ul {
+	margin: 0;
+	padding: 4px;
+	vertical-align: middle;
+}
+
+.bottom-menu  ul li {
+	font-family: $font;
+	font-size: 1em;
+	display: inline;
+	margin-right: 5px;
+	padding-left: 50px;
+	color: white;
+	height: inherit;
+	line-height: 80px;
+}
+
+.bottom-menu  ul li span {
+	margin-left: 40px;
+}

@@ -1,0 +1,147 @@
+.wacker {
+	height: 399px;
+	background: url(img/wacker-wrapper.png) top center no-repeat;
+	margin: auto;
+	min-width: $min-width;
+}
+
+.wacker-label {
+	background-color: $color-wacker;
+	color: rgba(255,213,17,0.9);
+	text-align: center;
+}
+
+.wacker__wrapper {
+	height: 399px;
+	background-color: rgba(255,213,17,0.8);
+	margin: auto;
+	margin-top: -8px;
+	min-width: $main-width;
+}
+
+.wacker__hrtop {
+	height: 8px;
+	background: url(img/wacker-hr.png) top center repeat;	
+}
+
+
+.wacker__content {
+	margin: auto;
+	color: $color-wacker;
+	width: 	$main-width;
+	padding-left: 40px;
+}
+
+.wacker__content a {
+	font-weight: bold;
+	color: $color-wacker;
+}
+
+.wacker-news {
+	font-size: 0.7em;
+	display: inline-block;
+	vertical-align: top;
+	width: 250px;
+	margin-top: 10px;
+	background: url(img/wacker-gears.png) top right no-repeat;
+}
+
+.wacker-news__date {
+	@extend .wacker-label;
+	width: 84px;
+	height: 23px;
+	line-height: 23px;
+	font-size: 0.9em; 
+}
+
+.wacker-news__item {
+	margin-top: 10px;
+	border-bottom: 1px dashed $color-wacker;
+}
+
+.wacker-button {
+	display: block;
+	margin: 10px 0px;
+	background: none;
+	position: relative;
+	border: 1px solid $color-wacker;
+	@include border-radius(6px);
+	height: 30px;
+	font-size:1em;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.wacker-news__button {
+	@extend .wacker-button;
+}
+
+.wacker-about {
+	font-size: 0.7em;
+	display: inline-block;
+	margin: 10px 25px;
+	width: 450px;
+	background: url(img/wacker-neuson-text.png) top right no-repeat;
+}
+
+.wacker-about__text {
+	margin-top: 10px;
+	font-size: 1.5em;
+	line-height: 1.5;
+}
+
+.wacker-product {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	width: 370px;
+	height: 350px;
+	font-size: 0.7em;
+	/*background: url(img/wacker-product-image.png) bottom right no-repeat;
+	padding-bottom: -50px;*/
+}
+
+.wacker-product__model {
+	@extend .wacker-label;	
+	height: 34px;
+	line-height: 34px;
+	font-size: 1.5em;
+	width: 260px; 
+	display: inline-block;
+}
+
+.wacker-product p {
+	font-size: 1.5em;
+}
+
+.wacker-product__price {
+	@extend .wacker-label;
+	text-align:left;
+	line-height: 20px;
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 40px;
+	display: inline-block;
+	background: rgba(52,52,52,1) url(img/wacker-price.png) bottom left no-repeat;
+}
+.wacker-product__price span {
+	font-size: 1.3em;
+}
+
+.wacker-product-image img{
+	position: relative;
+	margin-top:-220px;
+	margin-left: 120px;
+	/*background: url(img/wacker-product-image.png) bottom right no-repeat;*/
+}
+
+
+.wacker-product__button {
+	@extend .wacker-button;
+	margin-top: -50px;
+}
+
+
+
+

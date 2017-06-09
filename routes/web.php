@@ -15,9 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/wacker', ['uses' => 'WackerController@index', 'as' => 'wacker']);
+Route::get('/wacker/catalog', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
+
+
+Route::get('/upload', ['uses' => 'UploadController@upload', 'as' => 'upload']);
+Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
+
+
+
+///////////////////////////////////PAGE///////////////////////////////////////////////
 // Отображение конкретной страницы
 Route::get('/{url_key}', ['uses' => 'PageController@indexPage', 'as'=> 'index-page']);
-
 
 // Добавление новой страницы
 Route::get('/admin/page/add', ['uses' => 'PageController@addPage', 'as' => 'add-page']);
@@ -51,7 +61,11 @@ Route::get('/admin/page/delete/{id}',['uses' => 'PageController@deletePage', 'as
 Route::get('/admin/page/show/{id}', ['uses' => 'PageController@showPage', 'as' => 'show-page']);
 
 
+// Создание таблицы
+Route::post('/admin/page/createTable', ['uses' => 'PageController@createTable', 'as' => 'create-table']);
 
+// Autocomplete
+Route::get('/admin/page/autocoplete/{text}', ['uses' => 'PageController@autocomplete', 'as' => 'autocomplete']);
 
 //////////КАТАЛОГ////////////////////////////////////
 // Добавление новой позиции каталога
@@ -66,6 +80,32 @@ Route::post('/admin/catalog/add',
     ]);
 
 
+// Обновление существующей страницы
+Route::post('/admin/product/update/{id}',
+    [
+        'before' => 'csrf',
+        'uses' => 'ProductController@updateHandler',
+        'as' => 'update-product'
+    ]);
+
+///////////////////////////////ПРОДУКЦИЯ/////////////////////////////////////
+// Добавление нового продукта
+Route::get('/admin/product/add', ['uses' => 'Product\ProductController@add', 'as' => 'add-product']);
+
+// Обработка добавления нового продукта
+Route::post('/admin/porduct/add',
+    [
+        'before' => 'csrf',
+        'uses' => 'Product\ProductController@addHandler',
+        'as'=>'add-product'
+    ]);
+
+// Получение существующего товара
+Route::get('/admin/product/update/{id}', ['uses' => 'Product\ProductController@update', 'as' => 'update-product']);
+
+
+////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
 Route::get('/admin/testAdminLTE', function(){
-   return view('test.adminlte');
+    return view('test.adminlte');
 });
+

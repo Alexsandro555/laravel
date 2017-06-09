@@ -21,7 +21,7 @@ elixir(mix =>
         node_modules = 'node_modules/';
 
 mix.sass('app.scss', 'public/css/app.css').webpack('app.js')
-
+mix.sass('wacker/style.scss', 'public/css/wacker/style.css')
     /*
      * Version
      */

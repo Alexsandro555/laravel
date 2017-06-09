@@ -18,9 +18,26 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addPage()
+    public function addPage(Request $request)
     {
-        return view('page.add');
+        echo $request->session()->exists('images');
+        //$request->session()->push('images.id','777');
+        /*$images = $request->session()->get('images');
+        foreach ($images["id"] as $image)
+        {
+            print_r($image);
+            //ProductPhoto::where('id', $image)->update(['product_id' => $id]);
+        }*/
+        /*
+        if($request->session()->has('images'))
+        {
+
+        }
+        else
+        {
+            $request->session()->push('images.id','777');
+        }*/
+        //return view('page.add');
     }
 
     /**
@@ -186,5 +203,31 @@ class PageController extends Controller
             dd($e);
         }
 
+    }
+
+
+    /**
+     *
+     * CreateNewTable
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createTable(Request $request)
+    {
+        echo "work";
+    }
+
+    /**
+     *
+     * Autocomplete
+     *
+     * @param String $text
+     * @return \Illuminate\Http\Response
+     */
+    public function autocomplete($text)
+    {
+        $page = Page::where('name', 'LIKE', $text.'%')->select('id','name','content')->get();
+        return $page->toJson();
     }
 }

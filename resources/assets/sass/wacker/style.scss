@@ -1,0 +1,47 @@
+@import 'variables';
+@import 'mixins';
+
+body,div {
+	font-size: 16px;
+}
+.header-page {
+	height: 681px;
+	z-index: 4;
+	background: url(img/header-page.png) top center no-repeat;
+	min-width: $min-width;
+}
+.header-page__layout {
+	height: 133px;
+	background: url(img/header.png) top center repeat;
+	z-index: 5;
+	width: 100%;
+	min-width: $main-width;
+}
+.header-page__main {
+	margin: auto;
+	width: $main-width;
+}
+
+@import 'logo';
+
+.header-center {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+@import 'menu';
+@import 'headerInfo';
+@import 'phone';
+@import 'content';
+@import 'about';
+@import 'wacker';
+@import 'service';
+@import 'buttom-menu';
+@import 'footer';
+
+
+.clear {
+	clear:both;
+}

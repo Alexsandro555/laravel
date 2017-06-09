@@ -1,0 +1,44 @@
+.header-phone {
+	font-family: $font;
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+	margin-right: 5px;
+	color: white;
+	font-size: 1em;
+	background: url(img/header-right-img.png) top right no-repeat;
+	z-index: 10;
+	height: 133px;
+	float: right;
+}
+
+.header-phone div {
+	margin-top: 10px;
+	margin-right: 20px;
+	font-size: 1em;
+}
+
+.header-phone div span {
+	font-size: 1.6em;
+}
+
+.header-phone .back-call {
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: top;
+	background: url(img/header-phone-btn.png) top center no-repeat;
+	width: 166px;
+	height: 37px;
+	text-decoration: none;
+	border-style: solid none;
+	border-width: 0px 0px 3px 0px;
+	border-color: #F1B814;
+	@include border-radius(6px);
+	margin-top:30px;
+	font-size:0.83em;
+	color:$color-gray;
+}
+
+.header-phone .back-call img {
+	vertical-align: middle;
+}

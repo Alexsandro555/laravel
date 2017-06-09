@@ -1,0 +1,17 @@
+.menu-nav ul {
+	margin: 0;
+	padding: 4px;
+}
+
+.menu-nav ul li {
+	font-family: $font;
+	font-size: 1em;
+	display: inline;
+	margin-right: 5px;
+	padding: 3px;
+	color: white;
+}
+
+.menu-nav ul li span {
+	margin-left: 10px;
+}

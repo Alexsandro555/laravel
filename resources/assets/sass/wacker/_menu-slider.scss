@@ -1,0 +1,11 @@
+.menu-slider {
+	/*@include box-shadow(5px, 0, 0, rgba(0,0,0,0.5));*/
+	position: absolute;
+	width: 1200px;
+	height: 126px;
+	margin-top: -120px;
+	background: url(img/content-slider-layout1.png) top left no-repeat, url(img/content-slider-layout2.png) no-repeat 96% bottom, url(img/menu-slider.png) top left no-repeat;
+	padding-left: 48px;
+	z-index: 15;
+}
+

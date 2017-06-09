@@ -1,0 +1,123 @@
+@import 'menu-slider';
+@import 'menu-left';
+
+.content-wrapper {
+	height: 500px;
+	width: 100%;
+	padding-top: -5px;
+	margin-top: -60px;
+	background: url(img/content.png) top center repeat-x;
+	min-width: $min-width;
+}
+
+.content {
+	margin: auto;
+	padding-top: 77px;
+	width: $main-width;
+	height: inherit;
+	font-size: 0.9em;
+	background: url(img/content-img.png) center right no-repeat;
+}
+
+.main-slogan {
+	position: absolute;
+	width: 500px;
+	height: 250px;
+	margin-top: -250px;
+	margin-left: 350px;
+	color: white;
+	text-align: right;
+}
+
+.main-slogan span {
+	font-family: $font;
+	font-size: 2.5em;
+	font-weight: bold;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+.main-subslogan {
+	text-align: center;
+	font-size: 0.9em;
+	width: 300px;
+	padding: 3px 3px;
+	display: inline-block;
+	background: url(img/slogan-layer.png) center left no-repeat, rgba(76,76,76,1);
+
+}
+
+.content__item {
+	float: right;
+}
+
+.content__header {
+	margin-top: 10px;
+	/*width: 440px;*/
+	height:50px;
+	display: inline-block;
+	line-height: inherit;
+	background: url(img/about-h2-image.png) center right no-repeat;
+	font-size: 0.8em;
+}
+
+.content-button {
+	margin-left: 270px;
+	display: inline-block;
+	background: none;
+	border: 1px solid $color-gray;
+	@include border-radius(6px);
+	height: 30px;
+	font-size:0.9em;
+	font-weight: bold;
+	line-height: 30px;
+	color: $color-gray;
+}
+
+.main__content {
+	color: white;
+	width: 846px;
+	height: 314px;
+	font-size: 1em;
+	display: block;
+	margin-right: 30px;
+	background: url(img/main-content.png) center right no-repeat;
+}
+
+.content__text {
+	position: relative;
+	background: url(img/content-text.png) center left no-repeat;
+	height: 200px;
+	color: $color-yell;
+	padding-top: 80px;
+	font-size: 0.9em;	
+}
+
+.content__text h2 {
+	padding-left: 20px;
+}
+
+.content__text p {
+	padding-left: 20px;
+	color: white;
+	font-size: 1.4em;
+}
+
+.content__slider{
+	display: inline-block;
+	text-align: center;
+	width: 100px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.content__catalog {
+	float: right;
+	width: 900px;
+	font-size: 1.2em;
+}
+
+
+
+

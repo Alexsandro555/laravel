@@ -1,0 +1,83 @@
+.footer-wrapper {
+	height: 220px;
+	background: url(img/footer.png) top center repeat-x;
+	text-align: center;
+	min-width: $min-width;
+}
+
+.footer__container {
+	margin: auto;
+	width: $main-width;
+	text-align: left;
+}
+
+.footer__menu {
+	display: inline-block;
+	color: white;
+	vertical-align: top;
+}
+
+.footer__menu ul li {
+	background: url(img/footer-menu.png) left center no-repeat;
+}
+
+.footer__menu ul li {
+	list-style: none;
+	padding-left: 10px;
+	font-size: 0.7em;
+	line-height: 2;
+}
+
+.footer__info {
+	background: url(img/footer-info.png) right bottom no-repeat, url(img/footer-address-left-layout.png) left bottom no-repeat;
+	height: 200px;
+	display: inline-block;
+	vertical-align: top;
+	width: 490px;
+	text-align: right;
+	padding-top: 20px;
+	float: right;
+}
+
+.footer__tel {
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+	color: white;
+}
+
+.footer__tel span {
+	font-size: 1.5em;
+}
+
+.footer__logo {
+	width: 170px;
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 55px;
+	display: inline-block;
+	vertical-align: top;
+	color: white;
+	font-size: 0.8em;
+	height: inherit;
+}
+
+.footer__tel .back-call {
+	vertical-align: text-bottom;
+	background: url(img/header-phone-btn.png) top center no-repeat;
+	width: 166px;
+	height: 37px;
+	text-decoration: none;
+	display: inline-block;
+	border-style: solid none;
+	border-width: 0px 0px 3px 0px;
+	border-color: #F1B814;
+	@include border-radius(6px);
+	margin-top:30px;
+	font-size:0.8em;
+	color:$color-gray;
+}
+
+.footer__tel div span {
+	font-size: 1em;
+}
