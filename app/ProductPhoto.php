@@ -10,7 +10,8 @@ class ProductPhoto extends Model
 
     protected $fillable = [
             'product_id',
-            'filename'
+            'filename',
+            'size'
         ];
     public function product()
     {

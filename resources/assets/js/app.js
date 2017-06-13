@@ -11,7 +11,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 //import VeeValidate from 'vee-validate';
 //import VeeValidateMessagesRU from "vee-validate/dist/locale/ru";
-//import VueAxios from 'vue-axios'
+import VueAxios from 'vue-axios'
 //import Autocomplete from 'v-autocomplete'
 //import 'v-autocomplete/dist/v-autocomplete.css'
 //import ToggleButton from 'vue-js-toggle-button'
@@ -28,7 +28,7 @@ import VueCarousel from 'vue-carousel';
 
 //VeeValidate.Validator.addLocale(VeeValidateMessagesRU);
 //Vue.use(VeeValidate, {locale: 'ru'});
-//Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios);
 //Vue.use(Autocomplete)
 
 //Vue.use(ToggleButton)

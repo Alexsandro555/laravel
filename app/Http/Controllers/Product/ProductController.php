@@ -30,17 +30,6 @@ class ProductController extends Controller
     {
         $request = $productRequest->all();
         $product = Product::create($request);
-        /*$product = new Product;
-        $product->title = $request->input("title");
-        $product->url_key = $request->input("url_key");
-        $product->price = $request->input("price");
-        $product->qty = $request->input("qty");
-        $product->active = ($request->has('warranty'))? true : false;
-        $product->sort = ($request->has('sort')) ? true : false;
-        $product->onsale = ($request)->has('onsale') ? true : false;
-        $product->special = ($request)->has('special') ? true : false;
-        $product->need_order = ($request)->has('need_order') ? true : false;
-        $product->save();*/
         $id = $product->id;
         if($productRequest->session()->exists('images'))
         {
@@ -61,16 +50,20 @@ class ProductController extends Controller
      */
     public function update($id)
     {
-        try
-        {
-            $id = (int)$id;
-            $product = Product::where('id',$id)->firstOrFail();
-            return view('product.add', compact('product'));
-        }
-        catch (ModelNotFoundException $e)
-        {
-            //dd(get_class_methods($e));
-            //dd($e);
-        }
+        $id = (int)$id;
+        $product = Product::where('id',$id)->firstOrFail();
+        return view('product.add', compact('product'));
+    }
+
+       /**
+     *  Get Image
+     * @param int $id
+     * @return \Illuminate\Http\Response:json
+     */
+    public function getPhoto($id)
+    {
+        $id = (int)$id;
+        $image = ProductPhoto::where('product_id',$id)->get();
+        return response()->json($image,200);
     }
 }

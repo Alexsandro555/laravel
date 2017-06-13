@@ -95,6 +95,10 @@
     {!! Form::close() !!}
 
     <div style="margin-top: 50px;">
-       <uploader url="/upload"></uploader>
+        @if (!isset($product))
+            <uploader url="/upload"></uploader>
+        @else
+            <uploader url="/upload" :element-id={{$product->id}}></uploader>
+        @endif
     </div>
 @stop

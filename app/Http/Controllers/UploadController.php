@@ -1,19 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-//use Illuminate\Support\Facades\Request;
 use App\Http\Requests\Product\UploadProductRequest;
 use App\ProductPhoto;
 use Intervention\Image\ImageManager;
-use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
-    public function upload()
-    {
-        return view('upload');
-    }
-
     public function uploadHandl(UploadProductRequest $request)
     {
         $file = $request->file('file');
@@ -23,14 +16,26 @@ class UploadController extends Controller
         $filename = $this->sanitize($originalNameWithoutExt);
         $allowed_filename = $this->createUniqueFilename( $filename, $extension );
         $uploadSuccess = $this->move( $file, $allowed_filename );
+
         if(!$uploadSuccess) {
             return response()->json([
                                     'error' => true,
                                     'code' => 500
                                ],500);
         }
+
+        $uploadiconSuccess = $this->icons( $file, $allowed_filename );
+        if(!$uploadiconSuccess) {
+            return response()->json([
+                'error' => true,
+                'code' => 500
+            ],500);
+        }
+
+        $size = $this->size($file);
         $productPhoto = ProductPhoto::create([
-            'filename' => $allowed_filename
+            'filename' => $allowed_filename,
+            'size' => $size
         ]);
         $request->session()->push('images.id',$productPhoto->id);
         return response()->json(['error'=> false, 'code' => 200], 200);
@@ -55,7 +60,7 @@ class UploadController extends Controller
 
     public function createUniqueFilename( $filename, $extension )
     {
-        $full_size_dir = storage_path('app/img');
+        $full_size_dir = storage_path('../public/images/');
         $full_image_path = $full_size_dir . $filename . '.' . $extension;
 
         if ( file_exists( $full_image_path ) )
@@ -68,10 +73,25 @@ class UploadController extends Controller
         return $filename . '.' . $extension;
     }
 
+    public function size( $photo )
+    {
+        $manager = new ImageManager();
+        $image = $manager->make( $photo );
+        $size = $image->filesize();
+        return $size;
+    }
+
     public function move( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->save(storage_path('app/img') . $filename );
+        $image = $manager->make( $photo )->save(storage_path('../public/images/') . $filename );
+        return $image;
+    }
+
+    public function icons( $photo, $filename )
+    {
+        $manager = new ImageManager();
+        $image = $manager->make( $photo )->resize(200,200)->save(storage_path('../public/images/icon/') . $filename );
         return $image;
     }
 }

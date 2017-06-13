@@ -15,15 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/wacker', ['uses' => 'WackerController@index', 'as' => 'wacker']);
 Route::get('/wacker/catalog', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
 
 
-Route::get('/upload', ['uses' => 'UploadController@upload', 'as' => 'upload']);
 Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
-
-
 
 ///////////////////////////////////PAGE///////////////////////////////////////////////
 // Отображение конкретной страницы
@@ -102,6 +98,9 @@ Route::post('/admin/porduct/add',
 
 // Получение существующего товара
 Route::get('/admin/product/update/{id}', ['uses' => 'Product\ProductController@update', 'as' => 'update-product']);
+
+// Получение изображений товара
+Route::get('/admin/product/getPhoto/{id}', ['uses' => 'Product\ProductController@getPhoto', 'as' => 'photo-product']);
 
 
 ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
