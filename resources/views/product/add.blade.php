@@ -89,16 +89,20 @@
             {!! Form::checkbox('active', true, false) !!}
         @endif
     </div>
+    <div class="form-group">
+        {!! Form::label('category_id','Каталог') !!}
+        @if(isset($category))
+            {!! Form::select('category_id', $category_all, $product->category_id, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
+        @else
+            {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
+        @endif
+    </div>
     {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
     {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
     {!! Form::token() !!}
     {!! Form::close() !!}
 
     <div style="margin-top: 50px;">
-        @if (!isset($product))
-            <uploader url="/upload"></uploader>
-        @else
-            <uploader url="/upload" :element-id={{$product->id}}></uploader>
-        @endif
+            <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}}></uploader>
     </div>
 @stop

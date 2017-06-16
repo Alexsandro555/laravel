@@ -11,7 +11,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 //import VeeValidate from 'vee-validate';
 //import VeeValidateMessagesRU from "vee-validate/dist/locale/ru";
-import VueAxios from 'vue-axios'
+import VueAxios from 'vue-axios';
 //import Autocomplete from 'v-autocomplete'
 //import 'v-autocomplete/dist/v-autocomplete.css'
 //import ToggleButton from 'vue-js-toggle-button'
@@ -47,13 +47,14 @@ Vue.use(VueCarousel);
 //Vue.component('table-generator', require('./Components/generatorTables/index.vue'));
 //Vue.component('my-autocomplete', require('./components/My-autocomplete.vue'));
 Vue.component('uploader', require('./components/Uploader.vue'));
+Vue.component('dropbox', require('./components/dropbox/Index.vue'));
 
 // create a root instance
 new Vue({
     el: '#app',
-    /*data: {
+    data: {
         myHTML: ''
-    }*/
+    }
 });
 
 

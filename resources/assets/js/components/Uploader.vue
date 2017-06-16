@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <p>Загрузчик файлов</p>
 
         <dropzone id="myVueDropzone" acceptedFileTypes="image/*" :url="url" v-on:vdropzone-success="showSuccess" v-on:vdropzone-error="showError" v-on:vdropzone-mounted="dropzoneMounted" ref="myVueDropzone" v-on:vdropzone-removed-file="fileRemoved">
@@ -14,7 +14,7 @@
     import Dropzone from 'vue2-dropzone'
 
     export default {
-        name: 'MainApp',
+        name: 'Uploader',
         props: {
             'url': String,
             'elementId': {
@@ -37,6 +37,12 @@
                 console.log(file);
             },
             'fileRemoved': function(file)  {
+                let id = file.id;
+                this.axios.get('/admin/product/deletePhoto/'+id, {}).then(function (response) {
+                }).catch(function (error)
+                {
+                    console.log(error);
+                });
                 console.log(file);
             },
             'dropzoneMounted': function () {

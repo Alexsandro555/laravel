@@ -30,7 +30,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url_key' => 'required',
+            'url_key' => 'required|unique:products',
             'price' => 'required|numeric',
             'description' => '',
             'qty' => 'numeric',
@@ -38,7 +38,8 @@ class StoreProductRequest extends FormRequest
             'sort' => 'numeric',
             'onsale' => 'boolean',
             'special' => 'boolean',
-            'need_order' => 'boolean'
+            'need_order' => 'boolean',
+            'category_id' => 'required'
         ];
     }
 

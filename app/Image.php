@@ -1,29 +1,33 @@
 <?php
 
-namespace App\Model;
+namespace App;
 
 use Intervention\Image\ImageManager;
 
-class Image {
-    private $file;
-
-    public function __construct($file) {
-        $this->file = $file;
-    }
-
-    public function uploadImage()
+class Image
+{
+    public function uploadImage($file)
     {
-        $file = $this->file;
-        $originalName = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $originalNameWithoutExt = substr($originalName, 0, strlen($originalName) - strlen($extension) -1);
-        $filename = $this->sanitize($originalNameWithoutExt);
-        $allowed_filename = $this->createUniqueFilename( $filename, $extension );
-        $uploadSuccess = $this->move( $file, $allowed_filename );
-        return $uploadSuccess;
+        if($file)
+        {
+            $originalName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $originalNameWithoutExt = substr($originalName, 0, strlen($originalName) - strlen($extension) -1);
+            $filename = $this->sanitize($originalNameWithoutExt);
+            $allowed_filename = $this->createUniqueFilename( $filename, $extension );
+            $uploadSuccess = $this->move( $file, $allowed_filename );
+            if($uploadSuccess) {
+                return $allowed_filename;
+            }
+            else
+            {
+                return "";
+            }
+        }
+        return "";
     }
 
-    function sanitize($string, $force_lowercase = true, $anal = false)
+    private function sanitize($string, $force_lowercase = true, $anal = false)
     {
         $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]",
             "}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;",
@@ -39,7 +43,7 @@ class Image {
             $clean;
     }
 
-    public function createUniqueFilename( $filename, $extension )
+    private function createUniqueFilename( $filename, $extension )
     {
         $full_size_dir = storage_path('../public/images/upload/');
         $full_image_path = $full_size_dir . $filename . '.' . $extension;
@@ -53,7 +57,7 @@ class Image {
         return $filename . '.' . $extension;
     }
 
-    public function size( $photo )
+    private function size( $photo )
     {
         $manager = new ImageManager();
         $image = $manager->make( $photo );
@@ -61,14 +65,14 @@ class Image {
         return $size;
     }
 
-    public function move( $photo, $filename )
+    private function move( $photo, $filename )
     {
         $manager = new ImageManager();
         $image = $manager->make( $photo )->save(storage_path('../public/images/upload/') . $filename );
         return $image;
     }
 
-    public function icons( $photo, $filename )
+    private function icons( $photo, $filename )
     {
         $manager = new ImageManager();
         $image = $manager->make( $photo )->resize(200,200)->save(storage_path('../public/images/icon/') . $filename );

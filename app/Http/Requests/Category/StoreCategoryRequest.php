@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Product;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -30,8 +30,9 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url_key' => 'required|unique:category',
+            'url_key' => 'required|unique:categories',
             'description' => '',
+            'image' => 'image|max:1000|mimes:jpeg,jpg,png',
             'active' => 'boolean',
             'sort' => 'numeric'
         ];

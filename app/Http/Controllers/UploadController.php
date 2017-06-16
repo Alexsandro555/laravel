@@ -16,8 +16,8 @@ class UploadController extends Controller
         $filename = $this->sanitize($originalNameWithoutExt);
         $allowed_filename = $this->createUniqueFilename( $filename, $extension );
         $uploadSuccess = $this->move( $file, $allowed_filename );
-
-        if(!$uploadSuccess) {
+        if(!$uploadSuccess)
+        {
             return response()->json([
                                     'error' => true,
                                     'code' => 500
@@ -60,7 +60,7 @@ class UploadController extends Controller
 
     public function createUniqueFilename( $filename, $extension )
     {
-        $full_size_dir = storage_path('../public/images/');
+        $full_size_dir = storage_path('../public/images/upload/');
         $full_image_path = $full_size_dir . $filename . '.' . $extension;
 
         if ( file_exists( $full_image_path ) )
@@ -69,7 +69,6 @@ class UploadController extends Controller
             $imageToken = substr(sha1(mt_rand()), 0, 5);
             return $filename . '-' . $imageToken . '.' . $extension;
         }
-
         return $filename . '.' . $extension;
     }
 
@@ -84,7 +83,7 @@ class UploadController extends Controller
     public function move( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->save(storage_path('../public/images/') . $filename );
+        $image = $manager->make( $photo )->save(storage_path('../public/images/upload/') . $filename );
         return $image;
     }
 

@@ -16,10 +16,15 @@ class Product extends Model
         'sort',
         'onsale',
         'special',
-        'need_order'
+        'need_order',
+        'category_id'
     ];
 
     public function photo() {
         return $this->hasMany(ProductPhoto::class, 'product_id','id');
+    }
+
+    public function category() {
+        return $this->belongsTo('App\Category');
     }
 }

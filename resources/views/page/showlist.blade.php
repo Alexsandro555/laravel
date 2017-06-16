@@ -34,9 +34,6 @@
         <div style="float:right">{{ $pages->links() }}</div>
         <div style="clear:both"></div>
     </div>
-
-
-
 @section('view.scripts')
 
 @endsection
