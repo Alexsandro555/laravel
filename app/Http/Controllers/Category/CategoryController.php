@@ -29,7 +29,7 @@ class CategoryController extends Controller
      *
      * Get All Categories
      *
-     * @return \Illuminate\Http\Response
+     * @return json
      */
     public function getAllCategories()
     {
@@ -46,7 +46,6 @@ class CategoryController extends Controller
     public function addHandler(StoreCategoryRequest $categoryRequest)
     {
         $request = $categoryRequest->except(['_token','image']);
-        //$request = $categoryRequest->all();
         $category = Category::create($request);
         $id = $category->id;
         $file = $categoryRequest->file('image');

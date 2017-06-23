@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoryRequest extends FormRequest
+class AttributeRequest extends FormRequest
 {
 
     /**
@@ -30,12 +30,8 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url_key' => 'required',
-            'description' => '',
-            'image' => 'image|max:1000|mimes:jpeg,jpg,png',
-            'active' => 'boolean',
-            'sort' => 'numeric',
-            'parent' => 'required'
+            'alias' => 'required',
+            'sort' => 'numeric'
         ];
     }
 

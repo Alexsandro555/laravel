@@ -3,11 +3,14 @@ namespace App\Http\Controllers\Product;
 
 use App\Product;
 use App\ProductPhoto;
+use App\ProductAttribute;
+use App\ProductAttributeValue;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Http\Requests\Product\AttributeRequest;
 
 class ProductController extends Controller
 {
@@ -59,8 +62,9 @@ class ProductController extends Controller
     {
         $id = (int)$id;
         $product = Product::where('id',$id)->firstOrFail();
+        $attributes = Product::find($id)->productAttributeValue;
         $category_all = Category::all()->pluck('title','id');
-        return view('product.add', compact('product','category_all'));
+        return view('product.add', compact('product','category_all','attributes'));
     }
 
     /**
@@ -124,5 +128,54 @@ class ProductController extends Controller
         $image = ProductPhoto::find($id);
         $image->delete();
         return response()->json([],200);
+    }
+
+
+    /**
+     * Add Attribute
+     */
+    public function addAttribute()
+    {
+        return view('product.addAttribute');
+    }
+
+    /**
+     *
+     * Add Attribute Handler
+     * @param AttributeRequest $attributeRequest
+     * @return \Illuminate\Http\Redirect
+     */
+    public function addAttributeHandler(AttributeRequest $attributeRequest)
+    {
+        $request = $attributeRequest->all();
+        $attribute = ProductAttribute::create($request);
+        $id = $attribute->id;
+        return redirect()->route('wacker');
+    }
+
+
+    /**
+     * Get All Attributes
+     * @return json
+     */
+    public function getAllAttributes()
+    {
+        $attributes = ProductAttribute::all();
+        return $attributes->toJson();
+    }
+
+
+    /**
+     * Add Atributes Value
+     */
+    public function addAttributeValue($data) {
+        $productsAttrVal = new ProductAttributeValue();
+        foreach ($data as $item)
+        {
+            $productsAttrVal->attribute_id = $item->id;
+            $productsAttrVal->value = $item->value;
+            $productsAttrVal->save();
+        }
+        //return redirect()->route('wacker');
     }
 }

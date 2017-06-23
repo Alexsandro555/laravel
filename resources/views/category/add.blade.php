@@ -59,14 +59,9 @@
             {!! Form::checkbox('active', true, false) !!}
         @endif
     </div>
-    <dropbox v-bind:nameelement="'peren'" v-bind:parent="{{(isset($category))?$category->parent:0}}"></dropbox>
     <div class="form-group">
         {!! Form::label('parent','Родительский каталог') !!}
-        @if(isset($category))
-            {!! Form::select('parent', $parentCategory, $category->parent, ['placeholder' => 'Выберите родительский каталог для текущего','class' => 'form-control']) !!}
-        @else
-            {!! Form::select('parent', $parentCategory, null, ['placeholder' => 'Выберите родительский каталог для текущего','class' => 'form-control']) !!}
-        @endif
+        <dropbox v-bind:nameelement="'parent'" v-bind:parent="<?php echo (isset($category))?$category->parent:0; ?>" v-bind:placeholder="'Выберите родительский каталог'" v-bind:url="'/admin/category/getAllCategories/'"></dropbox>
     </div>
     {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
     {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}

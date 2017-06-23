@@ -2,17 +2,34 @@
   position: absolute;
   padding-left: 20px;
   width: 263px;
-  height: 761px;
+  //height: 761px;
   z-index: 9;
   padding-top: 5px;
-  background: url(img/menu-left-bottom-layout.png) no-repeat left bottom;
+  //background: url(img/menu-left-bottom-layout.png) no-repeat left bottom;
 }
 
 .menu-left {
+  position: relative;
   background-color: white;
   z-index: 10;
   margin: 0;
   @include box-shadow(0, 10px, 10px, rgba(0,0,0,0.5));
+}
+
+.menu-left__header {
+  font-size: 1em;
+  padding-left: 25px;
+  font-weight: bold;
+  background: url(img/menu-left-layout-first.png) no-repeat right bottom, url(img/menu-left-arrow.png) no-repeat left top;
+  line-height: 3.5;
+}
+
+.menu-left__toggle {
+  font-size: 1em;
+  padding-left: 25px;
+  font-weight: bold;
+  line-height: 3.5;
+  border-top: 1px dashed lightgrey;
 }
 
 .menu-left ul {
@@ -52,7 +69,5 @@
  }
 
 .menu-left ul li:first-child() {
-  font-size: 1em;
-  background: url(img/menu-left-layout-first.png) no-repeat right bottom, url(img/menu-left-arrow.png) no-repeat left top;
-  line-height: 3.5;
+
 }

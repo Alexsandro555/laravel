@@ -1,9 +1,9 @@
 <template>
     <div>
-        <input type="text" v-model="input" class="dropbox" readonly
-        >&nbsp;<i class="fa fa-caret-down arrow" aria-hidden="true"  @click="isVisible=false" v-on-click-outside="close"></i>
-        <input type="hidden" v-bind:name="nameelement" v-model="val">
-        <div class="items" v-bind:class="{visible:isVisible}">
+        <input type="text" v-model="input" class="dropbox" readonly v-bind:placeholder="placeholder" @focus="isVisible=true" v-on-click-outside="close"
+        >&nbsp;<i class="fa fa-caret-down arrow" aria-hidden="true"  @click="isVisible=true"></i>
+        <input type="hidden" v-bind:name="nameelement" v-bind:value="val">
+        <div class="items" v-if="isVisible">
             <ul>
                 <li v-for="item in items" @click="selectElement(item.title,item.id)">
                     {{item.title}}
@@ -16,52 +16,68 @@
 <script>
     import {mixin as onClickOutside} from 'vue-on-click-outside'
     export default {
-        props: ['nameelement','parent'],
+        props: {
+            nameelement: String,
+            parent: Number,
+            placeholder: String,
+            url: String,
+            value: Number
+        },
         mixins: [onClickOutside],
         data: function() {
             return {
                 items:null,
-                isVisible:true,
+                isVisible:false,
                 input:"",
-                category:"",
-                val:""
+                val:"",
+                parent_id:0
             }
         },
         mounted: function (){
-            console.log('nameelement: '+this.nameelement);
             let that = this;
-            this.axios.get('/admin/category/getAllCategories/', {}).then(function (response)
+            this.axios.get(this.url, {}).then(function (response)
             {
                 that.items = response.data;
+                if(that.parent) {
+                    that.items.forEach(function(item) {
+                        if(item.id == that.parent) {
+                            that.input = item.title;
+                            that.val = item.id;
+                        }
+                    });
+                }
             }).catch(function (error)
             {
                 console.log(error);
             });
-            console.log(this.category);
         },
         methods: {
             selectElement: function(title,id) {
                 this.input = title;
                 this.val = id;
-                this.isVisible=true;
+                this.$emit('input', id);
+                this.isVisible=false;
             },
             close: function() {
-                this.isVisible=true;
+                this.isVisible=false;
             }
         }
     }
 </script>
 <style>
-    .visible {
+    .stealth {
         visibility: hidden;
     }
     input.dropbox {
-        width:200px;
+        width:98%;
+        padding-left: 10px;
     }
     .items {
         background-color: white;
-        width: 200px;
-        border: 1px solid;
+        width: 98%;
+        padding-left: 10px;
+        border: 1px solid #fff0ff;
+        border-top: none;
     }
     .items ul {
         margin: 0;

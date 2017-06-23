@@ -48,6 +48,7 @@ Vue.use(VueCarousel);
 //Vue.component('my-autocomplete', require('./components/My-autocomplete.vue'));
 Vue.component('uploader', require('./components/Uploader.vue'));
 Vue.component('dropbox', require('./components/dropbox/Index.vue'));
+Vue.component('add-attribute', require('./components/addAttribute/Index.vue'));
 
 // create a root instance
 new Vue({

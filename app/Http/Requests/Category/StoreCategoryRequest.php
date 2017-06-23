@@ -34,7 +34,8 @@ class StoreCategoryRequest extends FormRequest
             'description' => '',
             'image' => 'image|max:1000|mimes:jpeg,jpg,png',
             'active' => 'boolean',
-            'sort' => 'numeric'
+            'sort' => 'numeric',
+            'parent' => 'required'
         ];
     }
 

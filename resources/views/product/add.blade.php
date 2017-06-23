@@ -28,81 +28,101 @@
     @endif
     <!--Конец сообщений валидации-->
 
-    @if (isset($product))
-        {!! Form::model($product, ['route' => ['update-product', $product->id]]) !!}
-    @else
-        {!! Form::open(['route' => 'add-product', 'method' => 'post']) !!}
-    @endif
-    <div class="form-group">
-        {!! Form::label('title','Название продукта') !!}
-        {!! Form::text('title', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('url_key','URL-адрес') !!}
-        {!! Form::text('url_key', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('price','Цена') !!}
-        {!! Form::text('price', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('description','Описание') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('qty','Количество') !!}
-        {!! Form::number('qty', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('sort','Сортировка') !!}
-        {!! Form::number('sort', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('onsale','Скидка') !!}
-        @if(isset($product))
-            {!! Form::checkbox('onsale', $product->onsale, $product->onsale ? true : false) !!}
-        @else
-            {!! Form::checkbox('onsale', true, false) !!}
-        @endif
-    </div>
-    <div class="form-group">
-        {!! Form::label('special','Спецпредложение') !!}
-        @if(isset($product))
-            {!! Form::checkbox('special', $product->special, $product->special ? true : false) !!}
-        @else
-            {!! Form::checkbox('special', true, false) !!}
-        @endif
-    </div>
-    <div class="form-group">
-        {!! Form::label('need_order','Необходимо заказывать') !!}
-        @if(isset($product))
-            {!! Form::checkbox('need_order', $product->need_order, $product->need_order ? true : false) !!}
-        @else
-            {!! Form::checkbox('need_order', true, false) !!}
-        @endif
-    </div>
-    <div class="form-group">
-        {!! Form::label('active','Активен') !!}
-        @if(isset($product))
-            {!! Form::checkbox('active', $product->active, $product->active ? true : false) !!}
-        @else
-            {!! Form::checkbox('active', true, false) !!}
-        @endif
-    </div>
-    <div class="form-group">
-        {!! Form::label('category_id','Каталог') !!}
-        @if(isset($category))
-            {!! Form::select('category_id', $category_all, $product->category_id, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
-        @else
-            {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
-        @endif
-    </div>
-    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
-    {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
-    {!! Form::token() !!}
-    {!! Form::close() !!}
 
-    <div style="margin-top: 50px;">
-            <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}}></uploader>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#main" role="tab">Основные</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#attributes" role="tab">Атрибуты</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="main" role="tabpanel">
+            <br>
+            @if (isset($product))
+                {!! Form::model($product, ['route' => ['update-product', $product->id]]) !!}
+            @else
+                {!! Form::open(['route' => 'add-product', 'method' => 'post']) !!}
+            @endif
+            <div class="form-group">
+                {!! Form::label('title','Название продукта') !!}
+                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('url_key','URL-адрес') !!}
+                {!! Form::text('url_key', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('price','Цена') !!}
+                {!! Form::text('price', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('description','Описание') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('qty','Количество') !!}
+                {!! Form::number('qty', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('sort','Сортировка') !!}
+                {!! Form::number('sort', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('onsale','Скидка') !!}
+                @if(isset($product))
+                    {!! Form::checkbox('onsale', $product->onsale, $product->onsale ? true : false) !!}
+                @else
+                    {!! Form::checkbox('onsale', true, false) !!}
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('special','Спецпредложение') !!}
+                @if(isset($product))
+                    {!! Form::checkbox('special', $product->special, $product->special ? true : false) !!}
+                @else
+                    {!! Form::checkbox('special', true, false) !!}
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('need_order','Необходимо заказывать') !!}
+                @if(isset($product))
+                    {!! Form::checkbox('need_order', $product->need_order, $product->need_order ? true : false) !!}
+                @else
+                    {!! Form::checkbox('need_order', true, false) !!}
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('active','Активен') !!}
+                @if(isset($product))
+                    {!! Form::checkbox('active', $product->active, $product->active ? true : false) !!}
+                @else
+                    {!! Form::checkbox('active', true, false) !!}
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('category_id','Каталог') !!}
+                @if(isset($category))
+                    {!! Form::select('category_id', $category_all, $product->category_id, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
+                @else
+                    {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
+                @endif
+            </div>
+            {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+            {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
+            {!! Form::token() !!}
+            {!! Form::close() !!}
+
+            <div style="margin-top: 50px;">
+                <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}}></uploader>
+            </div>
+        </div>
+        <div class="tab-pane" id="attributes" role="tabpanel">
+            <add-attribute :exist-attr="{{isset($attributes)?$attributes->toJson():null}}"></add-attribute>
+        </div>
     </div>
+
+
 @stop

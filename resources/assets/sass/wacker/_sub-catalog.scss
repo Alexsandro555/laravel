@@ -1,0 +1,119 @@
+.sub-catalog-wrapper {
+  min-height: 420px;
+  width: 100%;
+  background: url(img/about-line-white.png) top left repeat-x, url(img/about.png) repeat 0 0;
+  margin: auto;
+  min-width: $min-width;
+}
+
+.sub-catalog {
+  min-height: 98%;
+  width: $main-width;
+  margin: auto;
+  display: block;
+}
+
+.sub-catalog__content-slider {
+  position: relative;
+  //width: 230px;
+  width: 225px;
+  height: 326px;
+  margin: 5px;
+  margin-bottom: 20px;
+  display: inline-block;
+  @include border-radius(6px);
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+  text-align: center;
+  background-color: white;
+  background: url(img/service-slbottom-layer.png) bottom right no-repeat, url(img/service-slider-layer.png) center center repeat-x;
+}
+
+.sub-catalog__adv-info {
+  display: none;
+}
+
+.sub-catalog__content-slider .wrap {
+  position:absolute;
+  overflow:hidden;
+
+}
+
+.sub-catalog__content-slider .wrap:hover {
+  height:450px;
+  width:250px;
+  @include border-radius(6px);
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+  background-color: white;
+  z-index: 2;
+}
+
+.sub-catalog__content-slider .wrap:hover .sub-catalog__adv-info{
+  display: inline-block;
+}
+
+
+.sub-catalog__image {
+  border-bottom: 1px dashed gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+  background: url(img/service-arrow.png) top center no-repeat;
+}
+
+.sub-catalog__content-slider a {
+  text-decoration: underline;
+  color: #353535;
+  font-weight: bold;
+}
+
+.sub-catalog__content-slider span {
+  color: #FCDE4F;
+  font-weigh: bold;
+  font-size: 1.4em;
+}
+
+.sub-catalog__content-slider .wrap:hover .sub-catalog__IEC {
+  font-size: 1.2em;
+  color: #484848;
+  font-weight: bold;
+}
+
+.sub-catalog__content-slider .wrap:hover .sub-catalog-desc {
+  font-size: 1em;
+  color: #484848;
+  text-align: center;
+}
+
+.sub-catalog__content-slider .wrap:hover .sub-catalog__detail{
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: center;
+  background: url(/images/header-phone-btn.png?81ea2ed41fb33da382141301de2c592b) top center no-repeat;
+  width: 166px;
+  height: 37px;
+  text-decoration: none;
+  border-style: solid none;
+  border-width: 0px 0px 3px 0px;
+  border-color: #F1B814;
+  -mox-border-radius: 6px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #4C4C4C;
+  font-weight: bold;
+}
+
+.sub-catalog h2 {
+  margin-top:0px;
+}
+.sub-catalog__header-catalog {
+  width: 600px;
+  background: url(img/gears-dark.png) top right no-repeat
+}
+
+.sub-catalog__header-catalog h2 {
+  margin-top: 0px;
+  padding-top: 10px;
+}

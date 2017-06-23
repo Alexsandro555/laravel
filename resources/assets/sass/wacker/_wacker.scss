@@ -12,7 +12,7 @@
 }
 
 .wacker__wrapper {
-	height: 399px;
+	min-height: 399px;
 	background-color: rgba(255,213,17,0.8);
 	margin: auto;
 	margin-top: -8px;
@@ -36,6 +36,7 @@
 	font-weight: bold;
 	color: $color-wacker;
 }
+
 
 .wacker-news {
 	font-size: 0.7em;
@@ -69,13 +70,20 @@
 	height: 30px;
 	font-size:1em;
 	font-weight: bold;
-	line-height: 30px;
+	vertical-align: center;
+	//line-height: 30px;
 }
 
 .wacker-news__button {
 	@extend .wacker-button;
 }
 
+.wacker__carousel {
+	width: 590px;
+	margin-left:150px;
+	margin-top: 11px;
+	display: inline-block;
+}
 .wacker-about {
 	font-size: 0.7em;
 	display: inline-block;
@@ -142,6 +150,13 @@
 	margin-top: -50px;
 }
 
+
+.wacker__header {
+	font-size: 0.7em;
+	display: inline-block;
+	width: 700px;
+	background: url(img/about-h2-image.png) top right no-repeat;
+}
 
 
 

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Product extends Model
 {
     protected $fillable = [
@@ -26,5 +27,9 @@ class Product extends Model
 
     public function category() {
         return $this->belongsTo('App\Category');
+    }
+
+    public function productAttributeValue() {
+        return $this->hasMany(ProductAttributeValue::class, 'product_id','id');
     }
 }

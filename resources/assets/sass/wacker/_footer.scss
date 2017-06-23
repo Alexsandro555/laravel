@@ -51,6 +51,7 @@
 }
 
 .footer__logo {
+
 	width: 170px;
 	text-align: center;
 	margin-left: 10px;
@@ -63,6 +64,7 @@
 }
 
 .footer__tel .back-call {
+	position: relative;
 	vertical-align: text-bottom;
 	background: url(img/header-phone-btn.png) top center no-repeat;
 	width: 166px;
@@ -76,6 +78,10 @@
 	margin-top:30px;
 	font-size:0.8em;
 	color:$color-gray;
+}
+.back-call img {
+	position: absolute;
+	padding-right: 30px;
 }
 
 .footer__tel div span {

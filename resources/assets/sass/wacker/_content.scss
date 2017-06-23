@@ -2,7 +2,7 @@
 @import 'menu-left';
 
 .content-wrapper {
-	height: 500px;
+	min-height: 400px;
 	width: 100%;
 	padding-top: -5px;
 	margin-top: -60px;
@@ -14,9 +14,11 @@
 	margin: auto;
 	padding-top: 77px;
 	width: $main-width;
-	height: inherit;
+	min-height: inherit;
 	font-size: 0.9em;
-	background: url(img/content-img.png) center right no-repeat;
+	background: url(img/content-img.png) no-repeat;
+	background-position-x: 800px;
+	background-position-y: 80px;
 }
 
 
@@ -53,17 +55,22 @@
 }
 
 .content__header {
-	margin-top: 10px;
-	/*width: 440px;*/
+
 	height:50px;
 	display: inline-block;
 	line-height: inherit;
-	background: url(img/about-h2-image.png) center right no-repeat;
+	background: url(img/gears-dark.png) center right no-repeat;
 	font-size: 0.6em;
+	padding-right: 10px;
+}
+
+.content__header p {
+	font-size: 1.7em;
 }
 
 .content-button {
-	margin-left: 270px;
+	margin-left: 374px;
+	margin-top: 20px;
 	display: inline-block;
 	background: none;
 	border: 1px solid $color-gray;
@@ -71,7 +78,7 @@
 	height: 30px;
 	font-size:0.9em;
 	font-weight: bold;
-	line-height: 30px;
+	//line-height: 30px;
 	color: $color-gray;
 }
 
@@ -82,7 +89,8 @@
 	font-size: 1em;
 	display: block;
 	margin-right: 30px;
-	background: url(img/main-content.png) center right no-repeat;
+	background: url(img/main-content-line.png) center left no-repeat, url(img/main-content.png) center right no-repeat;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0.5, 0.5);
 }
 
 .content__text {
@@ -117,6 +125,32 @@
 	float: right;
 	width: 900px;
 	font-size: 1.2em;
+}
+
+.content__products .service__content-slider {
+	display: inline-block;
+}
+
+.main__content .back-call {
+	vertical-align: text-bottom;
+	background: url(img/header-phone-btn.png) top center no-repeat;
+	width: 120px;
+	height: 37px;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	border-style: solid none;
+	border-width: 0px 0px 3px 0px;
+	border-color: #F1B814;
+	@include border-radius(6px);
+	margin-left: 50px;
+	margin-top: 30px;
+	font-size:0.8em;
+	color:$color-gray;
+}
+
+.content__products {
+	width: 100%;
 }
 
 

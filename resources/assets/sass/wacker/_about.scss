@@ -1,14 +1,14 @@
 .about-wrapper {
-	height: 380px;
+	min-height: 380px;
 	width: 100%;
-	background: url(img/about.png) repeat 0 0;
+	background: url(img/about-line-white.png) top left repeat-x, url(img/about.png) repeat 0 0;
 	margin: auto;
 	min-width: $min-width;
 }
 
 
 .about {
-	height: 98%;
+	min-height: 98%;
 	width: $main-width;
 	margin: auto;
 	display: block;
@@ -31,10 +31,21 @@
 	background: url(img/about-h2-image.png) top right no-repeat;
 }
 
+.about__header-catalog {
+	width: 450px;
+	background: url(img/about-h2-image.png) top right no-repeat;
+	padding-top: 5px;
+}
+
 .about__header h2 {
 	color: $color-yell;
 	font-size: 1.2em;
 	margin-left: 30px;
+}
+
+.about__header-catalog h2 {
+	color: $color-yell;
+	font-size: 1.2em;
 }
 
 .about__content {
@@ -54,7 +65,7 @@
 	height: 30px;
 	font-size:0.9em;
 	font-weight: bold;
-	line-height: 30px;
+	//line-height: 30px;
 	color: $color-yell;
 	margin-left: 30px;
 }
@@ -62,4 +73,8 @@
 .about__image {
 	float: right;
 	margin-top: -329px;
+}
+
+.about .service__content-slider {
+	display: inline-block;
 }
