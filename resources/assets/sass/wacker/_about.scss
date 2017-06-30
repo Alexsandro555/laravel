@@ -27,25 +27,41 @@
 .about__header {
 	margin-top: 10px;
 	display: inline-block;
-	width: 300px;
-	background: url(img/about-h2-image.png) top right no-repeat;
+	width: 80%;
+	//background: url(img/about-h2-image.png) top right no-repeat;
+}
+
+.about__header img{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
 }
 
 .about__header-catalog {
-	width: 450px;
-	background: url(img/about-h2-image.png) top right no-repeat;
-	padding-top: 5px;
+	width: 80%;
+	//background: url(img/about-h2-image.png) top right no-repeat;
+
 }
 
 .about__header h2 {
 	color: $color-yell;
 	font-size: 1.2em;
 	margin-left: 30px;
+	display: inline-block;
+	text-transform: uppercase;
 }
 
 .about__header-catalog h2 {
 	color: $color-yell;
 	font-size: 1.2em;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+.about__header-catalog img {
+	vertical-align: middle;
+	display: inline-block;
+	margin-left: 10px;
 }
 
 .about__content {

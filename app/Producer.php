@@ -5,9 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model
+class Producer extends Model
 {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
+    public function type_products()
+    {
+        return $this->belongsToMany('App\TypeProduct');
+    }
 }
+

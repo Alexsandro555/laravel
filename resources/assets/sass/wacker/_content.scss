@@ -55,21 +55,33 @@
 }
 
 .content__header {
-
+	width: 80%;
 	height:50px;
 	display: inline-block;
 	line-height: inherit;
-	background: url(img/gears-dark.png) center right no-repeat;
+	//background: url(img/gears-dark.png) center right no-repeat;
 	font-size: 0.6em;
 	padding-right: 10px;
+	margin-bottom: 5px;
 }
+
+.content__header h2 {
+	display: inline-block;
+	text-transform: uppercase;
+}
+
 
 .content__header p {
 	font-size: 1.7em;
 }
 
+.content__header img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
 .content-button {
-	margin-left: 374px;
+	//margin-left: 374px;
 	margin-top: 20px;
 	display: inline-block;
 	background: none;
@@ -80,6 +92,7 @@
 	font-weight: bold;
 	//line-height: 30px;
 	color: $color-gray;
+	text-transform: uppercase;
 }
 
 .main__content {
@@ -104,6 +117,7 @@
 
 .content__text h2 {
 	padding-left: 20px;
+	text-transform: uppercase;
 }
 
 .content__text p {

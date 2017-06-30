@@ -1,11 +1,10 @@
-
 <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsAttributeTable extends Migration
+class CreateAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +13,16 @@ class CreateProductsAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_attribute', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('sort')->length(11)->unsigned();
             $table->string('title', 255);
             $table->string('alias', 255);
             $table->smallInteger('inshort')->length(1)->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +33,6 @@ class CreateProductsAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_attribute');
+        Schema::dropIfExists('attributes');
     }
 }

@@ -79,7 +79,7 @@
 }
 
 .wacker__carousel {
-	width: 590px;
+	width: 790px;
 	margin-left:150px;
 	margin-top: 11px;
 	display: inline-block;
@@ -154,9 +154,20 @@
 .wacker__header {
 	font-size: 0.7em;
 	display: inline-block;
-	width: 700px;
-	background: url(img/about-h2-image.png) top right no-repeat;
+	width: 100%;
+	//background: url(img/about-h2-image.png) top right no-repeat;
 }
+
+.wacker__header img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.wacker__header h2 {
+	text-transform: uppercase;
+	display: inline-block;
+}
+
 
 
 

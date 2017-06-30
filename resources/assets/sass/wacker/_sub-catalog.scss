@@ -109,11 +109,23 @@
   margin-top:0px;
 }
 .sub-catalog__header-catalog {
-  width: 600px;
-  background: url(img/gears-dark.png) top right no-repeat
+  width: 80%;
+  padding-top: 20px;
+  margin-left: 20px;
+  color: $color-yell;
+  //background: url(img/gears-dark.png) top right no-repeat
 }
+
+.sub-catalog__header-catalog img {
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
 
 .sub-catalog__header-catalog h2 {
   margin-top: 0px;
   padding-top: 10px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  display: inline-block;
 }

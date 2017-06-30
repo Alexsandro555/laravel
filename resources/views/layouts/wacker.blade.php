@@ -160,12 +160,13 @@
         </div>
         <div class="content__item">
             <div class="content__header">
-                <h2>НАШИ АКЦИИ И СПЕЦПРЕДЛОЖЕНИЯ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                <h2>Наши акции и спецпредложения</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
-                <button class="content-button">СМОТРЕТЬ ВСЕ</button>
+                <button class="content-button">Смотреть все</button>
             <div class="main__content">
                 <div class="content__text">
-                    <h2>ЗАГОЛОВОК СПЕЦПРЕДЛОЖЕНИЯ</h2>
+                    <h2>Заголовок спецпредложения</h2>
                     <p>Краткое описание акции или предложения, <br>создан для примера</p>
                     <button class="back-call">ПОДРОБНЕЕ</button>
                 </div>
@@ -178,7 +179,8 @@
     <div class="about">
         <div class="about-main">
             <div class="about__header">
-                <h2>О КОМПАНИИ ЛИДЕР</h2>
+                <h2>О компании лидер</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="about__content">
                 <p>
@@ -262,7 +264,8 @@
     <div class="service">
         <div class="service__sentence">
             <div class="service__header-sentence">
-                <h2>МЫ ПРЕДЛАГАЕМ</h2>
+                <h2>Мы предлагаем</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="service__content">
                 <div class="service__menu-slider" style="display: flex;">
@@ -336,7 +339,8 @@
         </div>
         <div class="service__delivery">
             <div class="service__header-delivery">
-                <h2>ДОСТАВКА И ОПЛАТА</h2>
+                <h2>Доставка и оплата</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="service__content-delivery">
                 <p>

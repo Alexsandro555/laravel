@@ -23,7 +23,9 @@ class CreateCategoriesTable extends Migration
             $table->boolean('active')->default(false);
             $table->integer('sort')->nullable();
             $table->integer('parent')->unsigned()->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->softDeletes();
             $table->foreign('parent')->references('id')->on('categories')->onDelete('cascade');
         });
     }

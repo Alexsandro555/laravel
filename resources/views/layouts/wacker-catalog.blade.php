@@ -159,7 +159,8 @@
                     Главная * Внутреняя
                 </p>
                 <div class="content__header">
-                    <h2>ГЛУБИННЫЕ ВИБРАТОРЫ WACKER NEUSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                    <h2>Глубинные вибраторы Wacker Neuson</h2>
+                    <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
                 </div>
                 <p>
                     Компания Wacker Neuson зарекомендовала себя как производитель <br>
@@ -254,7 +255,8 @@
         <div class="sub-catalog">
             <br>
             <div class="about__header-catalog">
-                <h2>МОДУЛЬНЫЕ ГЛУБИННЫЕ ВИБРАТОРЫ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                <h2>Модульные глубинные вибраторы</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="sub-catalog__content-slider">
                 <div class="wrap">
@@ -425,7 +427,8 @@
                 </div>
                 <div class="wacker__carousel">
                     <div class="wacker__header">
-                        <h2>ВЫСОКОЧАСТОТНЫЕ ВИБРАТОРЫ СО ВСТРОЕННЫМ ПРЕОБРАЗОВАТЕЛЕМ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                        <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
+                        <img src="{{asset('css/wacker/img/wacker-gears.png')}}" />
                     </div>
                 <div class="service__menu-slider" style="display: flex;">
                     <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :scroll-per-page=true :per-page-custom="[[480, 3], [768, 3]]">
@@ -501,7 +504,8 @@
     <div class="service-wrapper">
         <div class="service">
             <div class="service__header-catalog">
-                <h2>ВЫСОКОЧАСТОТНЫЕ ГЛУБИННЫЕ ВИБРАТОРЫ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                <h2>Высокочастотные глубинные вибраторы</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="service__menu-slider" style="display: flex; padding-left:60px;">
                 <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :scroll-per-page=true :per-page-custom="[[480, 4], [768, 4]]">
@@ -575,7 +579,8 @@
     <div class="sub-catalog-wrapper">
         <div class="sub-catalog">
             <div class="sub-catalog__header-catalog">
-                <h2>fdsfds</h2>
+                <h2>Пневматические глубинные вибраторы</h2>
+                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="service__menu-slider" style="display: flex; padding-left:60px;">
                 <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :scroll-per-page=true :per-page-custom="[[480, 4], [768, 4]]">

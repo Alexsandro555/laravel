@@ -158,6 +158,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
     Route::post('/product/addAttributeValue/{data}', ['uses' => 'Product\ProductController@addAttributeValue', 'as' => 'add-atribute-value']);
 
+
+    //Линейка продукции
+    Route::get('product/line', ['uses' => 'Product\ProductController@line', 'as' => 'line-product']);
+    Route::get('product/lines', ['uses' => 'Product\ProductController@lines', 'as' => 'lines-product']);
+    Route::get('/product/getAllTypeProducts', ['uses' => 'Product\ProductController@allTypeProduct', 'as' => 'type-product']);
+
     ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
     Route::get('/testAdminLTE', function(){
         return view('test.adminlte');

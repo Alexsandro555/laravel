@@ -2,9 +2,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductAttributeValue extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $table = 'products_attribute_value';
 
     public function attribute()
@@ -12,8 +17,8 @@ class ProductAttributeValue extends Model
         return $this->belongsTo('App\ProductAttribute');
     }
 
-    public function product()
+    public function type_products()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\TypeProduct');
     }
 }

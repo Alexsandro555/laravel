@@ -27,8 +27,12 @@ class CreateProductsTable extends Migration
             $table->boolean('special')->nullable();
             $table->boolean('need_order')->nullable();
             $table->integer('category_id')->unsigned();
-            $table->timestamps();
+            $table->integer('type_product_id')->unsigned();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('type_product_id')->references('id')->on('type_products')->onDelete('cascade');
         });
     }
 
@@ -40,6 +44,7 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign('products_type_product_id_foreign');
             $table->dropForeign('products_category_id_foreign');
         });
         Schema::dropIfExists('products');

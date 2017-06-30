@@ -1,15 +1,18 @@
 <template>
     <div>
-        <div class="new-attribute" v-for="attribute of attributes">
-            <div class="form-group" >
-                <label for="attribute_id">Аттрибут</label>
-                <dropbox v-bind:nameelement="'attribute_id'" v-bind:parent="attribute.id" v-bind:placeholder="'Выберите атрибут'" v-bind:url="'/admin/product/getAllAttributes'"></dropbox>
-            </div>
-            <div class="form-group">
-                <label for="value">Значение</label>
-                <input name="value" v-bind:value="attribute.value" class="attr-val"  type="text" value="attribute.value">
+        <div v-if="attributes.length > 0">
+            <div class="new-attribute" v-for="attribute of attributes">
+                <div class="form-group" >
+                    <label for="attribute_id">Аттрибут</label>
+                    <dropbox v-bind:nameelement="'attribute_id'" v-bind:parent="attribute.id" v-bind:placeholder="'Выберите атрибут'" v-bind:url="'/admin/product/getAllAttributes'"></dropbox>
+                </div>
+                <div class="form-group">
+                    <label for="value">Значение</label>
+                    <input name="value" v-bind:value="attribute.value" class="attr-val"  type="text" value="attribute.value">
+                </div>
             </div>
         </div>
+        <div v-else></div>
         <div class="form-group" >
             <label for="attribute_id">Аттрибут</label>
             <dropbox v-bind:nameelement="'attribute_id'"  v-model="newAttribute.id" v-bind:placeholder="'Выберите атрибут'" v-bind:url="'/admin/product/getAllAttributes'"></dropbox>
@@ -26,7 +29,10 @@
 <script>
     export default {
         props: {
-            'existAttr': Array
+            'existAttr': {
+                type: Array,
+                default: null
+            }
         },
         data: function() {
             return {
@@ -39,11 +45,14 @@
             }
         },
         mounted: function (){
+            console.log(this.existAttr);
             var that = this;
-            this.existAttr.forEach(function(item) {
-                var attribute = {id: item.attribute_id, value: item.value};
-                that.attributes.push(attribute);
-            });
+            if(this.existAttr !== null) {
+                this.existAttr.forEach(function(item) {
+                    var attribute = {id: item.attribute_id, value: item.value};
+                    that. attributes.push(attribute);
+                });
+            }
         },
         methods: {
             addAttribute: function() {
