@@ -175,78 +175,67 @@
                         <div class="service__image">
                             <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                         </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                        <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
                     <div class="service__image">
                         <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                     </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
                 <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">Название товара может быть длинным</a><br><br>
-                        <span>3 123 456 </span> р.
+                    <div class="service__image">
+                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                    </div><br><br>
+                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
             </div>
         </div>
@@ -648,6 +637,40 @@
                         </div>
                     </slide>
                 </carousel>
+            </div>
+        </div>
+    </div>
+    <div class="catalog-description-wrapper">
+        <div class="catalog-description">
+            <div class="catalog-text">
+                <h2>На сегодняшний день данная группа оборудования делится на:</h2>
+                <ul>
+                    <li>
+                        Глубинные вибраторы для бетона с электромеханическим приводом (серия HMS)
+                    </li>
+                    <li>
+                        Погружные высокочастотные для уплотнения бетона (серия IREN, IRFU)
+                    </li>
+                    <li>
+                        Внешние для опалубки (серия AR)
+                    </li>
+                </ul>
+
+                <h2>Глубинные вибраторы для бетона с электромеханическим приводом (серия HMS)</h2>
+                HMS - система из электромеханического привода, гибкого вала и вибробулавы. Это трехсоставной механизм, где каждый элемент имеет свой артикул
+                и при необходимости вал или булава могут заменяться. Приводы выпускаются разной мощьности от 1 до 2.1 кВт, валы разных длин от 1 до 9 метров,
+                и наконец булавы разного диаметра от 25 до 65 мм. Системы креплений на приводах M1500 и M2500 унифицированны с валами SM3, SM4, SM5, SM7. Привод M1000
+                выпускается для особых валов и булав, меньшей длины и диаметра соответственно. Приводы M2500 считаются самыми надежными (в линейке бренда), так как
+                имеют хороший запас мощности и обмотку высокого класса. Даже при длительной эксплуатации такой привод сохраняет оптимальные показатели и эффективно
+                передает вращательное движение через гибкий вал в вибробулаву.
+
+                <h2>Погружные высокочастотные вибраторы для уплотнения бетона (серия IREN, IRFU)</h2>
+                LoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsum LoremIpsumLoremIpsum LoremIpsumLoremIpsum LoremIpsumLoremIpsum v
+                LoremIpsumLoremIpsumLoremIpsum LoremIpsumvv LoremIpsumvv vLoremIpsum LoremIpsum LoremIpsumLoremIpsumLoremIpsum
+                LoremIpsumLoremIpsumvvvLoremIpsumv LoremIpsumLoremIpsum LoremIpsum LoremIpsumLoremIpsumv
+                LoremIpsumLoremIpsumLoremIpsumvvvvLoremIpsumvLoremIpsumLoremIpsumLoremIpsumLoremIpsum
+                LoremIpsumLoremIpsumvLoremIpsumvLoremIpsum
+                LoremIpsumLoremIpsumLoremIpsumvLoremIpsumvvLoremIpsumvLoremIpsum
             </div>
         </div>
     </div>

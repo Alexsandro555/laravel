@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers\Product;
 
+use App\AttributeTypeProduct;
 use App\Product;
 use App\ProductPhoto;
-use App\ProductAttribute;
+use App\Attribute;
 use App\ProductAttributeValue;
 use App\Category;
 use App\TypeProduct;
@@ -140,7 +141,10 @@ class ProductController extends Controller
      */
     public function addAttribute()
     {
-        return view('product.addAttribute');
+        $arrTypeProducts = array();
+        $arrTypeProducts = TypeProduct::all()->sortBy("sort");
+        $arrTypeProducts = $arrTypeProducts->toJson();
+        return view('product.addAttribute', compact('arrTypeProducts'));
     }
 
     /**
@@ -151,10 +155,10 @@ class ProductController extends Controller
      */
     public function addAttributeHandler(AttributeRequest $attributeRequest)
     {
-        $request = $attributeRequest->all();
+        /*$request = $attributeRequest->all();
         $attribute = ProductAttribute::create($request);
         $id = $attribute->id;
-        return redirect()->route('wacker');
+        return redirect()->route('wacker');*/
     }
 
 
@@ -164,7 +168,17 @@ class ProductController extends Controller
      */
     public function getAllAttributes()
     {
-        $attributes = ProductAttribute::all();
+        $attributes = Attribute::all();
+        return $attributes->toJson();
+    }
+
+    /**
+     * Get Attributes
+     * @return json
+     */
+    public function getAttributes($id)
+    {
+        $attributes = AttributeTypeProduct::where('type_product_id',$id)->get();
         return $attributes->toJson();
     }
 
@@ -173,14 +187,16 @@ class ProductController extends Controller
      * Add Atributes Value
      */
     public function addAttributeValue($data) {
-        $productsAttrVal = new ProductAttributeValue();
-        foreach ($data as $item)
+        $attributes_values = json_decode($data,true);
+        foreach ($attributes_values as $item)
         {
-            $productsAttrVal->attribute_id = $item->id;
-            $productsAttrVal->value = $item->value;
-            $productsAttrVal->save();
+            $AttrTypeVal = new AttributeTypeProduct();
+            $AttrTypeVal->attribute_id = $item["id"];
+            $AttrTypeVal->value = $item["value"];
+            $AttrTypeVal->type_product_id = $item["type_product_id"];
+            $AttrTypeVal->save();
         }
-        //return redirect()->route('wacker');
+        return response()->json([],200);
     }
 
 
@@ -195,7 +211,7 @@ class ProductController extends Controller
     public function lines() {
         $arrTypeProducts = array();
         $arrProducers = array();
-        $arrProducerTypeProducts_ = array();
+        $arrProducerTypeProducts = array();
         $type_products = TypeProduct::all()->sortBy("sort");
         foreach ($type_products as $type_product) {
             $arrTypeProducts[$type_product->id]["id"] = $type_product->id;
@@ -215,27 +231,6 @@ class ProductController extends Controller
         }
 
         return view('product.lines', compact('arrProducers','arrTypeProducts','arrProducerTypeProducts'));
-    }
-
-    public function line() {
-        $arrTypeProducts = array();
-        $arrProducers = array();
-        $arrProducerTypeProducts_ = array();
-        $type_products = TypeProduct::all();
-        foreach ($type_products as $type_product) {
-            $arrTypeProducts[$type_product->id] = $type_product->title;
-            foreach(TypeProduct::find($type_product->id)->producers as $producer) {
-                $arrProducers[$type_product->id][$producer->id]["title"] = $producer->title;
-                $arrProducers[$type_product->id][$producer->id]["sort"] = $producer->sort;
-            }
-            $prodTypeProds = ProducerTypeProduct::where('type_product_id',$type_product->id)->get();
-            foreach ($prodTypeProds as $prodTypeProd) {
-                $arrProducerTypeProducts[$type_product->id][$prodTypeProd->id]["title"] = $prodTypeProd->name_line;
-                $arrProducerTypeProducts[$type_product->id][$prodTypeProd->id]["sort"] = $prodTypeProd->sort;
-            }
-        }
-
-        return view('product.line', compact('arrProducers','arrTypeProducts','arrProducerTypeProducts'));
     }
 
 }

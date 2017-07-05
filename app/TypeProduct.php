@@ -30,4 +30,10 @@ class TypeProduct extends Model
     public function producer_type_products() {
         return $this->belongsTo('App\ProducerTypeProduct');
     }
+
+    public function attribute_type_product() {
+        return $this->belongsTo('App\AttributeTypeProduct');
+    }
+
+
 }

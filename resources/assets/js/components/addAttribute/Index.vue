@@ -1,6 +1,10 @@
 <template>
     <div>
-        <div v-if="attributes.length > 0">
+        <div class="form-group" >
+            <label for="typeproducts">Тип продукции</label>
+            <selectbox v-bind:nameelement="'typeproducts'"  v-bind:items="arrTypeProducts" v-on:selectelement="selectelement" v-bind:placeholder="'Выбирите тип продукции'"></selectbox>
+        </div>
+        <div v-if="!!attributes">
             <div class="new-attribute" v-for="attribute of attributes">
                 <div class="form-group" >
                     <label for="attribute_id">Аттрибут</label>
@@ -22,49 +26,57 @@
             <input name="value" class="attr-val"  type="text" v-model="newAttribute.value">
         </div>
         <button class="btn btn-sucess" @click="addAttribute">Добавить атрибут</button>
-        <button class="btn btn-sucess" @click="save">Сохранить</button>
+        <button class="btn btn-sucess" v-bind:disabled="disabled" @click="save">Сохранить</button>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            'existAttr': {
-                type: Array,
-                default: null
-            }
+            'arrTypeProducts': [Array, Object],
         },
         data: function() {
             return {
-                elem: "",
                 newAttribute: {
                     id: 0,
                     value: ""
                 },
-                attributes: []
-            }
-        },
-        mounted: function (){
-            console.log(this.existAttr);
-            var that = this;
-            if(this.existAttr !== null) {
-                this.existAttr.forEach(function(item) {
-                    var attribute = {id: item.attribute_id, value: item.value};
-                    that. attributes.push(attribute);
-                });
+                attributes: [],
+                disabled: true,
+                typeProdId: 0
             }
         },
         methods: {
             addAttribute: function() {
-                var attribute = {id: this.newAttribute.id, value: this.newAttribute.value };
+                var attribute = {id: this.newAttribute.id, value: this.newAttribute.value,  type_product_id: this.typeProdId };
                 this.attributes.push(attribute);
-                console.log(this.attributes);
                 this.newAttribute.id = null;
                 this.newAttribute.value = null;
+
+            },
+            selectelement: function(id) {
+                this.typeProdId = id;
+                this.disabled = false;
+                this.attributes = [];
+                var that = this;
+                this.axios.get("/admin/product/getAttributes/"+id, {}).then(function (response)
+                {
+                    if(response.data.length > 0) {
+                        response.data.forEach(function(item) {
+                            var attribute = {id: item.attribute_id, value: item.value, type_prodcut_id: item.type_product_id};
+                            that.attributes.push(attribute);
+                        });
+                    }
+                }).catch(function (error)
+                {
+                    console.log(error);
+                });
             },
             save: function () {
+                let type_product = document.getElementsByName('typeproducts').value;
                 this.axios.post("/admin/product/addAttributeValue/"+JSON.stringify(this.attributes), {}).then(function (response)
                 {
+                    location.reload();
                 }).catch(function (error)
                 {
                     console.log(error);

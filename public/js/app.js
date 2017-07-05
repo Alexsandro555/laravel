@@ -2247,44 +2247,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        'existAttr': {
-            type: Array,
-            default: null
-        }
+        'arrTypeProducts': [Array, Object]
     },
     data: function data() {
         return {
-            elem: "",
             newAttribute: {
                 id: 0,
                 value: ""
             },
-            attributes: []
+            attributes: [],
+            disabled: true,
+            typeProdId: 0
         };
-    },
-    mounted: function mounted() {
-        console.log(this.existAttr);
-        var that = this;
-        if (this.existAttr !== null) {
-            this.existAttr.forEach(function (item) {
-                var attribute = { id: item.attribute_id, value: item.value };
-                that.attributes.push(attribute);
-            });
-        }
     },
     methods: {
         addAttribute: function addAttribute() {
-            var attribute = { id: this.newAttribute.id, value: this.newAttribute.value };
+            var attribute = { id: this.newAttribute.id, value: this.newAttribute.value, type_product_id: this.typeProdId };
             this.attributes.push(attribute);
-            console.log(this.attributes);
             this.newAttribute.id = null;
             this.newAttribute.value = null;
         },
+        selectelement: function selectelement(id) {
+            this.typeProdId = id;
+            this.disabled = false;
+            this.attributes = [];
+            var that = this;
+            this.axios.get("/admin/product/getAttributes/" + id, {}).then(function (response) {
+                if (response.data.length > 0) {
+                    response.data.forEach(function (item) {
+                        var attribute = { id: item.attribute_id, value: item.value, type_prodcut_id: item.type_product_id };
+                        that.attributes.push(attribute);
+                    });
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         save: function save() {
-            this.axios.post("/admin/product/addAttributeValue/" + JSON.stringify(this.attributes), {}).then(function (response) {}).catch(function (error) {
+            var type_product = document.getElementsByName('typeproducts').value;
+            this.axios.post("/admin/product/addAttributeValue/" + JSON.stringify(this.attributes), {}).then(function (response) {
+                location.reload();
+            }).catch(function (error) {
                 console.log(error);
             });
         }
@@ -2462,64 +2472,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        arrProducers: Object,
-        arrTypeProducts: Object,
-        arrProducerTypeProducts: Object
+        arrProducers: [Array, Object],
+        arrTypeProducts: [Array, Object],
+        arrProducerTypeProducts: [Array, Object]
     },
     data: function data() {
         return {
-            type_product_id: 0,
-            type_product_title: "",
             items: [],
             typeProducts: this.normalizeForSelectBox(this.arrTypeProducts),
-            producers: this.normalizeForSelectBox(this.arrProducers[this.getDefTypeProduct]),
-            producerTypeProducts: this.normalizeForSelectBox(this.arrProducerTypeProducts[1])
+            producers: this.normalizeForSelectBox(this.arrProducers[this.getDefTypeProduct()]),
+            producerTypeProducts: this.normalizeForSelectBox(this.arrProducerTypeProducts[this.getDefTypeProduct()])
         };
-    },
-    mounted: function mounted() {
-        console.log("fdsfds " + this.getDefTypeProduct);
-        console.log("fdsfds " + this.arrTypeProducts[1]);
     },
     computed: {
         getDefProducers: function getDefProducers() {
-            var obj = this.arrProducers[this.typeProducts[0].id];
-            var sort = 1000000;
+            var obj = null;
+            if (this.typeProducts.length) {
+                obj = this.arrProducers[this.typeProducts[0].id];
+            }
+            var sort = 14294967295;
             var id = void 0;
             for (var key in obj) {
-                if (obj[key]['sort'] < sort) return sort = obj[key]['sort'];
-                break;
+                if (obj[key]['sort'] < sort) sort = obj[key]['sort'];
             }
             for (var _key in obj) {
                 if (obj[_key]['sort'] == sort) return obj[_key]['id'];
             }
+            return null;
         },
         getDefProducerTypeProduct: function getDefProducerTypeProduct() {
-            var obj = this.arrProducerTypeProducts[this.typeProducts[0].id];
-            var sort = 1000000;
+            var obj = null;
+            if (this.typeProducts.length) {
+                obj = this.arrProducerTypeProducts[this.typeProducts[0].id];
+            }
+            var sort = 14294967295;
             var id = void 0;
             for (var key in obj) {
-                if (obj[key]['sort'] < sort) return sort = obj[key]['sort'];
-                break;
+                if (obj[key]['sort'] < sort) sort = obj[key]['sort'];
             }
             for (var _key2 in obj) {
                 if (obj[_key2]['sort'] == sort) return obj[_key2]['id'];
             }
-        },
-        getDefTypeProduct: function getDefTypeProduct() {
-            var obj = this.typeProducts;
-            var sort = 1000000;
-            var id = void 0;
-            for (var key in obj) {
-                if (obj[key]['sort'] < sort) return sort = obj[key]['sort'];
-                break;
-            }
-            for (var _key3 in obj) {
-                if (obj[_key3]['sort'] == sort) return obj[_key3]['id'];
-            }
+            return null;
         }
     },
     methods: {
@@ -2543,6 +2540,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectelement: function selectelement(id) {
             this.producers = this.normalizeForSelectBox(this.arrProducers[id]);
             this.producerTypeProducts = this.normalizeForSelectBox(this.arrProducerTypeProducts[id]);
+        },
+        getDefTypeProduct: function getDefTypeProduct() {
+            var obj = this.arrTypeProducts;
+            var sort = 14294967295;
+            var id = void 0;
+            for (var key in obj) {
+                if (obj[key]['sort'] < sort) sort = obj[key]['sort'];
+            }
+            for (var _key3 in obj) {
+                if (obj[_key3]['sort'] == sort) return obj[_key3]['id'];
+            }
+            return null;
         }
     }
 });
@@ -2575,29 +2584,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         element: "",
         items: {
-            type: Array,
+            type: [Object, Array],
             default: []
         },
         nameelement: String,
         parent: Number,
         placeholder: String,
-        url: String,
         defaultId: Number
     },
     mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_on_click_outside__["mixin"]],
     data: function data() {
         return {
             isVisible: false,
-            input: this.items[0].title,
-            val: this.items[0].id,
+            input: this.items.length ? this.items[0].title : "",
+            val: this.items.length ? this.items[0].id : 0,
             parent_id: 0
         };
     },
-    mounted: function mounted() {
-        console.log("DefaultID: " + this.items[this.defaultId]);
-        console.log(this.items);
-        console.log(this.defaultId);
-    },
+    mounted: function mounted() {},
     methods: {
         selectElement: function selectElement(title, id) {
             this.input = title;
@@ -2612,8 +2616,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         items: function items(newItem) {
-            this.input = newItem[0].title;
-            this.val = newItem[0].id;
+            if (newItem.length) {
+                this.input = newItem[0].title;
+                this.val = newItem[0].id;
+            } else {
+                this.input = "";
+                this.val = 0;
+            }
         }
     }
 });
@@ -32935,7 +32944,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
+  return (!!_vm.items) ? _c('div', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32993,7 +33002,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n                " + _vm._s(item.title) + "\n            ")])
-  }))]) : _vm._e()])
+  }))]) : _vm._e()]) : _vm._e()
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -33098,7 +33107,22 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.attributes.length > 0) ? _c('div', _vm._l((_vm.attributes), function(attribute) {
+  return _c('div', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "typeproducts"
+    }
+  }, [_vm._v("Тип продукции")]), _vm._v(" "), _c('selectbox', {
+    attrs: {
+      "nameelement": 'typeproducts',
+      "items": _vm.arrTypeProducts,
+      "placeholder": 'Выбирите тип продукции'
+    },
+    on: {
+      "selectelement": _vm.selectelement
+    }
+  })], 1), _vm._v(" "), (!!_vm.attributes) ? _c('div', _vm._l((_vm.attributes), function(attribute) {
     return _c('div', {
       staticClass: "new-attribute"
     }, [_c('div', {
@@ -33184,6 +33208,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Добавить атрибут")]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-sucess",
+    attrs: {
+      "disabled": _vm.disabled
+    },
     on: {
       "click": _vm.save
     }
@@ -33243,7 +33270,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "items": _vm.producerTypeProducts,
       "placeholder": ''
     }
-  })], 1), _vm._v("\n    " + _vm._s(_vm.getDefProducerTypeProduct) + "\n")])
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

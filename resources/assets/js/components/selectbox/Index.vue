@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!!items">
         <input type="text" v-model="input" class="selectbox" readonly v-bind:placeholder="placeholder" @focus="isVisible=true" v-on-click-outside="close">&nbsp;
         <i class="fa fa-caret-down arrow" aria-hidden="true"  @click="isVisible=true"></i>
         <input type="hidden" v-bind:name="nameelement" v-bind:value="val">
@@ -18,29 +18,24 @@
         props: {
             element: "",
             items: {
-                type: Array,
+                type: [Object, Array],
                 default: []
             },
             nameelement: String,
             parent: Number,
             placeholder: String,
-            url: String,
             defaultId: Number
         },
         mixins: [onClickOutside],
         data: function() {
             return {
                 isVisible:false,
-                input: this.items[0].title,
-                val: this.items[0].id,
+                input: this.items.length?this.items[0].title:"",
+                val: this.items.length?this.items[0].id:0,
                 parent_id:0,
             }
         },
-        mounted: function() {
-            console.log("DefaultID: "+this.items[this.defaultId]);
-            console.log(this.items);
-            console.log(this.defaultId);
-        },
+        mounted: function (){ },
         methods: {
             selectElement: function(title,id) {
                 this.input = title;
@@ -55,8 +50,15 @@
         },
         watch: {
             items: function(newItem) {
-                this.input = newItem[0].title;
-                this.val = newItem[0].id;
+                if(newItem.length)
+                {
+                    this.input = newItem[0].title;
+                    this.val = newItem[0].id;
+                }
+                else {
+                    this.input = "";
+                    this.val = 0;
+                }
             }
         }
     }

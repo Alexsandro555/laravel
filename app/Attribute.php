@@ -11,7 +11,6 @@ class Attribute extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $table = 'products_attribute';
 
     protected $fillable = [
         'sort',
@@ -23,5 +22,9 @@ class Attribute extends Model
     public function type_products()
     {
         return $this->belongsToMany('App\TypeProduct');
+    }
+
+    public function attribute_type_product() {
+        return $this->belongsTo('App\AttributeTypeProduct');
     }
 }

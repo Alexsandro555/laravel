@@ -120,11 +120,7 @@
             </div>
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
-            @if(isset($attributes))
-                <add-attribute :exist-attr="{{ $attributes->toJson() }}"></add-attribute>
-            @else
-                <add-attribute></add-attribute>
-            @endif
+
         </div>
     </div>
 

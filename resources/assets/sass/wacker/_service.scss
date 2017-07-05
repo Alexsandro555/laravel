@@ -1,5 +1,5 @@
 .service-wrapper {
-	height: 450px;
+	min-height: 450px;
 	margin: auto;
 	background: url(img/content.png) top center repeat-x;
 	min-width: $min-width;
@@ -177,3 +177,12 @@
 	text-transform: uppercase;
 	display: inline-block;
 }
+
+.service__line {
+	margin-left: 8px;
+	margin-right: 8px;
+	color: #4C4C4C;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+

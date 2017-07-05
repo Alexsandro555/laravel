@@ -12,68 +12,57 @@
             <label for="producertypeproducts">Линейка продукции</label>
             <selectbox v-bind:nameelement="'producertypeproducts'" v-bind:defaultId="getDefProducerTypeProduct" v-bind:items=producerTypeProducts v-bind:placeholder="''"></selectbox>
         </div>
-        {{getDefProducerTypeProduct}}
     </div>
 </template>
 <script>
     export default {
         props: {
-            arrProducers: Object,
-            arrTypeProducts: Object,
-            arrProducerTypeProducts: Object
+            arrProducers: [Array, Object],
+            arrTypeProducts: [Array, Object],
+            arrProducerTypeProducts: [Array, Object]
         },
         data: function()
         {
             return {
-                type_product_id: 0,
-                type_product_title: "",
                 items: [],
                 typeProducts: this.normalizeForSelectBox(this.arrTypeProducts),
-                producers: this.normalizeForSelectBox(this.arrProducers[this.getDefTypeProduct]),
-                producerTypeProducts: this.normalizeForSelectBox(this.arrProducerTypeProducts[1]),
+                producers: this.normalizeForSelectBox(this.arrProducers[this.getDefTypeProduct()]),
+                producerTypeProducts: this.normalizeForSelectBox(this.arrProducerTypeProducts[this.getDefTypeProduct()]),
             };
-        },
-        mounted: function() {
-            console.log("fdsfds "+this.getDefTypeProduct);
-            console.log("fdsfds "+this.arrTypeProducts[1]);
         },
         computed: {
             getDefProducers: function() {
-                let obj = this.arrProducers[this.typeProducts[0].id];
-                let sort = 1000000;
+                let obj = null;
+                if(this.typeProducts.length)
+                {
+                    obj = this.arrProducers[this.typeProducts[0].id];
+                }
+                let sort = 14294967295;
                 let id;
                 for (let key in obj) {
-                    if(obj[key]['sort']< sort) return sort = obj[key]['sort'];
-                    break;
+                    if(obj[key]['sort']< sort) sort = obj[key]['sort'];
                 }
                 for (let key in obj) {
                     if(obj[key]['sort'] == sort) return obj[key]['id'];
                 }
+                return null;
             },
             getDefProducerTypeProduct: function() {
-                let obj = this.arrProducerTypeProducts[this.typeProducts[0].id];
-                let sort = 1000000;
+                let obj = null;
+                if(this.typeProducts.length)
+                {
+                    obj = this.arrProducerTypeProducts[this.typeProducts[0].id];
+                }
+                let sort = 14294967295;
                 let id;
                 for (let key in obj) {
-                    if(obj[key]['sort']< sort) return sort = obj[key]['sort'];
-                    break;
+                    if(obj[key]['sort']< sort) sort = obj[key]['sort'];
                 }
                 for (let key in obj) {
                     if(obj[key]['sort'] == sort) return obj[key]['id'];
                 }
+                return null;
             },
-            getDefTypeProduct: function() {
-                let obj = this.typeProducts;
-                let sort = 1000000;
-                let id;
-                for (let key in obj) {
-                    if(obj[key]['sort']< sort) return sort = obj[key]['sort'];
-                    break;
-                }
-                for (let key in obj) {
-                    if(obj[key]['sort'] == sort) return obj[key]['id'];
-                }
-            }
         },
         methods: {
             asc: function(field) {
@@ -93,11 +82,22 @@
                 else {
                     return [];
                 }
-
             },
             selectelement: function(id) {
                 this.producers = this.normalizeForSelectBox(this.arrProducers[id]);
                 this.producerTypeProducts = this.normalizeForSelectBox(this.arrProducerTypeProducts[id]);
+            },
+            getDefTypeProduct: function() {
+                let obj = this.arrTypeProducts;
+                let sort = 14294967295;
+                let id;
+                for (let key in obj) {
+                    if(obj[key]['sort']< sort) sort = obj[key]['sort'];
+                }
+                for (let key in obj) {
+                    if(obj[key]['sort'] == sort) return obj[key]['id'];
+                }
+                return null;
             }
         }
     }
