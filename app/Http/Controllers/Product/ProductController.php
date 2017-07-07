@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\AttributeTypeProduct;
+use App\AttributeProduct;
 use App\Product;
 use App\ProductPhoto;
 use App\Attribute;
@@ -67,9 +68,11 @@ class ProductController extends Controller
     {
         $id = (int)$id;
         $product = Product::where('id',$id)->firstOrFail();
-        $attributes = Product::find($id)->productAttributeValue;
+        $type_product_id = Product::find($id)->type_product->id;
+        $attributes = TypeProduct::find($type_product_id)->attributes()->get();
         $category_all = Category::all()->pluck('title','id');
-        return view('product.add', compact('product','category_all','attributes'));
+        $attribute_product = new AttributeProduct();
+        return view('product.add', compact('product','category_all','attributes','attribute_product'));
     }
 
     /**
@@ -136,6 +139,19 @@ class ProductController extends Controller
     }
 
 
+
+    /**
+     * Set Attributes
+     */
+    public function setAttributes()
+    {
+        $arrTypeProducts = array();
+        $arrTypeProducts = TypeProduct::all()->sortBy("sort");
+        $arrTypeProducts = $arrTypeProducts->toJson();
+        return view('product.setAttributes', compact('arrTypeProducts'));
+    }
+
+
     /**
      * Add Attribute
      */
@@ -199,6 +215,40 @@ class ProductController extends Controller
         return response()->json([],200);
     }
 
+    /**
+ * Bind Attributes
+ */
+    public function bindAttributes($attributes) {
+        $attributes = json_decode($attributes, true);
+        foreach ($attributes as $item)
+        {
+            $AttrTypeVal = new AttributeTypeProduct;
+            $AttrTypeVal->attribute_id = $item["attribute_id"];
+            $AttrTypeVal->type_product_id = $item["type_product_id"];
+            $AttrTypeVal->save();
+        }
+        return response()->json([],200);
+    }
+
+    /**
+     * Bind Attributes Update
+     */
+    public function bindAttributesUpdate($attributes,$id) {
+        $attributes = json_decode($attributes, true);
+        $delRelations = AttributeTypeProduct::where('type_product_id',$id)->get();
+        foreach ($delRelations as $delRelation)
+        {
+            $delRelation->delete();
+        }
+        foreach ($attributes as $item)
+        {
+            $AttrTypeVal = new AttributeTypeProduct;
+            $AttrTypeVal->attribute_id = $item["attribute_id"];
+            $AttrTypeVal->type_product_id = $item["type_product_id"];
+            $AttrTypeVal->save();
+        }
+        return response()->json([],200);
+    }
 
     /**
      * Get All Type Product
@@ -229,7 +279,6 @@ class ProductController extends Controller
                 $arrProducerTypeProducts[$type_product->id][$prodTypeProd->id]["sort"] = $prodTypeProd->sort;
             }
         }
-
         return view('product.lines', compact('arrProducers','arrTypeProducts','arrProducerTypeProducts'));
     }
 

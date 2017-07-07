@@ -120,9 +120,16 @@
             </div>
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
-
+            @if (isset($attributes))
+                {!! Form::model($attribute_product, ['route' => ['update-product', $product->id]]) !!}
+                @foreach($attributes as $attribute)
+                    <div class="form-group">
+                        {!! Form::label('value',$attribute->title) !!}
+                        {!! Form::text('value', null, ['class' => 'form-control']) !!}
+                    </div>
+                @endforeach
+                {!! Form::close() !!}
+            @endif
         </div>
     </div>
-
-
 @stop

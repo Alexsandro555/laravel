@@ -15,5 +15,6 @@ class Producer extends Model
     {
         return $this->belongsToMany('App\TypeProduct');
     }
+
 }
 

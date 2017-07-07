@@ -35,7 +35,7 @@ class CreateProducerTypeProductTable extends Migration
     {
         Schema::table('producer_type_product', function (Blueprint $table) {
             $table->dropForeign('producer_type_product_type_product_id_foreign');
-            $table->dropForeign('producer_type_products_producer_id_foreign');
+            $table->dropForeign('producer_type_product_producer_id_foreign');
         });
         Schema::dropIfExists('producer_type_product');
     }

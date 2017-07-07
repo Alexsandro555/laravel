@@ -49,6 +49,7 @@ Vue.use(VueCarousel);
 Vue.component('uploader', require('./components/Uploader.vue'));
 Vue.component('dropbox', require('./components/dropbox/Index.vue'));
 Vue.component('add-attribute', require('./components/addAttribute/Index.vue'));
+Vue.component('set-attribute', require('./components/setAttributes/Index.vue'));
 Vue.component('product-line', require('./components/productLine/Index.vue'));
 Vue.component('product-lines', require('./components/productLines/Index.vue'));
 Vue.component('selectbox', require('./components/selectbox/Index.vue'));

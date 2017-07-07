@@ -6,7 +6,7 @@
         </div>
         <div v-if="!!attributes">
             <div class="new-attribute" v-for="attribute of attributes">
-                <div class="form-group" >
+                <div class="form-group">
                     <label for="attribute_id">Аттрибут</label>
                     <dropbox v-bind:nameelement="'attribute_id'" v-bind:parent="attribute.id" v-bind:placeholder="'Выберите атрибут'" v-bind:url="'/admin/product/getAllAttributes'"></dropbox>
                 </div>
@@ -58,8 +58,7 @@
                 this.typeProdId = id;
                 this.disabled = false;
                 this.attributes = [];
-                var that = this;
-                this.axios.get("/admin/product/getAttributes/"+id, {}).then(function (response)
+                var that = this; this.axios.get("/admin/product/getAttributes/"+id, {}).then(function (response)
                 {
                     if(response.data.length > 0) {
                         response.data.forEach(function(item) {
@@ -71,6 +70,7 @@
                 {
                     console.log(error);
                 });
+
             },
             save: function () {
                 let type_product = document.getElementsByName('typeproducts').value;

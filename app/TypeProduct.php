@@ -11,7 +11,7 @@ class TypeProduct extends Model
     protected $dates = ['deleted_at'];
 
     public function products() {
-        return $this->belongsTo('App\Products');
+        return $this->hasMany('App\Product');
     }
 
     public function tnveds() {
@@ -22,18 +22,15 @@ class TypeProduct extends Model
         return $this->belongsToMany('App\Producer');
     }
 
-    public function type_products()
-    {
-        return $this->belongsToMany('App\Attribute');
-    }
-
     public function producer_type_products() {
         return $this->belongsTo('App\ProducerTypeProduct');
     }
 
-    public function attribute_type_product() {
-        return $this->belongsTo('App\AttributeTypeProduct');
+    public function attributes_type_products() {
+        return $this->belongsTo('App\Attribute');
     }
 
-
+    public function attributes() {
+        return $this->belongsToMany('App\Attribute')->withPivot('type_product_id','attribute_id');
+    }
 }

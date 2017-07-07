@@ -30,11 +30,19 @@ class Product extends Model
         return $this->hasMany(ProductPhoto::class, 'product_id','id');
     }
 
-    public function typeProducts() {
-        return $this->hasMany(TypeProduct::class, 'type_product_id','id');
+    public function type_product() {
+        return $this->belongsTo('App\TypeProduct');
     }
 
     public function category() {
         return $this->belongsTo('App\Category');
+    }
+
+    public function product_attributes() {
+        return $this->belongsTo('App\AttributeProduct');
+    }
+
+    public function attributes() {
+        return $this->belongsToMany('App\Attribute');
     }
 }

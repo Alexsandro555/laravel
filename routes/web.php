@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/wacker', ['uses' => 'WackerController@index', 'as' => 'wacker']);
 Route::get('/wacker/catalog', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
-
+Route::get('/wacker/detail', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
 
 Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
 
@@ -147,6 +147,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 
     /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
+    // установка атрибутов для типа продукта
+    Route::get('/product/setAttributes', ['uses' => 'Product\ProductController@setAttributes', 'as' => 'set-attributes']);
+    Route::post('/product/bindAttributes/{attributes}', ['uses' => 'Product\ProductController@bindAttributes', 'as' => 'bind-attributes']);
+    Route::post('/product/bindAttributesUpdate/{attributes}/{id}', ['uses' => 'Product\ProductController@bindAttributesUpdate', 'as' => 'bind-attributes']);
     // Обработка добавления нового атрибута
     Route::post('/porduct/addAttribute',
         [

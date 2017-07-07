@@ -19,12 +19,15 @@ class Attribute extends Model
         'inshort'
     ];
 
-    public function type_products()
-    {
+    public function type_products() {
         return $this->belongsToMany('App\TypeProduct');
     }
 
-    public function attribute_type_product() {
-        return $this->belongsTo('App\AttributeTypeProduct');
+    public function attribute_products() {
+        return $this->belongsTo('App\AttributeProduct');
+    }
+
+    public function products() {
+        return $this->belongsToMany('App\Product');
     }
 }

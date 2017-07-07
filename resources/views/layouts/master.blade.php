@@ -38,7 +38,6 @@
 
 <div class="container">
     <div id="app" class="content">
-
         @yield('content')
     </div>
 </div>

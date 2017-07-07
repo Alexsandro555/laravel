@@ -18,10 +18,9 @@ class CreateAttributeTypeProductTable extends Migration
             $table->increments('id');
             $table->integer('type_product_id')->length(11)->unsigned();
             $table->integer('attribute_id')->length(11)->unsigned();
-            $table->string('value', 255);
+            $table->string('default_value', 255)->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->softDeletes();
             $table->foreign('type_product_id')->references('id')->on('type_products')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
         });

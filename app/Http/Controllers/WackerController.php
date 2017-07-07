@@ -10,4 +10,8 @@ class WackerController extends Controller
     public function catalog() {
         return view('wacker.catalog');
     }
+
+    public function detail() {
+        return view('wacker.detail');
+    }
 }
