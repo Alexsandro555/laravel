@@ -110,24 +110,40 @@
                     {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
                 @endif
             </div>
+            <div class="form-group">
+                {!! Form::label('type_product_id','Тип продукта') !!}
+                @if(isset($category))
+                    {!! Form::select('type_product_id', $typeProductAll, $product->type_product_id, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
+                @else
+                    {!! Form::select('type_product_id', $typeProductAll, null, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('product_line','Линейка продукции') !!}
+                <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:placeholder="'Выбирите линейку продукции'" ></selectbox>
+            </div>
             {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
             {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
+            {!! Form::hidden('files_ids', "[]", ['id'=>'files-id']) !!}
+            {!! Form::hidden('model', 'App\Product') !!}
             {!! Form::token() !!}
             {!! Form::close() !!}
-
             <div style="margin-top: 50px;">
                 <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}}></uploader>
             </div>
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
             @if (isset($attributes))
-                {!! Form::model($attribute_product, ['route' => ['update-product', $product->id]]) !!}
+                {!! Form::open(['route' => 'upd-attribute', 'method' => 'post']) !!}
+                {!! Form::hidden('product_id', $product->id) !!}
                 @foreach($attributes as $attribute)
                     <div class="form-group">
-                        {!! Form::label('value',$attribute->title) !!}
-                        {!! Form::text('value', null, ['class' => 'form-control']) !!}
+                        {!! Form::label($attribute->alias,$attribute->title) !!}
+                        {!! Form::text($attribute->alias, null, ['class' => 'form-control']) !!}
                     </div>
                 @endforeach
+                {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
+                {!! Form::token() !!}
                 {!! Form::close() !!}
             @endif
         </div>

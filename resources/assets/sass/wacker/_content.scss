@@ -141,6 +141,10 @@
 	font-size: 1.2em;
 }
 
+.breadrcumbs {
+	vertical-align: middle;
+}
+
 .content__products .service__content-slider {
 	display: inline-block;
 }
@@ -167,6 +171,11 @@
 	width: 100%;
 }
 
+.no-background {
+	background: none;
+}
+
+@import 'detail';
 
 
 

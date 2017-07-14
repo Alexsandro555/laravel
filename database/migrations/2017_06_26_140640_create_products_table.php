@@ -21,18 +21,20 @@ class CreateProductsTable extends Migration
             $table->decimal('price',10,2);
             $table->text('description')->nullable();
             $table->integer('qty')->nullable();
-            $table->boolean('active')->default(false);
+            $table->boolean('active')->default(false)->nullable();
             $table->integer('sort')->nullable();
             $table->boolean('onsale')->nullable();
             $table->boolean('special')->nullable();
             $table->boolean('need_order')->nullable();
             $table->integer('category_id')->unsigned();
-            $table->integer('type_product_id')->unsigned();
+            $table->integer('type_product_id')->unsigned()->nullable();
+            $table->integer('producer_type_product_id')->unsigned()->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('type_product_id')->references('id')->on('type_products')->onDelete('cascade');
+            $table->foreign('producer_type_product_id')->references('id')->on('producer_type_product')->onDelete('cascade');
         });
     }
 
@@ -44,6 +46,7 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign('products_producer_type_product_id_foreign');
             $table->dropForeign('products_type_product_id_foreign');
             $table->dropForeign('products_category_id_foreign');
         });

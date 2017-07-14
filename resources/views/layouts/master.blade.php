@@ -49,7 +49,6 @@
     ?>;
 </script>
 <script src="/js/app.js" type="application/javascript"></script>
-
 @yield('view.scripts')
 </body>
 </html>

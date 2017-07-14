@@ -49,7 +49,7 @@
     <div class="content-wrapper">
         <div class="content">
             <div class="menu-slider" style="display: flex;">
-                <carousel style="width: 1100px; height: 120px"  :pagination-enabled=false :navigation-enabled=true :per-page=8 :scroll-per-page=true :per-page-custom="[[480, 8], [768, 8]]">
+                <carousel style="width: 1100px; height: 120px"  :pagination-enabled=false :navigation-enabled=true :per-page=8  :per-page-custom="[[480, 8], [768, 8]]">
                     <slide>
                         <div class="content__slider">
                             <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/><br>
@@ -156,7 +156,7 @@
             </div>
             <div class="content__catalog">
                 <p>
-                    Главная * Внутреняя
+                    Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs"> Внутреняя
                 </p>
                 <div class="content__header">
                     <h2>Глубинные вибраторы Wacker Neuson</h2>
@@ -417,10 +417,10 @@
                 <div class="wacker__carousel">
                     <div class="wacker__header">
                         <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
-                        <img src="{{asset('css/wacker/img/wacker-gears.png')}}" />
+                        <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
                     </div>
                 <div class="service__menu-slider" style="display: flex;">
-                    <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :scroll-per-page=true :per-page-custom="[[480, 3], [768, 3]]">
+                    <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
                         <slide>
                             <div class="service__content-slider">
                                 <div class="service__image">
@@ -490,17 +490,17 @@
             </div>
         </div>
     </div>
-    <div class="service-wrapper">
-        <div class="service">
-            <div class="service__header-catalog">
+    <div class="product-line-1-wrapper">
+        <div class="product-line-1">
+            <div class="product-line-1__header-catalog">
                 <h2>Высокочастотные глубинные вибраторы</h2>
                 <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="service__menu-slider" style="display: flex; padding-left:60px;">
-                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :scroll-per-page=true :per-page-custom="[[480, 4], [768, 4]]">
+                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4  :per-page-custom="[[480, 4], [768, 4]]">
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -508,8 +508,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -517,8 +517,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -526,8 +526,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -535,8 +535,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -544,8 +544,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -553,8 +553,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="product-line-1__content-slider">
+                            <div class="product-line-1__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -571,11 +571,11 @@
                 <h2>Пневматические глубинные вибраторы</h2>
                 <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
-            <div class="service__menu-slider" style="display: flex; padding-left:60px;">
-                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :scroll-per-page=true :per-page-custom="[[480, 4], [768, 4]]">
+            <div class="sub-catalog__menu-slider" style="display: flex; padding-left:60px;">
+                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :per-page-custom="[[480, 4], [768, 4]]">
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -583,8 +583,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -592,8 +592,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -601,8 +601,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -610,8 +610,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -619,8 +619,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -628,8 +628,8 @@
                         </div>
                     </slide>
                     <slide>
-                        <div class="service__content-slider">
-                            <div class="service__image">
+                        <div class="sub-catalog__content-slider">
+                            <div class="sub-catalog__image">
                                 <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
                             </div><br><br>
                             <a href="#">Название товара может быть длинным</a><br><br>
@@ -746,16 +746,19 @@
 </div>
 <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function()
+    {
        $('.menu-left ul').toggle('normal');
        $('.menu-left__toggle').click(function () {
            $(this).parent().children('ul').toggle('normal');
            if(this.innerHTML == 'РАЗВЕРНУТЬ') {
-               this.innerHTML = 'СВЕРНУТЬ'
+               this.innerHTML = 'СВЕРНУТЬ';
+               $(".menu-left__toggle").addClass('rollup');
            }
            else
            {
                this.innerHTML = 'РАЗВЕРНУТЬ';
+               $(".menu-left__toggle").removeClass('rollup');
            }
            return false;
        });

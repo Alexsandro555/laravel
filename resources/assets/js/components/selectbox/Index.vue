@@ -35,7 +35,16 @@
                 parent_id:0,
             }
         },
-        mounted: function (){ },
+        mounted: function (){
+            if(this.defaultId) {
+                this.items.forEach(function(item) {
+                    if(item.id === this.defaultId) {
+                        this.input = item.title;
+                        this.val = item.id;
+                    }
+                });
+            }
+        },
         methods: {
             selectElement: function(title,id) {
                 this.input = title;

@@ -18,12 +18,12 @@ class TypeProduct extends Model
         return $this->hasMany(Tnved::class, 'tnved_id','id');
     }
 
-    public function producers() {
-        return $this->belongsToMany('App\Producer');
-    }
-
     public function producer_type_products() {
         return $this->belongsTo('App\ProducerTypeProduct');
+    }
+
+    public function producers() {
+        return $this->belongsToMany('App\Producer')->withPivot('id','name_line');
     }
 
     public function attributes_type_products() {

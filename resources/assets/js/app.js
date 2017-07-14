@@ -53,6 +53,9 @@ Vue.component('set-attribute', require('./components/setAttributes/Index.vue'));
 Vue.component('product-line', require('./components/productLine/Index.vue'));
 Vue.component('product-lines', require('./components/productLines/Index.vue'));
 Vue.component('selectbox', require('./components/selectbox/Index.vue'));
+//Vue.component('alex-carousel', require('./components/alex-carousel/index'));
+import AlexVueCarousel from './components/alex-carousel/index.js';
+Vue.use(AlexVueCarousel);
 
 // create a root instance
 new Vue({

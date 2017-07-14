@@ -1,18 +1,20 @@
 @extends('layouts.wacker')
 
 @section('content-item')
-    <div class="content__header">
-        <h2>Наши акции и спецпредложения</h2>
-        <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
-    </div>
-    <button class="content-button">Смотреть все</button>
-    <div class="main__content">
-        <div class="content__text">
-            <h2>Заголовок спецпредложения</h2>
-            <p>Краткое описание акции или предложения, <br>создан для примера</p>
-            <button class="back-call">ПОДРОБНЕЕ</button>
+    <div class="content__item">
+        <div class="content__header">
+            <h2>Наши акции и спецпредложения</h2>
+            <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
         </div>
-    </div>
+        <button class="content-button">Смотреть все</button>
+        <div class="main__content">
+            <div class="content__text">
+                <h2>Заголовок спецпредложения</h2>
+                <p>Краткое описание акции или предложения, <br>создан для примера</p>
+                <button class="back-call">ПОДРОБНЕЕ</button>
+            </div>
+        </div>
+     </div>
 @stop
 
 @section('menu-left')
@@ -140,7 +142,7 @@
                 </div>
                 <div class="service__content">
                     <div class="service__menu-slider" style="display: flex;">
-                        <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :scroll-per-page=true :per-page-custom="[[480, 3], [768, 3]]">
+                        <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :per-page-custom="[[480, 3], [768, 3]]">
                             <slide>
                                 <div class="service__content-slider">
                                     <div class="service__image">

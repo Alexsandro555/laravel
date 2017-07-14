@@ -23,11 +23,7 @@ class Attribute extends Model
         return $this->belongsToMany('App\TypeProduct');
     }
 
-    public function attribute_products() {
-        return $this->belongsTo('App\AttributeProduct');
-    }
-
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('App\Product')->withPivot('value');;
     }
 }

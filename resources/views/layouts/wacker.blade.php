@@ -48,13 +48,12 @@
 </header>
 <div class="content-wrapper">
     <div class="content">
-
         <div class="main-slogan">
             <span>Технологическое оборудование</span>
             <div class="main-subslogan">Официальный дистрибьютор Wacker Neuson</div>
         </div>
         <div class="menu-slider" style="display: flex;">
-            <carousel style="width: 1100px; height: 120px"  :pagination-enabled=false :navigation-enabled=true :per-page=8 :scroll-per-page=true :per-page-custom="[[480, 8], [768, 8]]">
+            <carousel style="width: 1100px; height: 120px"  :pagination-enabled=false :navigation-enabled=true :per-page=8  :per-page-custom="[[480, 8], [768, 8]]">
                 <slide>
                     <div class="content__slider">
                         <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/><br>
@@ -131,11 +130,9 @@
         </div>
         <div class="menu-left-wrapper">
             @yield('menu-left')
+        </div>
 
-        </div>
-        <div class="content__item">
             @yield('content-item')
-        </div>
     </div>
 </div>
 @yield('content')
@@ -211,5 +208,6 @@
 </div>
 </div>
 <script src="{{asset('js/app.js')}}" type="application/javascript"></script>
+@yield('view.scripts')
 </body>
 </html>

@@ -1,0 +1,64 @@
+.detail-characteristics-wrapper {
+    min-height: 380px;
+    width: 100%;
+    background: url(img/about-line-white.png) top left repeat-x, url(img/about.png) repeat 0 0;
+    min-width: $min-width;
+}
+.detail-characteristics {
+  min-height: 98%;
+  width: $main-width;
+  margin: auto;
+  display: block;
+}
+
+.detail-characteristics__btn-tech {
+  display: inline-block;
+  margin: 2px 0px;
+  background: none;
+  position: relative;
+  border: 1px solid white;
+  -mox-border-radius: 6px;
+  border-radius: 6px;
+  height: 30px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+  margin-left: 5px;
+}
+
+.detail-characteristics__btn-tech:hover {
+  color:#FFCA00;
+  border: 1px solid #FFCA00;
+}
+
+
+.detail-characteristics__left-table {
+  float: left;
+}
+
+.detail-characteristics__right-table {
+  float: right;
+}
+
+.detail-characteristics__table {
+  color: white;
+  width: 580px;
+  border: none;
+  border-collapse: collapse;
+}
+
+.detail-characteristics__table thead th {
+  text-align: left;
+}
+
+.detail-characteristics__table tbody tr:nth-child(2n+1) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+.detail-characteristics__table tbody tr td {
+  padding-left: 5px;
+}
+
+
+

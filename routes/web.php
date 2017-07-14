@@ -20,6 +20,10 @@ Route::get('/wacker/catalog', ['uses' => 'WackerController@catalog', 'as' => 'wa
 Route::get('/wacker/detail', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
 
 Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
+// Получение файлов
+Route::get('/getFiles/{id}', ['uses' => 'UploadController@getFiles', 'as' => 'get-files']);
+// Удаление изображения товара
+Route::get('/deleteFile/{id}', ['uses' => 'UploadController@deleteFile', 'as' => 'delete-file']);
 
 
 Auth::routes();
@@ -136,15 +140,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     // Удалить продукт
     Route::get('/product/delete/{id}',['uses' => 'Product\ProductController@delete', 'as' => 'delete-product']);
 
-    // Получение изображений товара
-    Route::get('/product/getPhoto/{id}', ['uses' => 'Product\ProductController@getPhoto', 'as' => 'photo-product']);
-
-    // Удаление изображения товара
-    Route::get('/product/deletePhoto/{id}', ['uses' => 'Product\ProductController@deletePhoto', 'as' => 'delete-photo-product']);
-
 
     Route::get('/product/addAttribute', ['uses' => 'Product\ProductController@addAttribute', 'as' => 'add-attribute']);
 
+
+    Route::get('/product/uploadCsv', ['uses' => 'Product\ProductController@uploadCsv']);
+    Route::post('/product/uploadCsvHandl',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@uploadCsvHandler',
+            'as'=>'csv-upload'
+        ]);
 
     /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
     // установка атрибутов для типа продукта
@@ -163,6 +169,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     // Получение атрибутов заданного типа продукции
     Route::get('/product/getAttributes/{id}', ['uses' => 'Product\ProductController@getAttributes', 'as' => 'get-attributes']);
     Route::post('/product/addAttributeValue/{data}', ['uses' => 'Product\ProductController@addAttributeValue', 'as' => 'add-atribute-value']);
+    Route::post('/porduct/updateAttribute',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@updateAttribute',
+            'as'=>'upd-attribute'
+        ]);
 
 
     //Линейка продукции

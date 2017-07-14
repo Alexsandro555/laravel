@@ -30,6 +30,11 @@
   font-weight: bold;
   line-height: 3.5;
   border-top: 1px dashed lightgrey;
+  background: url(img/menu-arrow.png) no-repeat right 10px center;
+}
+
+.rollup {
+  background: url(img/menu-arrow-rotate.png) no-repeat right 10px center;
 }
 
 .menu-left ul {

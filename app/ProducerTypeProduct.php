@@ -11,7 +11,13 @@ class ProducerTypeProduct extends Model
 
     use SoftDeletes;
 
+    protected $guarded = [];
+
     public function type_products() {
         return $this->hasMany(TypeProduct::class, 'type_product_id','id');
+    }
+
+    public function products() {
+        return $this->hasMany(Product::class);
     }
 }

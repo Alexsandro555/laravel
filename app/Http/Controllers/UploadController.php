@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Product\UploadProductRequest;
 use App\ProductPhoto;
 use Intervention\Image\ImageManager;
+use App\File;
 
 class UploadController extends Controller
 {
@@ -33,13 +34,11 @@ class UploadController extends Controller
         }
 
         $size = $this->size($file);
-        $productPhoto = ProductPhoto::create([
+        $file = File::create([
             'filename' => $allowed_filename,
             'size' => $size
         ]);
-        $request->session()->push('images.id',$productPhoto->id);
-        return response()->json(['error'=> false, 'code' => 200], 200);
-
+        return response()->json(['error'=> false, 'id'=> $file->id, 'code' => 200], 200);
     }
 
     function sanitize($string, $force_lowercase = true, $anal = false)
@@ -92,5 +91,32 @@ class UploadController extends Controller
         $manager = new ImageManager();
         $image = $manager->make( $photo )->resize(200,200)->save(storage_path('../public/images/icon/') . $filename );
         return $image;
+    }
+
+
+    /**
+     *  Get Files
+     * @param int $id
+     * @return \Illuminate\Http\Response:json
+     */
+    public function getFiles($id)
+    {
+        $id = (int)$id;
+        $image = File::where('fileable_id',$id)->get();
+        return response()->json($image,200);
+    }
+
+
+    /**
+     *  Delete Image
+     * @param int $id
+     * @return \Illuminate\Http\Response:json
+     */
+    public function deleteFile($id)
+    {
+        $id = (int)$id;
+        $file = File::find($id);
+        $file->delete();
+        return response()->json([],200);
     }
 }

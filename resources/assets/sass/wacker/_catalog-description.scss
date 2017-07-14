@@ -1,5 +1,4 @@
 .catalog-description-wrapper {
-  min-height: 450px;
   margin: auto;
   background: url(img/content.png) top center repeat-x;
   min-width: $min-width;
@@ -8,6 +7,8 @@
 .catalog-description {
   width: $main-width;
   margin: auto;
+  background: url(img/desc-triang-right.png) top right no-repeat, url(img/desc-trian-left.png) bottom left no-repeat;
+  height: inherit;
 }
 
 .catalog-description h2 {

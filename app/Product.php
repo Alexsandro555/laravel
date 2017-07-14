@@ -13,6 +13,7 @@ class Product extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
+        'id',
         'title',
         'url_key',
         'price',
@@ -23,7 +24,9 @@ class Product extends Model
         'onsale',
         'special',
         'need_order',
-        'category_id'
+        'category_id',
+        'type_product_id',
+        'producer_type_product_id'
     ];
 
     public function photo() {
@@ -38,11 +41,18 @@ class Product extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function product_attributes() {
-        return $this->belongsTo('App\AttributeProduct');
+    public function attributes() {
+        return $this->belongsToMany('App\Attribute')->withPivot('value');
     }
 
-    public function attributes() {
-        return $this->belongsToMany('App\Attribute');
+    /**
+     * Получить все изображения продукта
+     */
+    public function files() {
+        return $this->morphMany('App\File', 'fileable');
+    }
+
+    public function producer_type_product() {
+        return $this->belongsTo('App\ProducerTypeProduct');
     }
 }
