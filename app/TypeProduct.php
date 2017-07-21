@@ -15,19 +15,19 @@ class TypeProduct extends Model
     }
 
     public function tnveds() {
-        return $this->hasMany(Tnved::class, 'tnved_id','id');
+        return $this->belongsTo('App\Tnved');
     }
 
     public function producer_type_products() {
-        return $this->belongsTo('App\ProducerTypeProduct');
+        return $this->hasMany('App\ProducerTypeProduct');
     }
 
     public function producers() {
-        return $this->belongsToMany('App\Producer')->withPivot('id','name_line');
+        return $this->belongsToMany('App\Producer')->withPivot('id','name_line','sort');
     }
 
     public function attributes_type_products() {
-        return $this->belongsTo('App\Attribute');
+        return $this->hasMany('App\AttributeTypeProduct');
     }
 
     public function attributes() {

@@ -12,7 +12,7 @@ class Tnved extends Model
 
     public function type_products()
     {
-        return $this->belongsTo('App\TypeProduct');
+        return $this->hasMany('App\TypeProduct');
     }
 
 }

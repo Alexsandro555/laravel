@@ -36,9 +36,9 @@ class UpdateProductRequest extends FormRequest
             'qty' => 'numeric',
             'active' => 'boolean',
             'sort' => 'numeric',
-            'onsale' => 'boolean',
-            'special' => 'boolean',
-            'need_order' => 'boolean',
+            'onsale' => '',
+            'special' => '',
+            'need_order' => '',
             'category_id' => 'required'
         ];
     }

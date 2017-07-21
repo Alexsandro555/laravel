@@ -53,15 +53,43 @@ Vue.component('set-attribute', require('./components/setAttributes/Index.vue'));
 Vue.component('product-line', require('./components/productLine/Index.vue'));
 Vue.component('product-lines', require('./components/productLines/Index.vue'));
 Vue.component('selectbox', require('./components/selectbox/Index.vue'));
+Vue.component('attributes-product', require('./components/attributesProduct/Index.vue'));
+Vue.component('lselect', require('./components/lSelect/Index.vue'));
 //Vue.component('alex-carousel', require('./components/alex-carousel/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
+
+axios.interceptors.request.use(function (config) {
+    config.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+    return config;
+});
 
 // create a root instance
 new Vue({
     el: '#app',
     data: {
-        myHTML: ''
+        myHTML: '',
+        attrProd: [],
+    },
+    methods: {
+        selectProductLine: function(id) {
+            let that = this;
+            this.attrProd = [];
+            this.axios.get("/admin/product/attributes/"+id, {}).then(function (response)
+            {
+                if(response.data.length > 0)
+                {
+                    response.data.forEach(function(item)
+                    {
+                        let attribute = { attribute_id: item.id, title: item.title, value: '' };
+                        that.attrProd.push(attribute);
+                    });
+                }
+            }).catch(function (error)
+            {
+                console.log(error);
+            });
+        }
     }
 });
 

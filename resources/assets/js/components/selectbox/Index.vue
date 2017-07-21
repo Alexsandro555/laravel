@@ -35,18 +35,21 @@
                 parent_id:0,
             }
         },
-        mounted: function (){
+        mounted: function ()
+        {
+            let that = this;
             if(this.defaultId) {
                 this.items.forEach(function(item) {
-                    if(item.id === this.defaultId) {
-                        this.input = item.title;
-                        this.val = item.id;
+                    if(item.id === that.defaultId) {
+                        that.input = item.title;
+                        that.val = item.id;
                     }
                 });
             }
         },
         methods: {
-            selectElement: function(title,id) {
+            selectElement: function(title,id)
+            {
                 this.input = title;
                 this.val = id;
                 this.$emit('input', id);
@@ -59,7 +62,8 @@
         },
         watch: {
             items: function(newItem) {
-                if(newItem.length)
+                console.log("New Item: "+newItem);
+                /*if(newItem.length)
                 {
                     this.input = newItem[0].title;
                     this.val = newItem[0].id;
@@ -67,7 +71,7 @@
                 else {
                     this.input = "";
                     this.val = 0;
-                }
+                }*/
             }
         }
     }

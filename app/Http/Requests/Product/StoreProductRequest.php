@@ -34,11 +34,11 @@ class StoreProductRequest extends FormRequest
             'price' => 'required|numeric',
             'description' => '',
             'qty' => 'numeric',
-            'active' => 'boolean',
+            'active' => '',
             'sort' => 'numeric',
-            'onsale' => 'boolean',
-            'special' => 'boolean',
-            'need_order' => 'boolean',
+            'onsale' => '',
+            'special' => '',
+            'need_order' => '',
             'category_id' => 'required'
         ];
     }

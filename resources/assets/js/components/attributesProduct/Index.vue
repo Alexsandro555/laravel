@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <br>
+        <div v-for="item in items" class="form-group" >
+            <label v-bind:for="item.attribute_id">{{item.title}}</label>
+            <input v-bind:name="item.attribute_id" type="text" v-model:value="item.value">
+        </div>
+        <button class="btn btn-sucess" @click="saveAttributes">Сохранить</button>
+    </div>
+</template>
+<script>
+    export default {
+        props: {
+            items: {
+                type: [Object, Array],
+                default: []
+            },
+            productId: Number
+        },
+        data: function() {
+            return {
+            }
+        },
+        mounted: function () {
+            if(this.productId) {
+                let that = this;
+                this.axios.get("/admin/product/existAttributes/"+this.productId, {}).then(function (response)
+                {
+                    if(response.data.length > 0)
+                    {
+                        response.data.forEach(function(item)
+                        {
+                            let attribute = { attribute_id: item.id, title: item.title, value: item.value };
+                            that.items.push(attribute);
+                        });
+                    }
+                }).catch(function (error)
+                {
+                    console.log(error);
+                });
+            }
+        },
+        methods: {
+            saveAttributes: function () {
+                let that = this;
+                this.axios.post("/admin/product/saveAttributes/"+JSON.stringify(this.items)+"/"+this.productId, {}).then(function (response)
+                {
+                }).catch(function (error)
+                {
+                    console.log(error);
+                });
+            }
+        }
+    }
+</script>

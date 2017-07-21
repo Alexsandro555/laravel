@@ -3,7 +3,7 @@
 @if (!isset($product))
     @section('title', 'Добавление нового продукта')
 @else
-    <?php $title = 'Обновление продукта '.$product->title;?>
+    <?php $title = 'Редактирование продукта '.$product->title;?>
     @section('title', $title)
 @endif
 
@@ -71,40 +71,44 @@
                 {!! Form::number('sort', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
+                {{Form::hidden('onsale', 0)}}
                 {!! Form::label('onsale','Скидка') !!}
                 @if(isset($product))
-                    {!! Form::checkbox('onsale', $product->onsale, $product->onsale ? true : false) !!}
+                   {!! Form::checkbox('onsale', true) !!}
                 @else
                     {!! Form::checkbox('onsale', true, false) !!}
                 @endif
             </div>
             <div class="form-group">
+                {{Form::hidden('special', 0)}}
                 {!! Form::label('special','Спецпредложение') !!}
                 @if(isset($product))
-                    {!! Form::checkbox('special', $product->special, $product->special ? true : false) !!}
+                    {!! Form::checkbox('special', true) !!}
                 @else
                     {!! Form::checkbox('special', true, false) !!}
                 @endif
             </div>
             <div class="form-group">
+                {{Form::hidden('need_order', 0)}}
                 {!! Form::label('need_order','Необходимо заказывать') !!}
                 @if(isset($product))
-                    {!! Form::checkbox('need_order', $product->need_order, $product->need_order ? true : false) !!}
+                    {!! Form::checkbox('need_order', true) !!}
                 @else
                     {!! Form::checkbox('need_order', true, false) !!}
                 @endif
             </div>
             <div class="form-group">
+                {{Form::hidden('active', 0)}}
                 {!! Form::label('active','Активен') !!}
                 @if(isset($product))
-                    {!! Form::checkbox('active', $product->active, $product->active ? true : false) !!}
+                    {!! Form::checkbox('active', true) !!}
                 @else
                     {!! Form::checkbox('active', true, false) !!}
                 @endif
             </div>
             <div class="form-group">
                 {!! Form::label('category_id','Каталог') !!}
-                @if(isset($category))
+                @if(isset($product))
                     {!! Form::select('category_id', $category_all, $product->category_id, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
                 @else
                     {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
@@ -112,17 +116,22 @@
             </div>
             <div class="form-group">
                 {!! Form::label('type_product_id','Тип продукта') !!}
-                @if(isset($category))
+                @if(isset($product))
                     {!! Form::select('type_product_id', $typeProductAll, $product->type_product_id, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
                 @else
                     {!! Form::select('type_product_id', $typeProductAll, null, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
                 @endif
             </div>
             <div class="form-group">
-                {!! Form::label('product_line','Линейка продукции') !!}
-                <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:placeholder="'Выбирите линейку продукции'" ></selectbox>
+                @if(isset($product))
+                    {!! Form::label('product_line','Линейка продукции') !!}
+                    <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:default-id="{{$product->producer_type_product_id}}"  v-bind:placeholder="'Выбирите линейку продукции'" v-on:selectelement="selectProductLine($event)"></selectbox>
+                @else
+                    {!! Form::label('product_line','Линейка продукции') !!}
+                    <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:placeholder="'Выбирите линейку продукции'" v-on:selectelement="selectProductLine($event)"></selectbox>
+                @endif
             </div>
-            {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
             {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
             {!! Form::hidden('files_ids', "[]", ['id'=>'files-id']) !!}
             {!! Form::hidden('model', 'App\Product') !!}
@@ -133,18 +142,10 @@
             </div>
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
-            @if (isset($attributes))
-                {!! Form::open(['route' => 'upd-attribute', 'method' => 'post']) !!}
-                {!! Form::hidden('product_id', $product->id) !!}
-                @foreach($attributes as $attribute)
-                    <div class="form-group">
-                        {!! Form::label($attribute->alias,$attribute->title) !!}
-                        {!! Form::text($attribute->alias, null, ['class' => 'form-control']) !!}
-                    </div>
-                @endforeach
-                {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
-                {!! Form::token() !!}
-                {!! Form::close() !!}
+            @if(isset($product))
+                <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}"></attributes-product>
+            @else
+                <attributes-product v-bind:items="attrProd"></attributes-product>
             @endif
         </div>
     </div>

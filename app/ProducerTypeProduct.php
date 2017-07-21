@@ -14,7 +14,7 @@ class ProducerTypeProduct extends Model
     protected $guarded = [];
 
     public function type_products() {
-        return $this->hasMany(TypeProduct::class, 'type_product_id','id');
+        return $this->belongsTo('App\TypeProduct');
     }
 
     public function products() {

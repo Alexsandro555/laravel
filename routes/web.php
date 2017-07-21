@@ -168,6 +168,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/product/getAllAttributes', ['uses' => 'Product\ProductController@getAllAttributes', 'as' => 'get-all-attributes']);
     // Получение атрибутов заданного типа продукции
     Route::get('/product/getAttributes/{id}', ['uses' => 'Product\ProductController@getAttributes', 'as' => 'get-attributes']);
+    Route::get('/product/attributes/{id}', ['uses' => 'Product\ProductController@attributes', 'as' => 'attributes']);
+    Route::get('/product/existAttributes/{id}', ['uses' => 'Product\ProductController@existAttributes', 'as' => 'exist-attributes']);
+    Route::post('/product/saveAttributes/{items}/{productId}', ['before' => 'csrf', 'uses' => 'Product\ProductController@saveAttributes', 'as' => 'save-attributes']);
     Route::post('/product/addAttributeValue/{data}', ['uses' => 'Product\ProductController@addAttributeValue', 'as' => 'add-atribute-value']);
     Route::post('/porduct/updateAttribute',
         [
@@ -179,6 +182,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
     //Линейка продукции
     Route::get('product/lines', ['uses' => 'Product\ProductController@lines', 'as' => 'lines-product']);
+    Route::get('product/line', ['uses' => 'Product\ProductController@line', 'as' => 'line-product']);
     Route::get('/product/getAllTypeProducts', ['uses' => 'Product\ProductController@allTypeProduct', 'as' => 'type-product']);
 
     ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////

@@ -106,9 +106,15 @@ class ProductController extends Controller
      */
     public function updateHandler($id, UpdateProductRequest $request)
     {
+        $files_id = $request->files_ids;
+        $arr_id = json_decode($files_id);
+        $model_name = $request->model;
         $id = (int)$id;
-        $productRequest = $request->except('_token');
+        $productRequest = $request->except('_token','files_ids','model');
         Product::where('id', $id)->update($productRequest);
+        foreach ($arr_id as $item) {
+            File::where('id', $item)->update(['fileable_id'=>$id, 'fileable_type'=>$model_name]);
+        }
         return redirect()->route('wacker');
     }
 
@@ -205,6 +211,63 @@ class ProductController extends Controller
         return $attributes->toJson();
     }
 
+    /**
+     * Get Attributes
+     * @return json
+     */
+    public function attributes($id)
+    {
+        $arr = [];
+        $type_products = ProducerTypeProduct::find($id);
+        $type_product_id  = $type_products->type_product_id;
+        $attributes = Attribute::with(['attributeTypeProducts' => function($query) use (&$type_product_id) {
+            $query->where('type_product_id', $type_product_id);
+        }])->get();
+        foreach ($attributes as $attribute)
+        {
+            foreach ($attribute->attributeTypeProducts as $item)
+            {
+                $temp['id'] = $attribute->id;
+                $temp['title'] = $attribute->title;
+                $arr[] = $temp;
+            }
+        }
+        return json_encode($arr);
+    }
+
+    /**
+     * Get Exist Attributes
+     * @return json
+     */
+    public function existAttributes($id)
+    {
+        $arr = [];
+        $product = Product::find($id);
+        foreach ($product->attributes as $attribute) {
+            $temp['id'] = $attribute->id;
+            $temp['title'] = $attribute->title;
+            $temp['value'] = $attribute->pivot->value;
+            $arr[] = $temp;
+        }
+        return json_encode($arr);
+    }
+
+    /**
+     * Save Attributes
+     * @return json
+     */
+    public function saveAttributes($items, $productId)
+    {
+        $arr = [];
+        $attributes = json_decode($items, true);
+        foreach ($attributes as $attribute) {
+            $val['value'] = $attribute["value"];
+            $arr[$attribute["attribute_id"]] = $val;
+        }
+        $product = Product::find($productId);
+        $product->attributes()->sync($arr);
+        return response()->json([], 200);
+    }
 
     /**
      * Add Atributes Value
@@ -264,6 +327,36 @@ class ProductController extends Controller
         $type_products = TypeProduct::all();
         return $type_products->toJson();
     }
+
+
+    public function line() {
+        $resultArr = [];
+        $type_products = TypeProduct::All();
+        $typeProduArr = [];
+        foreach ($type_products as $type_product) {
+            $typeProdArr["id"] = $type_product->id;
+            $typeProdArr["title"] = $type_product->title;
+            $typeProdArr["sort"] = $type_product->sort;
+            $producerResult = [];
+            $producerTypeProductResult = [];
+            foreach ($type_product->producers as $producer)
+            {
+                $producerArr["id"] = $producer->id;
+                $producerArr["title"] = $producer->title;
+                $producerArr["sort"] = $producer->sort;
+                $producerTypeProductArr["id"] = $producer->pivot->id;
+                $producerTypeProductArr["title"] = $producer->pivot->name_line;
+                $producerTypeProductArr["sort"] = $producer->pivot->sort;
+                $producerResult[] = $producerArr;
+                $producerTypeProductResult[] = $producerTypeProductArr;
+            }
+            $typeProdArr['producers'] = $producerResult;
+            $typeProdArr['lines'] = $producerTypeProductResult;
+            $resultArr['typeproducts'][] = $typeProdArr;
+        }
+        return view('product.line', compact('resultArr'));
+    }
+
 
     public function lines() {
         $arrTypeProducts = array();

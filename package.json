@@ -30,6 +30,7 @@
     "laravel-elixir-vue-2": "^0.3.0",
     "laravel-elixir-webpack-official": "^1.0.10",
     "pug": "^2.0.0-rc.1",
+    "traverse": "^0.6.6",
     "v-autocomplete": "^1.1.1",
     "vee-validate": "^2.0.0-rc.5",
     "vue-axios": "^2.0.2",
