@@ -47,7 +47,12 @@
 }
 
 .footer__tel span {
-	font-size: 1.5em;
+	font-size: 1.7em;
+}
+
+.footer__tel-bold {
+	font-family: $font-sans-bold;
+	//font-size: 1.2em;
 }
 
 .footer__logo {
@@ -75,7 +80,7 @@
 	border-width: 0px 0px 3px 0px;
 	border-color: #F1B814;
 	@include border-radius(6px);
-	margin-top:30px;
+	margin-top:20px;
 	font-size:0.8em;
 	color:$color-gray;
 }
@@ -85,5 +90,5 @@
 }
 
 .footer__tel div span {
-	font-size: 1em;
+	font-size: 0.8em;
 }

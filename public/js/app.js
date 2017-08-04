@@ -3149,6 +3149,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+
 var traverse = __webpack_require__(63);
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -3164,17 +3165,20 @@ var traverse = __webpack_require__(63);
     data: function data() {
         return {
             isVisible: false,
+            elementVal: _.cloneDeep(this.elementsVal), //Object.assign({},this.elementsVal),
             items: [],
             input: "", //this.items.length?this.items[0].title:"",
             val: "" };
     },
-    computed: {
-        elems: function elems() {
+    watch: {
+        elementsVal: function elementsVal(newVal) {
+            //console.log('watch: '+JSON.stringify(newVal));
+            this.elementVal = _.cloneDeep(newVal); //Object.assign({},newVal);
             this.items = [];
             var name = this.nameelement;
             var that = this;
             var elems = [];
-            var scrubbed = traverse(this.elementsVal).map(function (obj) {
+            var scrubbed = traverse(this.elementVal).map(function (obj) {
                 if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == "object") {
                     var arrObj = Object.keys(obj);
                     arrObj.forEach(function (item) {
@@ -3191,44 +3195,50 @@ var traverse = __webpack_require__(63);
                 });
             });
             this.items.sort(this.asc('sort'));
-            //this.val = this.items[1].id;
-            //this.input = this.items[1].title;
+            this.input = this.items[0].title;
+            this.val = this.items[0].id;
+            console.log(this.nameelement);
+        }
+    },
+    computed: {
+        elems: function elems() {
+            console.log('elems: ' + this.nameelement);
+            this.items = [];
+            var name = this.nameelement;
+            var that = this;
+            var elems = [];
+            var scrubbed = traverse(this.elementVal).map(function (obj) {
+                if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == "object") {
+                    var arrObj = Object.keys(obj);
+                    arrObj.forEach(function (item) {
+                        if (item == that.nameelement) {
+                            elems.push(obj[item]);
+                            return obj[item];
+                        }
+                    });
+                }
+            }, []);
+            elems.forEach(function (item) {
+                item.forEach(function (item) {
+                    that.items.push({ 'id': item.id, 'title': item.title, 'sort': item.sort });
+                });
+            });
+            this.items.sort(this.asc('sort'));
+            this.input = this.items[0].title;
+            this.val = this.items[0].id;
             return this.items;
         }
     },
     mounted: function mounted() {
-        this.items = [];
-        var name = this.nameelement;
-        var that = this;
-        var elems = [];
-        var scrubbed = traverse(this.elementsVal).map(function (obj) {
-            if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == "object") {
-                var arrObj = Object.keys(obj);
-                arrObj.forEach(function (item) {
-                    if (item == that.nameelement) {
-                        elems.push(obj[item]);
-                        return obj[item];
-                    }
-                });
-            }
-        }, []);
-        elems.forEach(function (item) {
-            item.forEach(function (item) {
-                that.items.push({ 'id': item.id, 'title': item.title, 'sort': item.sort });
-            });
-        });
-        this.items.sort(this.asc('sort'));
-        this.val = this.items[1].id;
-        this.input = this.items[1].title;
-
-        if (this.defaultId) {
-            this.items.forEach(function (item) {
-                if (item.id === that.defaultId) {
+        /*let that = this;
+        if(this.defaultId) {
+            this.items.forEach(function(item) {
+                if(item.id === that.defaultId) {
                     that.input = item.title;
                     that.val = item.id;
                 }
             });
-        }
+        }*/
     },
     methods: {
         asc: function asc(field) {
@@ -3237,25 +3247,41 @@ var traverse = __webpack_require__(63);
             };
         },
         selectElement: function selectElement(title, id) {
-            this.val = "";
-            this.input = "";
-            var that = this;
-            var filteredVal = [];
-            this.elementsVal.typeproducts.forEach(function (item, i, arr) {
-                if (item.id === id) {
-                    filteredVal = arr.slice(id - 1, id);
-                }
-            });
             this.input = title;
             this.val = id;
             this.$emit('input', id);
             this.$emit('selectelement', id);
-            var resFilteredVal = { "typeproducts": filteredVal };
-            this.$parent.$emit('changeTypeProd', resFilteredVal);
             this.isVisible = false;
         },
         close: function close() {
             this.isVisible = false;
+        },
+        filtRes: function filtRes() {
+            console.log(this.elementVal);
+            this.items = [];
+            var name = this.nameelement;
+            var that = this;
+            var elems = [];
+            var scrubbed = traverse(this.elementVal).map(function (obj) {
+                if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == "object") {
+                    var arrObj = Object.keys(obj);
+                    arrObj.forEach(function (item) {
+                        if (item == that.nameelement) {
+                            elems.push(obj[item]);
+                            return obj[item];
+                        }
+                    });
+                }
+            }, []);
+            elems.forEach(function (item) {
+                item.forEach(function (item) {
+                    that.items.push({ 'id': item.id, 'title': item.title, 'sort': item.sort });
+                });
+            });
+            this.items.sort(this.asc('sort'));
+            console.log('filt: ' + JSON.stringify(this.items[0]));
+            this.input = this.items[0].title;
+            this.val = this.items[0].id;
         }
     }
 });
@@ -3289,14 +3315,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            mutableElementsArr: this.startVal(this.elementsArr)
+            mutableElementsArr: this.startVal(this.elementsArr),
+            defaultId: 1
         };
-    },
-    mounted: function mounted() {
-        var that = this;
-        this.$on('changeTypeProd', function (data) {
-            that.mutableElementsArr = data;
-        });
     },
     methods: {
         startVal: function startVal(elementsVal) {
@@ -3307,8 +3328,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     filteredVal = arr.slice(id - 1, id);
                 }
             });
-            var resFilteredVal = { "typeproducts": filteredVal };
+            var resFilteredVal = { "type_product_id": filteredVal };
             return resFilteredVal;
+        },
+        selectelement: function selectelement(id) {
+            //this.val = "";
+            //this.input = "";
+            console.log('selected');
+            var that = this;
+            var filteredVal = [];
+            this.elementsArr.typeproducts.forEach(function (item, i, arr) {
+                if (item.id === id) {
+                    filteredVal = arr.slice(id - 1, id);
+                }
+            });
+            var resFilteredVal = { "type_product_id": filteredVal };
+            //this.mutableElementsArr = resFilteredVal;
+            //this.$set(this.mutableElementsArr,resFilteredVal);
+            this.$set(this, 'mutableElementsArr', resFilteredVal);
+            this.defaultId = 1;
+            this.$children.forEach(function (item) {
+                console.log(item);
+                //item.filtRes();
+                //item.input = item.elems[0].title;
+                //item.value = item.items[1].title;
+            });
         }
     }
 });
@@ -34865,6 +34909,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "elements-val": _vm.elementsArr,
       "defaultId": 1,
       "placeholder": 'Выбирите тип продукции'
+    },
+    on: {
+      "selectelement": _vm.selectelement
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
@@ -34876,13 +34923,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "nameelement": 'producers',
       "elements-val": _vm.mutableElementsArr,
+      "default-id": _vm.defaultId,
       "placeholder": ''
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
-      "for": "producertypeproducts"
+      "for": "lines"
     }
   }, [_vm._v("Линейка продукции")]), _vm._v(" "), _c('lselect', {
     attrs: {

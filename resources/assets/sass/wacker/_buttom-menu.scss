@@ -8,13 +8,14 @@
 	width: $main-width;
 	margin: auto;
 	display: block;
-	
 }
 
 .bottom-menu {
 	height: inherit;
 	display: inline-block;
 	vertical-align: middle;
+	width: 100%;
+	text-align: center;
 }
 
 
@@ -25,16 +26,24 @@
 }
 
 .bottom-menu  ul li {
-	font-family: $font;
-	font-size: 1em;
+	font-family: $font-sans-bold;
+	font-size: 0.8em;
 	display: inline;
-	margin-right: 5px;
-	padding-left: 50px;
 	color: white;
 	height: inherit;
 	line-height: 80px;
 }
 
+.bottom-menu ul li:first-child {
+	margin-left: 0px;
+}
+
+.bottom-menu ul li:last-child {
+	margin-right: 0px;
+}
+
 .bottom-menu  ul li span {
-	margin-left: 40px;
+	//margin-left: 40px;
+	margin-right: 70px;
+	margin-left: 70px;
 }

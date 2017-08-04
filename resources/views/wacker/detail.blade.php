@@ -1,5 +1,36 @@
 @extends('layouts.wacker')
 
+@section('menu-left')
+    <div class="menu-left">
+        <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
+        <ul>
+            <li>глубинные вибраторы</li>
+            <li>преобразователи частоты</li>
+            <li>внешние вибраторы</li>
+            <li>затирочные швы</li>
+            <li>виброрейки</li>
+            <li>арматурный инструмент</li>
+            <li>виброплиты</li>
+            <li>вибротрамбовка</li>
+            <li>катки</li>
+            <li>осветительные мачты и вышки</li>
+            <li>тепловое оборудование</li>
+            <li>отбойные молотки</li>
+            <li>осушители воздуха</li>
+            <li>шоврезчики и бензорезы</li>
+            <li>мотопомпы</li>
+            <li>насосы</li>
+            <li>генераторы</li>
+            <li>экскаваторы</li>
+            <li>погрузчики</li>
+            <li>думперы</li>
+            <li>телескопические погрузчики</li>
+            <li>мини погрузчики</li>
+        </ul>
+        <div class="menu-left__toggle">РАЗВЕРНУТЬ</div>
+    </div>
+@stop
+
 @section('content-item')
         <div class="detail">
             <div>
@@ -12,44 +43,46 @@
             </div>
             <div class="sd">
                 <div class="detail__images">
-                    Изображение
+                    <div class="detail-images-center">
+                        <img src="{{asset('css/wacker/img/product-detail-image.png')}}"/>
+                    </div>
                 </div>
                 <div class="detail__slider">
-                    <div class="service__menu-slider" style="display: flex; padding-left:60px;">
-                        <alex-carousel name="carousel3" style="width: 400px; height: 400px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :scroll-per-page=true :per-page-custom="[[480, 3], [768, 3]]">
+                    <div class="service__menu-slider" style="display: flex; padding-left:30px; height: 400px;">
+                        <alex-carousel name="carousel3" style="width: 100px; height: 350px; margin-top: 30px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders  box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                             <alex-slide>
-                                <div class="content__sliders">
-                                    <img src="{{asset('css/wacker/img/carouser-image-1.png')}}"/>
+                                <div class="content__sliders box-alex-slider">
+                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
                                 </div>
                             </alex-slide>
                         </alex-carousel>
@@ -61,13 +94,19 @@
                         <th class="table__main">Характеристики</th>
                         <th></th>
                         <th></th>
-                        <th class="table__kol">В наличии</th>
+                        <th class="table__kol">В наличии  <img src="{{asset('css/wacker/img/available.png')}}"/></th>
                         </thead>
                         <tbody>
                         <tr>
                             <td>Диаметр булавы: 38 мм</td>
                             <td rowspan="4"><span>3 123 456</span> руб.</td>
-                            <td rowspan="4">1</td>
+                            <td rowspan="4" width="80px">
+                                <div class="detail-counter">
+                                    <div class="detail-counter__left"><img src="{{asset('css/wacker/img/detail-counter-arrow-down.png')}}"/></div>
+                                    <div class="detail-counter__center">3</div>
+                                    <div class="detail-counter__right"><img src="{{asset('css/wacker/img/detail-counter-arrow-up.png')}}"/></div>
+                                </div>
+                            </td>
                             <td rowspan="4" class="table__sale">
                                 <button class="table__btn">Купить</button>
                             </td>
@@ -83,25 +122,27 @@
                         </tr>
                         </tbody>
                     </table><br>
-                    <div class="list1">
+                    <div class="tech-catalog">
                         <ul>
                             <li>Технический каталог 1</li>
                             <li>Технический каталог 2</li>
                         </ul>
                     </div>
-                    <div class="list2">
+                    <div class="tech-catalog">
                         <ul>
                             <li>Технический каталог 3</li>
                             <li>Технический каталог 4</li>
                         </ul>
                     </div>
-                    <ul>
-                        <li>Высокочастотный глубинный вибратор IEC 38/230/5/15</li>
-                        <li>Диаметр булавы 38 мм, длина булавы 285 мм, длина вала 5 метров</li>
-                        <li>Подключение к обычной розетке на 220 V~ (1 фаза)</li>
-                        <li>Проверенное качество от немецкого производителя Wacker Neuson</li>
-                        <li>Для уплотнения бетона с воздействием вибрации высокой частоты</li>
-                    </ul>
+                    <div class="characteristics-list">
+                        <ul>
+                            <li>Высокочастотный глубинный вибратор IEC 38/230/5/15</li>
+                            <li>Диаметр булавы 38 мм, длина булавы 285 мм, длина вала 5 метров</li>
+                            <li>Подключение к обычной розетке на 220 V~ (1 фаза)</li>
+                            <li>Проверенное качество от немецкого производителя Wacker Neuson</li>
+                            <li>Для уплотнения бетона с воздействием вибрации высокой частоты</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -209,6 +250,7 @@
             </div>
             <div class="detail-info__main">
                 <h2>Закажи на сайте получи скидку!</h2>
+
                 <h3>Подлинная продукция Wacker Neuson и оффициальная гарантия от производителя</h3>
                 Мы торгуем оборудованием от всемирно известного немецкого производителя Wacker Neuson. Весь ассортимент
                 имеет сертификаты, паспорта качества. На все оборудование предоставляется гарантийные талоны.
@@ -227,6 +269,23 @@
     <script>
         $(document).ready(function() {
             $('.content').addClass('no-background');
+        });
+        $(document).ready(function()
+        {
+            $('.menu-left ul').toggle('normal');
+            $('.menu-left__toggle').click(function () {
+                $(this).parent().children('ul').toggle('normal');
+                if(this.innerHTML == 'РАЗВЕРНУТЬ') {
+                    this.innerHTML = 'СВЕРНУТЬ';
+                    $(".menu-left__toggle").addClass('rollup');
+                }
+                else
+                {
+                    this.innerHTML = 'РАЗВЕРНУТЬ';
+                    $(".menu-left__toggle").removeClass('rollup');
+                }
+                return false;
+            });
         });
     </script>
 @stop

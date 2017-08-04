@@ -31,7 +31,6 @@
 	width: 80%;
 	display: inline-block;
 	line-height: inherit;
-	//background: url(img/gears-dark.png) center right no-repeat;
 	font-size: 0.8em;
 	margin-left: 30px;
 }
@@ -105,15 +104,13 @@
 
 .service__content-slider {
 	position: relative;
-	//width: 230px;
 	width: 225px;
-	height: 326px;
+	height: 333px;
 	margin: 5px;
 	@include border-radius(6px);
 	@include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
 	text-align: center;
-	background-color: white;
-	background: url(img/service-slbottom-layer.png) bottom right no-repeat, url(img/service-slider-layer.png) center center repeat-x;
+	background: url(img/service-slbottom-layer.png) bottom right no-repeat, url(img/service-slider-layer.png) center center repeat-x, rgba(255,255,255,1);
 }
 
 .service__content-slider .wrap {
@@ -149,7 +146,6 @@
 .service__content-slider a {
 	text-decoration: underline;
 	color: #353535;
-	font-weight: bold;
 }
 
 .service__content-slider span {

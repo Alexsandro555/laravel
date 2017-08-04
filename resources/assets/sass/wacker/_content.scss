@@ -33,16 +33,16 @@
 }
 
 .main-slogan span {
-	font-family: $font;
+	font-family: $font-bold;
 	font-size: 2.5em;
-	font-weight: bold;
 	text-align: right;
 	text-transform: uppercase;
 }
 
 .main-subslogan {
+	font-family: $font;
 	text-align: center;
-	font-size: 0.9em;
+	font-size: 0.8em;
 	width: 300px;
 	padding: 3px 3px;
 	display: inline-block;
@@ -52,10 +52,11 @@
 
 .content__item {
 	float: right;
+	font-family: $font-sans-bold;
 }
 
 .content__header {
-	width: 80%;
+	width: 81%;
 	height:50px;
 	display: inline-block;
 	line-height: inherit;
@@ -68,6 +69,7 @@
 .content__header h2 {
 	display: inline-block;
 	text-transform: uppercase;
+	font-size: 1.9em;
 }
 
 
@@ -81,14 +83,13 @@
 }
 
 .content-button {
-	//margin-left: 374px;
 	margin-top: 20px;
 	display: inline-block;
 	background: none;
-	border: 1px solid $color-gray;
+	border: 2px solid $color-gray;
 	@include border-radius(6px);
-	height: 30px;
-	font-size:0.9em;
+	padding: 7px;
+	font-size:0.8em;
 	font-weight: bold;
 	//line-height: 30px;
 	color: $color-gray;
@@ -112,7 +113,8 @@
 	height: 200px;
 	color: $color-yell;
 	padding-top: 80px;
-	font-size: 0.9em;	
+	font-family: $font-sans;
+
 }
 
 .content__text h2 {
@@ -123,7 +125,7 @@
 .content__text p {
 	padding-left: 20px;
 	color: white;
-	font-size: 1.4em;
+	font-size: 1.2em;
 }
 
 .content__slider{
@@ -133,6 +135,11 @@
 	font-weight: bold;
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.content__slider span {
+	font-size: 0.9em;
+	font-family: $font-sans-bold;
 }
 
 .content__catalog {
@@ -146,24 +153,26 @@
 }
 
 .content__products .service__content-slider {
-	display: inline-block;
-}
+	 display: inline-block;
+ }
 
 .main__content .back-call {
-	vertical-align: text-bottom;
 	background: url(img/header-phone-btn.png) top center no-repeat;
 	width: 120px;
 	height: 37px;
 	font-weight: bold;
 	text-decoration: none;
 	display: inline-block;
+	vertical-align: middle;
 	border-style: solid none;
 	border-width: 0px 0px 3px 0px;
 	border-color: #F1B814;
 	@include border-radius(6px);
-	margin-left: 50px;
+	margin-left: 30px;
 	margin-top: 30px;
+	font-family: $font-sans-bold;
 	font-size:0.8em;
+	font-weight: bold;
 	color:$color-gray;
 }
 

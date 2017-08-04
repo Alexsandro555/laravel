@@ -18,32 +18,35 @@
 @stop
 
 @section('menu-left')
-    <div class="menu-left">
-        <ul>
-            <li>каталог продукции</li>
-            <li>глубинные вибраторы</li>
-            <li>преобразователи частоты</li>
-            <li>внешние вибраторы</li>
-            <li>затирочные швы</li>
-            <li>виброрейки</li>
-            <li>арматурный инструмент</li>
-            <li>виброплиты</li>
-            <li>вибротрамбовка</li>
-            <li>катки</li>
-            <li>осветительные мачты и вышки</li>
-            <li>тепловое оборудование</li>
-            <li>отбойные молотки</li>
-            <li>осушители воздуха</li>
-            <li>шоврезчики и бензорезы</li>
-            <li>мотопомпы</li>
-            <li>насосы</li>
-            <li>генераторы</li>
-            <li>экскаваторы</li>
-            <li>погрузчики</li>
-            <li>думперы</li>
-            <li>телескопические погрузчики</li>
-            <li>мини погрузчики</li>
-        </ul>
+    <div class="menu-left-wrapper">
+        <div class="menu-left">
+            <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
+            <ul>
+                <li>глубинные вибраторы</li>
+                <li>преобразователи частоты</li>
+                <li>внешние вибраторы</li>
+                <li>затирочные швы</li>
+                <li>виброрейки</li>
+                <li>арматурный инструмент</li>
+                <li>виброплиты</li>
+                <li>вибротрамбовка</li>
+                <li>катки</li>
+                <li>осветительные мачты и вышки</li>
+                <li>тепловое оборудование</li>
+                <li>отбойные молотки</li>
+                <li>осушители воздуха</li>
+                <li>шоврезчики и бензорезы</li>
+                <li>мотопомпы</li>
+                <li>насосы</li>
+                <li>генераторы</li>
+                <li>экскаваторы</li>
+                <li>погрузчики</li>
+                <li>думперы</li>
+                <li>телескопические погрузчики</li>
+                <li>мини погрузчики</li>
+            </ul>
+            <div class="menu-left__toggle">СВЕРНУТЬ</div>
+        </div>
     </div>
 @stop
 
@@ -53,7 +56,7 @@
             <div class="about-main">
                 <div class="about__header">
                     <h2>О компании лидер</h2>
-                    <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
+                    <img src="{{asset('css/wacker/img/gears-white.png')}}" />
                 </div>
                 <div class="about__content">
                     <p>
@@ -70,8 +73,9 @@
                 <button class="about-button">ПОДРОБНЕЕ</button>
                 <img class="about__image" src="{{asset('css/wacker/img/about-image.png')}}"/>
             </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
+        <!--<div class="clear"></div>-->
     </div>
     <div class="wacker">
         <div class="wacker__wrapper">
@@ -112,16 +116,16 @@
 
                         <p>Тут расположен текст о компании, краткий анонс, более подробный и содержательный
                             текст о компании будет на внутренней странице, куда ведет ссылка...</p>
-                        <div><a href="#">Оффициальный сайт</a></div>
+                        <a href="#">Оффициальный сайт</a><img src="{{asset('css/wacker/img/wacker-about-arrow.png')}}"/>
                     </div>
 
                 </div>
                 <div class="wacker-product">
-                    <h1>ВИБРОПЛИТА <br>РЕВЕРСИВНОГО ХОДА</h1>
+                    <h2>ВИБРОПЛИТА <br>РЕВЕРСИВНОГО ХОДА</h2>
                     <div class="wacker-product__model">WACKER NEUSION WPU 1550</div>
-                    <p>Удобное решение для уплотнения<br> асфальта</p>
+                    <p class="wacker-product__desc">Удобное решение для уплотнения<br> асфальта</p>
                     <p>
-                    <div class="wacker-product__price">Цена:<br><span>3 123 456 р.</span></div>
+                        <div class="wacker-product__price">Цена:<br><span>3 123 456 р.</span></div>
                     </p>
                     <div class="wacker-product-image">
                         <img src="{{asset('css/wacker/img/wacker-product-image.png')}}"/>
@@ -234,4 +238,31 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('view.scripts')
+    <script>
+        /*$(document).ready(function() {
+            $('.content').addClass('no-background');
+        });*/
+        $(document).ready(function()
+        {
+            $(".menu-left__toggle").addClass('rollup');
+            //$('.menu-left ul').toggle('normal');
+            $('.menu-left__toggle').click(function () {
+                $(this).parent().children('ul').toggle('normal');
+                if(this.innerHTML == 'РАЗВЕРНУТЬ') {
+                    this.innerHTML = 'СВЕРНУТЬ';
+                    $(".menu-left__toggle").addClass('rollup');
+                }
+                else
+                {
+                    this.innerHTML = 'РАЗВЕРНУТЬ';
+                    $(".menu-left__toggle").removeClass('rollup');
+
+                }
+                return false;
+            });
+        });
+    </script>
 @stop

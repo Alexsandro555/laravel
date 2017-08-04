@@ -30,6 +30,10 @@
 	@include border-radius(6px);
 }
 
+.header-info__search input {
+	padding-left: 10px;
+}
+
 .header-info__search .search-button img {
 	text-align: center;
 }
@@ -38,11 +42,19 @@
 	display: inline-block;
 	margin-left: 50px;
 	vertical-allign: middle;
+	font-family: $font-sans;
+	font-weight: 400;
+	font-size: 0.9em;
 }
 
 .header-info__address span {
 	margin-left: 10px;
 	color: white;
+}
+
+.header-info__address span a{
+	color: white;
+	font-weight: 200;
 }
 
 .header-info__address span img {

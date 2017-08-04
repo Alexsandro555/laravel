@@ -13,18 +13,24 @@
 }
 
 .header-phone div {
+	display: inline-block;
 	margin-top: 10px;
-	margin-right: 20px;
+	margin-right: 40px;
+	text-align: right;
 	font-size: 1em;
 }
 
 .header-phone div span {
-	font-size: 1.6em;
+	font-size: 1.5em;
+}
+
+.header-phone div span span{
+	font-size: 1em;
+	font-family: $font-bold;
 }
 
 .header-phone .back-call {
 	display: inline-block;
-	margin-right: 20px;
 	vertical-align: top;
 	background: url(img/header-phone-btn.png) top center no-repeat;
 	width: 166px;

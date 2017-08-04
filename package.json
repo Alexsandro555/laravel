@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "ckeditor": "^4.6.2",
+    "clonedeep": "^2.0.0",
     "laravel-elixir-vue-2": "^0.3.0",
     "laravel-elixir-webpack-official": "^1.0.10",
     "pug": "^2.0.0-rc.1",

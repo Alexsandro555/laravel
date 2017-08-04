@@ -170,72 +170,72 @@
                 </p>
             </div>
             <div class="clear"></div>
-            <div class="content__products">
-                <div class="service__content-slider">
-                        <div class="service__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+            <div class="main_products">
+                <div class="main_products__item">
+                        <div class="main_products__image">
+                            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                        </div><br>
+                        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
-                <div class="service__content-slider">
-                    <div class="service__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <div class="service__line">Высокочастотные вибраторы (от сети 220 V~)</div>
+                <div class="main_products__item">
+                    <div class="main_products__image">
+                        <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
+                    </div><br>
+                    <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
                 </div>
             </div>
         </div>

@@ -64,6 +64,7 @@ axios.interceptors.request.use(function (config) {
     return config;
 });
 
+
 // create a root instance
 new Vue({
     el: '#app',

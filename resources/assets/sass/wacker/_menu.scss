@@ -4,8 +4,8 @@
 }
 
 .menu-nav ul li {
-	font-family: $font;
-	font-size: 1em;
+	font-family: $font-bold;
+	font-size: 0.8em;
 	display: inline;
 	margin-right: 5px;
 	padding: 3px;
@@ -14,4 +14,8 @@
 
 .menu-nav ul li span {
 	margin-left: 10px;
+}
+
+.menu-nav ul li span:first-child {
+	margin-left: 0px;
 }

@@ -14,33 +14,134 @@
 </template>
 <script>
     import {mixin as onClickOutside} from 'vue-on-click-outside'
+
     let traverse = require('traverse');
     export default {
-        props: {
-            elementsVal: {
+        props:
+        {
+            elementsVal:
+            {
                 type: [Object, Array],
-                default: []
+                default:[]
             },
             nameelement: String,
             placeholder: String,
             defaultId: Number
         },
         mixins: [onClickOutside],
-        data: function() {
+        data: function()
+        {
             return {
                 isVisible:false,
+                elementVal: _.cloneDeep(this.elementsVal), //Object.assign({},this.elementsVal),
                 items:[],
                 input: "", //this.items.length?this.items[0].title:"",
                 val: "",//this.items.length?this.items[0].id:0,
             }
         },
-        computed: {
-            elems: function() {
+        watch: {
+            elementsVal: function(newVal) {
+                //console.log('watch: '+JSON.stringify(newVal));
+                this.elementVal = _.cloneDeep(newVal); //Object.assign({},newVal);
                 this.items = [];
                 let name = this.nameelement;
                 let that = this;
                 let elems = [];
-                var scrubbed = traverse(this.elementsVal).map(function(obj) {
+                var scrubbed = traverse(this.elementVal).map(function(obj) {
+                    if(typeof obj == "object")
+                    {
+                        let arrObj = Object.keys(obj);
+                        arrObj.forEach(function (item)
+                        {
+                            if (item == that.nameelement)
+                            {
+                                elems.push(obj[item]);
+                                return obj[item];
+                            }
+                        });
+                    }
+                },[]);
+                elems.forEach(function(item) {
+                    item.forEach(function (item) {
+                        that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
+                    });
+                });
+                this.items.sort(this.asc('sort'));
+                this.input = this.items[0].title;
+                this.val = this.items[0].id;
+                console.log(this.nameelement);
+            }
+        },
+        computed:
+        {
+            elems: function()
+            {
+                console.log('elems: '+this.nameelement);
+                this.items = [];
+                let name = this.nameelement;
+                let that = this;
+                let elems = [];
+                var scrubbed = traverse(this.elementVal).map(function(obj) {
+                    if(typeof obj == "object")
+                    {
+                        let arrObj = Object.keys(obj);
+                        arrObj.forEach(function (item)
+                        {
+                            if (item == that.nameelement)
+                            {
+                                elems.push(obj[item]);
+                                return obj[item];
+                            }
+                        });
+                    }
+                },[]);
+                elems.forEach(function(item) {
+                    item.forEach(function (item) {
+                        that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
+                    });
+                });
+                this.items.sort(this.asc('sort'));
+                this.input = this.items[0].title;
+                this.val = this.items[0].id;
+                return this.items;
+            },
+        },
+        mounted: function ()
+        {
+            /*let that = this;
+            if(this.defaultId) {
+                this.items.forEach(function(item) {
+                    if(item.id === that.defaultId) {
+                        that.input = item.title;
+                        that.val = item.id;
+                    }
+                });
+            }*/
+        },
+        methods: {
+            asc: function(field) {
+                return function (x, y) {
+                    return x[field] > y[field];
+                }
+            },
+            selectElement: function(title,id)
+            {
+                this.input = title;
+                this.val = id;
+                this.$emit('input', id);
+                this.$emit('selectelement', id);
+                this.isVisible=false;
+            },
+            close: function() {
+                this.isVisible=false;
+            },
+            filtRes: function() {
+                console.log(this.elementVal);
+                this.items = [];
+                let name = this.nameelement;
+                let that = this;
+                let elems = [];
+                var scrubbed = traverse(this.elementVal).map(function(obj) {
                     if(typeof obj == "object") {
                         let arrObj = Object.keys(obj);
                         arrObj.forEach(function (item) {
@@ -57,77 +158,11 @@
                     });
                 });
                 this.items.sort(this.asc('sort'));
-                //this.val = this.items[1].id;
-                //this.input = this.items[1].title;
-                return this.items;
+                console.log('filt: '+JSON.stringify(this.items[0]));
+                this.input = this.items[0].title;
+                this.val = this.items[0].id;
             },
         },
-        mounted: function ()
-        {
-            this.items = [];
-            let name = this.nameelement;
-            let that = this;
-            let elems = [];
-            var scrubbed = traverse(this.elementsVal).map(function(obj) {
-                if(typeof obj == "object") {
-                    let arrObj = Object.keys(obj);
-                    arrObj.forEach(function (item) {
-                        if (item == that.nameelement) {
-                            elems.push(obj[item]);
-                            return obj[item];
-                        }
-                    });
-                }
-            },[]);
-            elems.forEach(function(item) {
-                item.forEach(function (item) {
-                    that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
-                });
-            });
-            this.items.sort(this.asc('sort'));
-            this.val = this.items[1].id;
-            this.input = this.items[1].title;
-
-            if(this.defaultId) {
-                this.items.forEach(function(item) {
-                    if(item.id === that.defaultId) {
-                        that.input = item.title;
-                        that.val = item.id;
-                    }
-                });
-            }
-        },
-        methods: {
-            asc: function(field) {
-                return function (x, y) {
-                    return x[field] > y[field];
-                }
-            },
-            selectElement: function(title,id)
-            {
-                this.val = "";
-                this.input = "";
-                let that = this;
-                let filteredVal = [];
-                this.elementsVal.typeproducts.forEach(function(item, i, arr)
-                {
-                   if(item.id === id)
-                   {
-                       filteredVal = arr.slice(id-1,id);
-                   }
-                });
-                this.input = title;
-                this.val = id;
-                this.$emit('input', id);
-                this.$emit('selectelement', id);
-                let resFilteredVal = {"typeproducts":filteredVal};
-                this.$parent.$emit('changeTypeProd',resFilteredVal);
-                this.isVisible=false;
-            },
-            close: function() {
-                this.isVisible=false;
-            },
-        }
     }
 </script>
 <style>
@@ -156,4 +191,4 @@
     .items ul li:hover  {
         background-color: rgba(200,200,200,0.5);
     }
-</style>+
+</style>

@@ -34,13 +34,13 @@
                         <button class="search-button"><img src="{{asset('css/wacker/img/search-icon.png')}}"/></button>
                     </div>
                     <div class="header-info__address">
-                        <span><img src="{{asset('css/wacker/img/address-email.png')}}"/>&nbsp;&nbsp;info@oooleader.ru</span><br>
+                        <span><img src="{{asset('css/wacker/img/address-email.png')}}"/>&nbsp;&nbsp;&nbsp;<a href="mailto:info@oooleader.ru">info@oooleader.ru</a></span><br>
                         <span><img src="{{asset('css/wacker/img/address-marker.png')}}"/>&nbsp;&nbsp; Г.Москва, Большая Семеновская д.15</span>
                     </div>
                 </div>
             </div>
             <div class="header-phone">
-                <div>Звоните! <br><span>+7 (495) <b>780 47 96</b></span></div>
+                <div>Звоните! <br><span>+7 (495) <span>780 47 96</span></span><br>
                 <button class="back-call">ЗАКАЗАТЬ <img src="{{asset('css/wacker/img/phone-img.png')}}"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ЗВОНОК</button>
             </div>
         </div>
@@ -189,7 +189,7 @@
         <div class="footer__info">
             <div class="footer__tel">
                 Звоните!<br>
-                <span>+7(495)<b>780 47 96</b></span>
+                <span>+7(495)</span><span class="footer__tel-bold"> 780 47 96</span>
                 <button class="back-call">ЗАКАЗАТЬ <img src="{{asset('css/wacker/img/phone-img.png')}}"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ЗВОНОК</button>
                 <p>
                 <div><img src="{{asset('css/wacker/img/footer-mail-img.png')}}"/><span> &nbsp;&nbsp;&nbsp;&nbsp;info@oooleader.ru</span></div>

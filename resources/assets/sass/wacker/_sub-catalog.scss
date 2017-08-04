@@ -39,7 +39,7 @@
 }
 
 .sub-catalog__content-slider .wrap:hover {
-  height:450px;
+  height:500px;
   width:250px;
   @include border-radius(6px);
   @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
@@ -65,7 +65,7 @@
 .sub-catalog__content-slider a {
   text-decoration: underline;
   color: #353535;
-  font-weight: bold;
+  font-family: $font-sans-bold;
 }
 
 .sub-catalog__content-slider span {
