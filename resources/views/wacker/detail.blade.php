@@ -1,5 +1,9 @@
 @extends('layouts.wacker')
 
+@section('cart')
+    <button class="cart"><img src="{{asset('css/wacker/img/cart.png')}}"/>  10</button>
+@stop
+
 @section('menu-left')
     <div class="menu-left">
         <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
@@ -34,6 +38,9 @@
 @section('content-item')
         <div class="detail">
             <div>
+                <p class="breadrcumbs detail-broadrcubms">
+                    Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs-img"> Внутреняя
+                </p>
                 <div class="detail__header">
                     <h1>Высокочастотный глубинный вибратор <br>Wacker Neuson</h1><br>  арт.5100010533
                 </div>

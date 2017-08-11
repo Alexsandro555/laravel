@@ -11,6 +11,14 @@ class ProducerTypeProduct extends Model
 
     use SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'name_line',
+        'sort',
+        'producer_id',
+        'type_product_id'
+    ];
+
     protected $guarded = [];
 
     public function type_products() {

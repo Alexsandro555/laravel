@@ -42,6 +42,7 @@
             <div class="header-phone">
                 <div>Звоните! <br><span>+7 (495) <span>780 47 96</span></span><br>
                 <button class="back-call">ЗАКАЗАТЬ <img src="{{asset('css/wacker/img/phone-img.png')}}"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ЗВОНОК</button>
+                @yield('cart')
             </div>
         </div>
     </div>

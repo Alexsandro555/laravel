@@ -8,6 +8,14 @@ class TypeProduct extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'title',
+        'sort',
+        'tnved_id',
+
+    ];
+
     protected $dates = ['deleted_at'];
 
     public function products() {

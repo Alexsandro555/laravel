@@ -9,6 +9,12 @@ class Producer extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'title',
+        'sort',
+    ];
+
     protected $dates = ['deleted_at'];
 
     public function type_products()

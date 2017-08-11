@@ -114,25 +114,13 @@
                     {!! Form::select('category_id', $category_all, null, ['placeholder' => 'Выберите каталог для продукта','class' => 'form-control']) !!}
                 @endif
             </div>
-            <div class="form-group">
-                {!! Form::label('type_product_id','Тип продукта') !!}
-                @if(isset($product))
-                    {!! Form::select('type_product_id', $typeProductAll, $product->type_product_id, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
-                @else
-                    {!! Form::select('type_product_id', $typeProductAll, null, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
-                @endif
-            </div>
-            <div class="form-group">
-                @if(isset($product))
-                    {!! Form::label('product_line','Линейка продукции') !!}
-                    <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:default-id="{{$product->producer_type_product_id}}"  v-bind:placeholder="'Выбирите линейку продукции'" v-on:selectelement="selectProductLine($event)"></selectbox>
-                @else
-                    {!! Form::label('product_line','Линейка продукции') !!}
-                    <selectbox v-bind:nameelement="'producer_type_product_id'"  v-bind:items="{{$productLine}}"  v-bind:placeholder="'Выбирите линейку продукции'" v-on:selectelement="selectProductLine($event)"></selectbox>
-                @endif
-            </div>
+            @if(isset($product))
+                <product-line2 v-bind:elements-arr="{{json_encode($resultArr)}}" v-bind:default-type-product="{{$product->type_product_id?$product->type_product_id:0}}" v-bind:default-producer="{{$product->producer_id?$product->producer_id:0}}" v-bind:default-line="{{$product->producer_type_product_id?$product->producer_type_product_id:0}}"></product-line2>
+            @else
+                <product-line2 v-bind:elements-arr="{{json_encode($resultArr)}}"></product-line2>
+            @endif
             {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
-            {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
+            {{link_to_route('list-categories','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
             {!! Form::hidden('files_ids', "[]", ['id'=>'files-id']) !!}
             {!! Form::hidden('model', 'App\Product') !!}
             {!! Form::token() !!}
@@ -143,7 +131,7 @@
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
             @if(isset($product))
-                <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}"></attributes-product>
+                <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}" v-bind:type-product-id="{{$product->type_product_id}}"></attributes-product>
             @else
                 <attributes-product v-bind:items="attrProd"></attributes-product>
             @endif

@@ -14,13 +14,19 @@
 .catalog-description h2 {
   margin-top: 0px;
   padding-top: 10px;
+  font-family: $font-sans-bold;
+  font-size: 1em;
 }
 
 .catalog-text {
   margin-left: 90px;
   margin-right: 90px;
+  font-size: 0.9em;
 }
 
+.catalog-text ul {
+  padding-left: 0px;
+}
 .catalog-text ul li {
   list-style: none;
   padding-left: 10px;

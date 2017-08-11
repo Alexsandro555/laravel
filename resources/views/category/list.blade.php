@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', 'Категории')
+@section('title', 'Каталог')
 
 @section('content')
-    <h1>Категории</h1>
+    <h1>Каталог</h1>
     <table class="table table-hover table-bordered">
         <thead class="thead-inverse">
         <th>#</th>
@@ -47,7 +47,11 @@
     </table>
     <div>
         <div style="float: left;: left">
-    <?php /*<a href="{{route('add-category')}}" type="buttons" class="btn btn-info">Добавить</a>*/?>
+            <a href="{{route('add-product')}}" class="btn btn-info">Добавить</a>
+            <a href="{{route('type-product-add')}}" class="btn btn-info">Добавить тип продукции</a>
+            <a href="{{route('add-producer')}}" class="btn btn-info">Добавить производителя</a>
+            <a href="{{route('add-line')}}" class="btn btn-info">Добавить линейку продукции</a>
+            <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
         </div>
         <div style="float:right">{{ $products->links() }}</div>
         <div style="clear:both"></div>

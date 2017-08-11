@@ -38,6 +38,7 @@
         },
         methods: {
             'showSuccess': function (file,data) {
+                //console.log('work');
                 var $element = document.getElementById("files-id");
                 var ids = JSON.parse($element.value);
                 ids.push(data.id);

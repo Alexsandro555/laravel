@@ -8,6 +8,8 @@ class Tnved extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'tnved';
+
     protected $dates = ['deleted_at'];
 
     public function type_products()

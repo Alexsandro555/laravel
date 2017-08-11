@@ -26,7 +26,8 @@ class Product extends Model
         'need_order',
         'category_id',
         'type_product_id',
-        'producer_type_product_id'
+        'producer_type_product_id',
+        'producer_id'
     ];
 
     public function photo() {

@@ -1,5 +1,5 @@
 @extends('layouts.master')
 @section('title', 'Линиейка продукции')
 @section('content')
-    <product-line v-bind:elements-arr="{{json_encode($resultArr)}}"></product-line>
+    <product-line2 v-bind:elements-arr="{{json_encode($resultArr)}}"></product-line2>
 @stop

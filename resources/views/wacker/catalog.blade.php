@@ -34,8 +34,8 @@
 
 @section('content-item')
 <div class="content__catalog">
-    <p>
-        Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs"> Внутреняя
+    <p class="breadrcumbs">
+        Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs-img"> Внутреняя
     </p>
     <div class="content__header">
         <h2>Глубинные вибраторы Wacker Neuson</h2>
@@ -298,7 +298,7 @@
                 <div class="wacker__carousel">
                     <div class="wacker__header">
                         <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
-                        <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
+                        <img src="{{asset('css/wacker/img/gears-orange.png')}}" />
                     </div>
                     <div class="service__menu-slider" style="display: flex;">
                         <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
@@ -544,7 +544,6 @@
                 выпускается для особых валов и булав, меньшей длины и диаметра соответственно. Приводы M2500 считаются самыми надежными (в линейке бренда), так как
                 имеют хороший запас мощности и обмотку высокого класса. Даже при длительной эксплуатации такой привод сохраняет оптимальные показатели и эффективно
                 передает вращательное движение через гибкий вал в вибробулаву.
-
                 <h2>Погружные высокочастотные вибраторы для уплотнения бетона (серия IREN, IRFU)</h2>
                 LoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsum LoremIpsumLoremIpsum LoremIpsumLoremIpsum LoremIpsumLoremIpsum v
                 LoremIpsumLoremIpsumLoremIpsum LoremIpsumvv LoremIpsumvv vLoremIpsum LoremIpsum LoremIpsumLoremIpsumLoremIpsum
@@ -552,6 +551,7 @@
                 LoremIpsumLoremIpsumLoremIpsumvvvvLoremIpsumvLoremIpsumLoremIpsumLoremIpsumLoremIpsum
                 LoremIpsumLoremIpsumvLoremIpsumvLoremIpsum
                 LoremIpsumLoremIpsumLoremIpsumvLoremIpsumvvLoremIpsumvLoremIpsum
+
             </div>
         </div>
     </div>

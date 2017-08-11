@@ -39,7 +39,8 @@ class StoreProductRequest extends FormRequest
             'onsale' => '',
             'special' => '',
             'need_order' => '',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'type_product_id' => 'required',
         ];
     }
 

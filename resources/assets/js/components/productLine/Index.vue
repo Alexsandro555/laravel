@@ -2,15 +2,15 @@
     <div>
         <div class="form-group" >
             <label for="typeproducts">Тип продукции</label>
-            <lselect v-bind:nameelement="'typeproducts'" v-bind:elements-val="elementsArr"  v-bind:defaultId="1" v-on:selectelement="selectelement" v-bind:placeholder="'Выбирите тип продукции'"></lselect>
+            <lselect v-bind:nameelement="'type_product_id'" v-bind:elements-val="elementsArr"  v-bind:defaultId="1" v-on:selectelement="selectelement" v-bind:placeholder="'Выбирите тип продукции'"></lselect>
         </div>
         <div class="form-group">
             <label for="producers">Производители</label>
-            <lselect v-bind:nameelement="'producers'" v-bind:elements-val="mutableElementsArr" v-bind:default-id="defaultId" v-bind:placeholder="''"></lselect>
+            <lselect v-bind:nameelement="'producers_id'" v-bind:elements-val="mutableElementsArr" v-bind:default-id="defaultId" v-bind:placeholder="''"></lselect>
         </div>
         <div class="form-group" >
             <label for="lines">Линейка продукции</label>
-            <lselect v-bind:nameelement="'lines'" v-bind:elements-val ="mutableElementsArr" v-bind:placeholder="''"></lselect>
+            <lselect v-bind:nameelement="'producer_type_product_id'" v-bind:elements-val ="mutableElementsArr" v-bind:placeholder="''"></lselect>
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@
             startVal: function(elementsVal) {
                 let filteredVal = [];
                 let id = 1;
-                elementsVal.typeproducts.forEach(function(item, i, arr)
+                elementsVal.type_product_id.forEach(function(item, i, arr)
                 {
                     if(item.id === id)
                     {
@@ -42,12 +42,9 @@
                 return resFilteredVal;
             },
             selectelement: function(id) {
-                //this.val = "";
-                //this.input = "";
-                console.log('selected');
                 let that = this;
                 let filteredVal = [];
-                this.elementsArr.typeproducts.forEach(function(item, i, arr)
+                this.elementsArr.type_product_id.forEach(function(item, i, arr)
                 {
                     if(item.id === id)
                     {
@@ -55,17 +52,9 @@
                     }
                 });
                 let resFilteredVal = {"type_product_id":filteredVal};
-                //this.mutableElementsArr = resFilteredVal;
-                //this.$set(this.mutableElementsArr,resFilteredVal);
                 this.$set(this, 'mutableElementsArr', resFilteredVal);
                 this.defaultId = 1;
-                this.$children.forEach(function(item) {
-                            console.log(item);
-                            //item.filtRes();
-                            //item.input = item.elems[0].title;
-                            //item.value = item.items[1].title;
-                        }
-                );
+                this.$parent.selectProductLine(id);
             }
         }
     }

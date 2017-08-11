@@ -51,10 +51,12 @@ Vue.component('dropbox', require('./components/dropbox/Index.vue'));
 Vue.component('add-attribute', require('./components/addAttribute/Index.vue'));
 Vue.component('set-attribute', require('./components/setAttributes/Index.vue'));
 Vue.component('product-line', require('./components/productLine/Index.vue'));
+Vue.component('product-line2', require('./components/productLine2/Index.vue'));
 Vue.component('product-lines', require('./components/productLines/Index.vue'));
 Vue.component('selectbox', require('./components/selectbox/Index.vue'));
 Vue.component('attributes-product', require('./components/attributesProduct/Index.vue'));
 Vue.component('lselect', require('./components/lSelect/Index.vue'));
+Vue.component('Tselect', require('./components/TSelect/Index.vue'));
 //Vue.component('alex-carousel', require('./components/alex-carousel/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
@@ -64,6 +66,7 @@ axios.interceptors.request.use(function (config) {
     return config;
 });
 
+window.bus = new Vue();
 
 // create a root instance
 new Vue({

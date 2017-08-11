@@ -34,7 +34,12 @@
 
 .detail-info-news__item span a {
   color: #343434;
-  font-weight: bold;
+  font-family: $font-sans-bold;
+  font-size: 1.2em;
+}
+
+.detail-info-news__item span {
+  font-size: 0.8em;
 }
 
 .detail-info-button {
@@ -65,6 +70,7 @@
 
 .detail-info__main h2 {
   text-transform: uppercase;
+  font-family: $font-sans-bold;
   font-size: 1.2em;
 }
 

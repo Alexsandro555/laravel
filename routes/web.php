@@ -10,12 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/wacker', ['uses' => 'WackerController@index', 'as' => 'wacker']);
+Route::get('/', ['uses' => 'WackerController@index', 'as' => 'wacker']);
 Route::get('/wacker/catalog', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
 Route::get('/wacker/detail', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
 
@@ -119,7 +114,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/product/add', ['uses' => 'Product\ProductController@add', 'as' => 'add-product']);
 
     // Обработка добавления нового продукта
-    Route::post('/porduct/add',
+    Route::post('/product/add',
         [
             'before' => 'csrf',
             'uses' => 'Product\ProductController@addHandler',
@@ -184,6 +179,35 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('product/lines', ['uses' => 'Product\ProductController@lines', 'as' => 'lines-product']);
     Route::get('product/line', ['uses' => 'Product\ProductController@line', 'as' => 'line-product']);
     Route::get('/product/getAllTypeProducts', ['uses' => 'Product\ProductController@allTypeProduct', 'as' => 'type-product']);
+
+    // Добавление типа продукции
+    Route::get('product/typeProduct/add', ['uses' => 'Product\ProductController@addTypeProduct', 'as' => 'type-product-add']);
+    // Обработка добавления новой позиции каталога
+    Route::post('/product/typeProduct/add',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@addTypeProductHandler',
+            'as'=>'type-product-add'
+        ]);
+
+
+    // Добавление производителя
+    Route::get('product/producer/add', ['uses' => 'Product\ProductController@addProducer', 'as' => 'add-producer']);
+    Route::post('/product/producer/add',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@addProducerHandler',
+            'as'=>'add-producer'
+        ]);
+
+    // Добавление линейки продукции
+    Route::get('product/line/add', ['uses' => 'Product\ProductController@addLine', 'as' => 'add-line']);
+    Route::post('/product/line/add',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@addProductLineHandler',
+            'as'=>'add-line'
+        ]);
 
     ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
     Route::get('/testAdminLTE', function(){

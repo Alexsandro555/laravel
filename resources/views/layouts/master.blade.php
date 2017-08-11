@@ -27,7 +27,7 @@
         <div id="navbar" class="collpse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Главная</a></li>
-                <li><a href="#about">О компании</a></li>
+                <li><a href="/admin/category/list/1">Каталог</a></li>
                 <li><a href="#news">Новости</a></li>
                 <li><a href="#delivery">Доставка и оплата</a></li>
                 <li><a href="#contacts">Контакты</a></li>

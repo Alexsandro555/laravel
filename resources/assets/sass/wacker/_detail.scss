@@ -2,6 +2,12 @@
   width: 740px;
   margin-left: 299px;
   display: inline-block;
+  font-family: $font-sans-bold;
+  font-size: 0.9em;
+}
+
+.detail-broadrcubms {
+  margin-left: 299px;
 }
 
 .detail__header h1 {
@@ -79,6 +85,10 @@
   color: orange;
 }
 
+.detail__table tbody tr td {
+  font-size: 0.9em;
+}
+
 .table__sale {
   text-align: right;
   vertical-align: middle;
@@ -96,7 +106,7 @@
   border-width: 0px 0px 3px 0px;
   border-color: #F1B814;
   @include border-radius(6px);
-  font-size:0.83em;
+  font-size:1.1em;
   font-weight: bold;
   color:$color-gray;
   text-transform: uppercase;
@@ -120,7 +130,8 @@
   list-style: none;
   padding-left: 10px;
   background: url(img/footer-menu.png) left center no-repeat;
-  padding-top: 10px;
+  padding-top: 5px;
+  font-size: 0.8em;
 }
 
 .sd {

@@ -33,14 +33,15 @@
         {
             return {
                 isVisible:false,
-                elementVal: _.cloneDeep(this.elementsVal), //Object.assign({},this.elementsVal),
+                elementVal: _.cloneDeep(this.elementsVal),
                 items:[],
-                input: "", //this.items.length?this.items[0].title:"",
-                val: "",//this.items.length?this.items[0].id:0,
+                input: "",
+                val: "",
             }
         },
-        watch: {
-            elementsVal: function(newVal) {
+        /*watch: {
+            elementsVal: { handler:function(newVal) {
+                //console.log('New Val: '+JSON.stringify(newVal));
                 //console.log('watch: '+JSON.stringify(newVal));
                 this.elementVal = _.cloneDeep(newVal); //Object.assign({},newVal);
                 this.items = [];
@@ -66,17 +67,22 @@
                         that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
                     });
                 });
-                this.items.sort(this.asc('sort'));
-                this.input = this.items[0].title;
-                this.val = this.items[0].id;
-                console.log(this.nameelement);
+                if(this.items.length>0) {
+                    this.items.sort(this.asc('sort'));
+                    this.input = this.items[0].title;
+                    this.val = this.items[0].id;
+                }
+            },
+                deep:false
             }
-        },
+        },*/
         computed:
         {
             elems: function()
             {
-                console.log('elems: '+this.nameelement);
+                //console.log('elems: '+this.nameelement);
+                //console.log('Item: '+JSON.stringify(this.elementsVal))
+                console.log('computed');
                 this.items = [];
                 let name = this.nameelement;
                 let that = this;
@@ -100,23 +106,17 @@
                         that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
                     });
                 });
-                this.items.sort(this.asc('sort'));
-                this.input = this.items[0].title;
-                this.val = this.items[0].id;
-                return this.items;
+                if(this.items.length>0) {
+                    //console.log("пусто");
+                    this.items.sort(this.asc('sort'));
+                    this.input = this.items[0].title;
+                    this.val = this.items[0].id;
+                    return this.items;
+                }
+                else {
+                    return "";
+                }
             },
-        },
-        mounted: function ()
-        {
-            /*let that = this;
-            if(this.defaultId) {
-                this.items.forEach(function(item) {
-                    if(item.id === that.defaultId) {
-                        that.input = item.title;
-                        that.val = item.id;
-                    }
-                });
-            }*/
         },
         methods: {
             asc: function(field) {
@@ -129,38 +129,11 @@
                 this.input = title;
                 this.val = id;
                 this.$emit('input', id);
-                this.$emit('selectelement', id);
+                //this.$emit('selectelement', id);
                 this.isVisible=false;
             },
             close: function() {
                 this.isVisible=false;
-            },
-            filtRes: function() {
-                console.log(this.elementVal);
-                this.items = [];
-                let name = this.nameelement;
-                let that = this;
-                let elems = [];
-                var scrubbed = traverse(this.elementVal).map(function(obj) {
-                    if(typeof obj == "object") {
-                        let arrObj = Object.keys(obj);
-                        arrObj.forEach(function (item) {
-                            if (item == that.nameelement) {
-                                elems.push(obj[item]);
-                                return obj[item];
-                            }
-                        });
-                    }
-                },[]);
-                elems.forEach(function(item) {
-                    item.forEach(function (item) {
-                        that.items.push({'id': item.id, 'title': item.title, 'sort': item.sort});
-                    });
-                });
-                this.items.sort(this.asc('sort'));
-                console.log('filt: '+JSON.stringify(this.items[0]));
-                this.input = this.items[0].title;
-                this.val = this.items[0].id;
             },
         },
     }

@@ -8,8 +8,8 @@ class AdminMiddleware {
     public function handle($request, Closure $next)
     {
         if($request->user()){
-             $email = $request->user()->email;
-            if($email == 'alexsandro@oooleader.ru') {
+             $admin = $request->user()->admin;
+            if($admin == 1) {
                 return $next($request);
             }
         }
