@@ -34,6 +34,7 @@ Vue.use(VueAxios, axios);
 //Vue.use(ToggleButton)
 Vue.use(VueCarousel);
 
+// Коммент
 //window.Vue.use(wysiwyg, {});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
