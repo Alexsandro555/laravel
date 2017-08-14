@@ -51,7 +51,7 @@ class ProductController extends Controller
     $productLine = json_encode($productLine);*/
     $resultArr = [];
     $type_products = TypeProduct::All();
-    $typeProduArr = [];/*
+    $typeProduArr = [];
     foreach ($type_products as $type_product) {
       $typeProdArr["id"] = $type_product->id;
       $typeProdArr["title"] = $type_product->title;
@@ -75,7 +75,7 @@ class ProductController extends Controller
       $typeProdArr['producer_id'] = $producerResult;
       $typeProdArr['producer_type_product_id'] = $producerTypeProductResult;
       $resultArr['type_product_id'][] = $typeProdArr;
-    }*/
+    }
     return view('product.add', compact('category_all','resultArr'));
   }
 

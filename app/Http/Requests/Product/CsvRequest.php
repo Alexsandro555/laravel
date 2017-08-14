@@ -29,7 +29,7 @@ class CsvRequest extends FormRequest
     public function rules()
     {
         return [
-            'tnved' => 'required|mimes:csv,text',
+            'tnved' => 'required',
         ];
     }
 
