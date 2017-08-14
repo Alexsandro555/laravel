@@ -21,6 +21,7 @@ use App\Http\Requests\Product\UpdateProductRequest;
 use App\Http\Requests\Product\CsvRequest;
 use App\Http\Requests\Product\AttributeRequest;
 use App\Http\Requests\Product\StoreProductLineRequest;
+use App\Http\Requests\Product\StoreAttributeRequest;
 use Mockery\Matcher\Type;
 use Illuminate\Support\Facades\DB;
 use App\FileHandler;
@@ -526,9 +527,31 @@ class ProductController extends Controller
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
     $fileHandler = new FileHandler();
-    $fileHandler->upload($file, true, 200, 200, '../public/images/icon/','App\TypeProduct',$id);
+    $fileHandler->upload($file, false, '../public/images/icon/','App\TypeProduct',$id);
     return redirect()->route('list-categories',['id' => 1]);
   }
+
+  /**
+   *
+   * Create Attribute
+   */
+  public function createAttribute()
+  {
+      return view('product.attribute.create');
+  }
+
+    /**
+     *
+     * Create Attribute Handler
+     * @param StoreAttributeRequest $attributeRequest
+     * @return \Illuminate\Http\Redirect
+     */
+    public function createAttributeHandler(StoreAttributeRequest $attributeRequest)
+    {
+        $request = $attributeRequest->except(['_token']);
+        $producer = Attribute::create($request);
+        return redirect()->route('list-categories',['id' => 1]);
+    }
 
 
   /**

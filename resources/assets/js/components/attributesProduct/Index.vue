@@ -11,7 +11,7 @@
         <div class="form-group">
             <!--<input v-bind:name="item.attribute_id" type="text" v-model:value="item.value">-->
         </div>
-        <button class="btn btn-sucess" @click="saveAttributes">Сохранить</button>
+        <button v-bind:class="[{disabled: !items.length>0}]" class="btn btn-sucess"  @click="saveAttributes">Сохранить</button>
     </div>
 </template>
 <script>
@@ -27,25 +27,23 @@
         data: function() {
             return {
                 isActive: false,
+                isDisable: true,
             }
         },
         mounted: function () {
             let that = this;
-            this.axios.get("/admin/product/attributes/"+this.typeProductId, {}).then(function (response)
-            {
-                if(response.data.length > 0)
-                {
-                    response.data.forEach(function(item)
-                    {
-                        let attribute = { attribute_id: item.id, title: item.title, value: '' };
-                        that.items.push(attribute);
-                    });
-                }
-            }).catch(function (error)
-            {
-                console.log(error);
-            });
-
+            if(this.typeProductId) {
+                this.axios.get("/admin/product/attributes/" + this.typeProductId, {}).then(function (response) {
+                    if (response.data.length > 0) {
+                        response.data.forEach(function (item) {
+                            let attribute = {attribute_id: item.id, title: item.title, value: ''};
+                            that.items.push(attribute);
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
             if(this.productId) {
                 this.axios.get("/admin/product/existAttributes/"+this.productId, {}).then(function (response)
                 {
@@ -54,11 +52,11 @@
                         response.data.forEach(function(item)
                         {
                             that.items.forEach((elem) => {
-                               if(elem.title == item.title)
-                               {
-                                     elem.value = item.value;
-                               }
-                            });
+                                if(elem.title == item.title)
+                            {
+                                elem.value = item.value;
+                            }
+                        });
                             //let attribute = { attribute_id: item.id, title: item.title, value: item.value };
                             //that.items.push(attribute);
                         });

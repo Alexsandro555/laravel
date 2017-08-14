@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductRequest extends FormRequest
+class StoreAttributeRequest extends FormRequest
 {
 
     /**
@@ -30,18 +30,8 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url_key' => 'required',
-            'price' => 'required|numeric',
-            'description' => '',
-            'qty' => 'numeric',
-            'active' => 'boolean',
-            'sort' => 'numeric',
-            'onsale' => '',
-            'special' => '',
-            'need_order' => '',
-            'category_id' => 'required',
-            'article' => 'required',
-            'IEC' => 'required'
+            'sort' => 'required',
+            'alias' => 'required',
         ];
     }
 

@@ -47,11 +47,15 @@
     </table>
     <div>
         <div style="float: left;: left">
-            <a href="{{route('add-product')}}" class="btn btn-info">Добавить</a>
-            <a href="{{route('type-product-add')}}" class="btn btn-info">Добавить тип продукции</a>
-            <a href="{{route('add-producer')}}" class="btn btn-info">Добавить производителя</a>
-            <a href="{{route('add-line')}}" class="btn btn-info">Добавить линейку продукции</a>
-            <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
+            <a href="{{route('add-product')}}" class="btn btn-info btn-sm">Добавить</a>
+            <div class="btn-group btn-group-sm">
+                <a href="{{route('tnved-csv')}}" class="btn btn-info">Загрузить ТНВЭД</a>
+                <a href="{{route('type-product-add')}}" class="btn btn-info">Добавить тип продукции</a>
+                <a href="{{route('add-producer')}}" class="btn btn-info">Добавить производителя</a>
+                <a href="{{route('add-line')}}" class="btn btn-info">Добавить линейку продукции</a>
+                <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
+                <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
+            </div>
         </div>
         <div style="float:right">{{ $products->links() }}</div>
         <div style="clear:both"></div>

@@ -27,7 +27,9 @@ class Product extends Model
         'category_id',
         'type_product_id',
         'producer_type_product_id',
-        'producer_id'
+        'producer_id',
+        'article',
+        'IEC'
     ];
 
     public function photo() {

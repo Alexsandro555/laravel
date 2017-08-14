@@ -3438,22 +3438,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            isActive: false
+            isActive: false,
+            isDisable: true
         };
     },
     mounted: function mounted() {
         var that = this;
-        this.axios.get("/admin/product/attributes/" + this.typeProductId, {}).then(function (response) {
-            if (response.data.length > 0) {
-                response.data.forEach(function (item) {
-                    var attribute = { attribute_id: item.id, title: item.title, value: '' };
-                    that.items.push(attribute);
-                });
-            }
-        }).catch(function (error) {
-            console.log(error);
-        });
-
+        if (this.typeProductId) {
+            this.axios.get("/admin/product/attributes/" + this.typeProductId, {}).then(function (response) {
+                if (response.data.length > 0) {
+                    response.data.forEach(function (item) {
+                        var attribute = { attribute_id: item.id, title: item.title, value: '' };
+                        that.items.push(attribute);
+                    });
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
         if (this.productId) {
             this.axios.get("/admin/product/existAttributes/" + this.productId, {}).then(function (response) {
                 if (response.data.length > 0) {
@@ -35546,6 +35548,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }), _vm._v(" "), _c('button', {
     staticClass: "btn btn-sucess",
+    class: [{
+      disabled: !_vm.items.length > 0
+    }],
     on: {
       "click": _vm.saveAttributes
     }

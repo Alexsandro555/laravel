@@ -23,6 +23,10 @@ Route::get('/deleteFile/{id}', ['uses' => 'UploadController@deleteFile', 'as' =>
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/exit', function() {
+    Auth::logout();
+    return redirect()->route('wacker');
+});
 
 ///////////////////////////////////PAGE///////////////////////////////////////////////
 // Отображение конкретной страницы
@@ -139,7 +143,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/product/addAttribute', ['uses' => 'Product\ProductController@addAttribute', 'as' => 'add-attribute']);
 
 
-    Route::get('/product/uploadCsv', ['uses' => 'Product\ProductController@uploadCsv']);
+    Route::get('/product/uploadCsv', ['uses' => 'Product\ProductController@uploadCsv', 'as' => 'tnved-csv']);
     Route::post('/product/uploadCsvHandl',
         [
             'before' => 'csrf',
@@ -188,6 +192,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'before' => 'csrf',
             'uses' => 'Product\ProductController@addTypeProductHandler',
             'as'=>'type-product-add'
+        ]);
+
+    // Создание нового атрибута
+    Route::get('product/attribute/create', ['uses' => 'Product\ProductController@createAttribute', 'as' => 'create-attribute']);
+    // Обработка создания нового атрибута
+    Route::post('/product/attribute/create',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@createAttributeHandler',
+            'as'=>'create-attribute'
         ]);
 
 

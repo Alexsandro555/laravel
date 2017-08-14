@@ -55,6 +55,14 @@
                 {!! Form::text('url_key', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('article','Артикул') !!}
+                {!! Form::text('article', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('IEC','IEC') !!}
+                {!! Form::text('IEC', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
                 {!! Form::label('price','Цена') !!}
                 {!! Form::text('price', null, ['class' => 'form-control']) !!}
             </div>

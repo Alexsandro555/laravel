@@ -8,7 +8,7 @@ use App\File;
 
 class FileHandler
 {
-    public function upload($file, $resize, $width, $height, $path, $model, $id)
+    public function upload($file, $resize, $path, $model, $id, $width=0, $height=0)
     {
         $originalName = $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();

@@ -13,6 +13,6 @@ class AdminMiddleware {
                 return $next($request);
             }
         }
-        return redirect()->route('wacker');
+        return redirect('/login');
     }
 }
