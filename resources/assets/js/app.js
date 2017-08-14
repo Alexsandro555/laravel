@@ -48,7 +48,7 @@ Vue.use(VueCarousel);
 //Vue.component('table-generator', require('./Components/generatorTables/index.vue'));
 //Vue.component('my-autocomplete', require('./components/My-autocomplete.vue'));
 Vue.component('uploader', require('./components/Uploader.vue'));
-Vue.component('dropbox', require('./components/dropbox/Index.vue'));
+Vue.component('dropbox', require('./components/dropbox/index.vue'));
 Vue.component('add-attribute', require('./components/addAttribute/Index.vue'));
 Vue.component('set-attribute', require('./components/setAttributes/Index.vue'));
 Vue.component('product-line', require('./components/productLine/Index.vue'));
