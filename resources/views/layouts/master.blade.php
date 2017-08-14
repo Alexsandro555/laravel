@@ -30,7 +30,6 @@
                 <li><a href="/admin/category/list/1">Каталог</a></li>
                 <li><a href="#news">Новости</a></li>
                 <li><a href="#delivery">Доставка и оплата</a></li>
-                <li><a href="#contacts">Контакты</a></li>
                 <li><a href="/exit">Выход</a></li>
             </ul>
         </div>
