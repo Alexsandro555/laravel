@@ -3790,7 +3790,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var traverse = __webpack_require__(11);
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        elementsArr: Object,
+        elementsArr: [Object, Array],
         defaultTypeProduct: Number,
         defaultProducer: Number,
         defaultLine: Number

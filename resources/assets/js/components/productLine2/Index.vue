@@ -18,7 +18,7 @@
     let traverse = require('traverse');
     export default {
         props: {
-            elementsArr: Object,
+            elementsArr: [Object,Array],
             defaultTypeProduct: Number,
             defaultProducer: Number,
             defaultLine: Number
