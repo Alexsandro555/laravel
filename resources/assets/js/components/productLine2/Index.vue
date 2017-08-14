@@ -29,33 +29,39 @@
                 type_product_el: this.normalizeForSelectBox(this.elementsArr, 'type_product_id'),
             }
         },
+        mounted() {
+          console.log("elementsArr: "+JSON.stringify(this.elementsArr));
+        },
         methods: {
             startVal: function(elementsVal) {
-                let def = this.defaultTypeProduct;
-                let filteredVal = [];
-                let id = 1;
-                let minItem =[];
-                if(def) {
-                    elementsVal.type_product_id.forEach(function(item, i, arr) {
-                        if (item.id == def) {
-                            minItem = item;
-                            return 1;
-                        }
-                    });
-                }
-                else
-                {
-                    let sort = elementsVal.type_product_id[0].sort;
-                    elementsVal.type_product_id.forEach(function(item, i, arr)
+                if(elementsVal.length > 0 ) {
+                    let def = this.defaultTypeProduct;
+                    let filteredVal = [];
+                    let id = 1;
+                    let minItem =[];
+                    if(def) {
+                        elementsVal.type_product_id.forEach(function(item, i, arr) {
+                            if (item.id == def) {
+                                minItem = item;
+                                return 1;
+                            }
+                        });
+                    }
+                    else
                     {
-                        if(item.sort < sort)
+                        let sort = elementsVal.type_product_id[0].sort;
+                        elementsVal.type_product_id.forEach(function(item, i, arr)
                         {
-                            minItem = item;
-                        }
-                    });
+                            if(item.sort < sort)
+                            {
+                                minItem = item;
+                            }
+                        });
+                    }
+                    let resFilteredVal = {"type_product_id":minItem};
+                    return resFilteredVal;
                 }
-                let resFilteredVal = {"type_product_id":minItem};
-                return resFilteredVal;
+                else return [];
             },
             selectelement: function(id) {
                 let that = this;
