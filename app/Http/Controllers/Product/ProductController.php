@@ -523,7 +523,7 @@ class ProductController extends Controller
    */
   public function addTypeProductHandler(StoreTypeProductRequest $typeProductRequest)
   {
-    $request = $typeProductRequest->except(['_token','image']);
+    $request = $typeProductRequest->except(['_token','file']);
     $typeProduct = TypeProduct::create($request);
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
