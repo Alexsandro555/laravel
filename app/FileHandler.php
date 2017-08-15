@@ -8,9 +8,9 @@ use App\File;
 
 class FileHandler
 {
-    private $path = "/app/public/";
+    private $path = "app/public/";
 
-    private $pathIcon = "/app/public/icons/";
+    private $pathIcon = "app/public/icons/";
 
     public function upload($file, $resize, $model, $id, $width=0, $height=0)
     {

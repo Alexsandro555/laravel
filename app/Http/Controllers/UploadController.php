@@ -8,9 +8,9 @@ use App\File;
 
 class UploadController extends Controller
 {
-    private $path = "/app/public/";
+    private $path = "app/public/";
 
-    private $pathIcon = "/app/public/icons/";
+    private $pathIcon = "app/public/icons/";
 
     public function uploadHandl(UploadProductRequest $request)
     {
@@ -86,6 +86,7 @@ class UploadController extends Controller
     public function move( $photo, $filename )
     {
         $manager = new ImageManager();
+        $path = storage_path($this->pathIcon).$filename;
         $image = $manager->make( $photo )->save(storage_path($this->path) . $filename );
         return $image;
     }
@@ -93,6 +94,7 @@ class UploadController extends Controller
     public function icons( $photo, $filename )
     {
         $manager = new ImageManager();
+        $path = storage_path($this->pathIcon).$filename;
         $image = $manager->make( $photo )->resize(200,200)->save(storage_path($this->pathIcon) . $filename );
         return $image;
     }
