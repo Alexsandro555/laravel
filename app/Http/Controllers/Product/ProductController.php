@@ -186,6 +186,10 @@ class ProductController extends Controller
   public function delete($id)
   {
     $product = Product::find($id);
+    $currentFiles = File::where('fileable_id',$id)->where('fileable_type','App\Product')->get();
+    foreach ($currentFiles as $currentFile) {
+      $currentFile->delete();
+    }
     $product->delete();
     return redirect()->back();
   }

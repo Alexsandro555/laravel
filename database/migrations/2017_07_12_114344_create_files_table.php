@@ -16,7 +16,7 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('fileable_id')->unsigned()->nullable();
-            $table->foreign('fileable_id')->references('id')->on('products');
+            //$table->foreign('fileable_id')->references('id')->on('products');
             $table->string('fileable_type',255)->nullable();
             $table->string('filename', 255);
             $table->timestamps();
@@ -30,9 +30,9 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::table('files', function (Blueprint $table) {
+        /*Schema::table('files', function (Blueprint $table) {
             $table->dropForeign('files_fileable_id_foreign');
-        });
+        });*/
         Schema::dropIfExists('files');
     }
 }
