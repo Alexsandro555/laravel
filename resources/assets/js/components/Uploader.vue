@@ -69,7 +69,7 @@
                         let filename = image.filename;
                         let size = image.size;
                         let mockFile = {id: id, name: filename, size: size};
-                        dropzone.manuallyAddFile(mockFile,"/images/icon/"+filename);
+                        dropzone.manuallyAddFile(mockFile,"/storage/icons/"+filename);
                     }
                 }).catch(function (error)
                 {

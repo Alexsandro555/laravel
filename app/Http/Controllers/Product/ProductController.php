@@ -22,6 +22,7 @@ use App\Http\Requests\Product\CsvRequest;
 use App\Http\Requests\Product\AttributeRequest;
 use App\Http\Requests\Product\StoreProductLineRequest;
 use App\Http\Requests\Product\StoreAttributeRequest;
+use App\Http\Requests\Product\UpdateTypeProductRequest;
 use Mockery\Matcher\Type;
 use Illuminate\Support\Facades\DB;
 use App\FileHandler;
@@ -527,9 +528,46 @@ class ProductController extends Controller
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
     $fileHandler = new FileHandler();
-    $fileHandler->upload($file, false, '../public/images/icon/','App\TypeProduct',$id);
-    return redirect()->route('list-categories',['id' => 1]);
+    $fileHandler->upload($file, false, 'App\TypeProduct',$id);
+    return redirect()->route('type-product-update',['id' => $id]);
+    //return redirect()->route('list-categories',['id' => 1]);
   }
+
+    /**
+     *  Update TypeProduct
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateTypeProduct($id)
+    {
+        $id = (int)$id;
+        $tnved = Tnved::all()->pluck('title','id');
+        $typeProduct = TypeProduct::find($id);
+        $file = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
+        return view('product.typeProduct.add', compact('typeProduct', 'file', 'tnved'));
+    }
+
+    /**
+     *
+     * Update Type Product Handl
+     * @param int $id
+     * @param Request $request
+     * @return \Illuminate\Http\Redirect
+     */
+    public function updateTypeProductHandler($id, UpdateTypeProductRequest $request)
+    {
+        $file = $request->file;
+        $id = (int)$id;
+        $typeProductRequest = $request->except('_token','file');
+        TypeProduct::where('id', $id)->update($typeProductRequest);
+        if($file) {
+            $currentFile = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
+            $currentFile->delete();
+            $fileHandler = new FileHandler();
+            $fileHandler->upload($file, false, 'App\TypeProduct',$id);
+        }
+        return redirect()->route('list-categories',['id' => 1]);
+    }
 
   /**
    *

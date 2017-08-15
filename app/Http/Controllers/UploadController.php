@@ -8,6 +8,10 @@ use App\File;
 
 class UploadController extends Controller
 {
+    private $path = "/app/public/";
+
+    private $pathIcon = "/app/public/icons/";
+
     public function uploadHandl(UploadProductRequest $request)
     {
         $file = $request->file('file');
@@ -59,7 +63,7 @@ class UploadController extends Controller
 
     public function createUniqueFilename( $filename, $extension )
     {
-        $full_size_dir = storage_path('../public/images/upload/');
+        $full_size_dir = storage_path($this->path);
         $full_image_path = $full_size_dir . $filename . '.' . $extension;
 
         if ( file_exists( $full_image_path ) )
@@ -82,14 +86,14 @@ class UploadController extends Controller
     public function move( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->save(storage_path('../public/images/upload/') . $filename );
+        $image = $manager->make( $photo )->save(storage_path($this->path) . $filename );
         return $image;
     }
 
     public function icons( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->resize(200,200)->save(storage_path('../public/images/icon/') . $filename );
+        $image = $manager->make( $photo )->resize(200,200)->save(storage_path($this->pathIcon) . $filename );
         return $image;
     }
 

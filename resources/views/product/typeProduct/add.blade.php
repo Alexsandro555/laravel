@@ -13,7 +13,7 @@
     @if (!isset($typeProduct))
         <h1>Добавление нового типа продукции</h1>
     @else
-        <h1>Редактирование типа продукции<?php echo $typeProduct->name; ?></h1>
+        <h1>Редактирование типа продукции: <?php echo $typeProduct->title; ?></h1>
     @endif
     <br>
 
@@ -49,6 +49,10 @@
     <div class="form-group">
         {!! Form::label('sort','Сортировка') !!}
         {!! Form::text('sort', null, ['class' => 'form-control']) !!}
+        @if(isset($file))
+            <br>
+            <img src="{{ asset('storage/'.$file->filename) }}" width="72px" height="89px"/>
+        @endif
     </div>
     <div class="form-group">
         {!! Form::label('file','Изображение') !!}

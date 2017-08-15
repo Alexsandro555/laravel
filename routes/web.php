@@ -186,12 +186,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
     // Добавление типа продукции
     Route::get('product/typeProduct/add', ['uses' => 'Product\ProductController@addTypeProduct', 'as' => 'type-product-add']);
-    // Обработка добавления новой позиции каталога
+    // Обработка добавления типа продукции
     Route::post('/product/typeProduct/add',
         [
             'before' => 'csrf',
             'uses' => 'Product\ProductController@addTypeProductHandler',
             'as'=>'type-product-add'
+        ]);
+    // Обновление типа продукции
+    Route::get('product/typeProduct/update/{id}', ['uses' => 'Product\ProductController@updateTypeProduct', 'as' => 'type-product-update']);
+    // Обработка обновления типа продукции
+    Route::post('/product/typeProduct/update/{id}',
+        [
+            'before' => 'csrf',
+            'uses' => 'Product\ProductController@updateTypeProductHandler',
+            'as'=>'type-product-update'
         ]);
 
     // Создание нового атрибута

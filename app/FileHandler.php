@@ -8,7 +8,11 @@ use App\File;
 
 class FileHandler
 {
-    public function upload($file, $resize, $path, $model, $id, $width=0, $height=0)
+    private $path = "/app/public/";
+
+    private $pathIcon = "/app/public/icons/";
+
+    public function upload($file, $resize, $model, $id, $width=0, $height=0)
     {
         $originalName = $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
@@ -56,7 +60,7 @@ class FileHandler
 
     private function createUniqueFilename( $filename, $extension )
     {
-        $full_size_dir = storage_path('../public/images/upload/');
+        $full_size_dir = storage_path($this->path);
         $full_image_path = $full_size_dir . $filename . '.' . $extension;
 
         if ( file_exists( $full_image_path ) )
@@ -79,14 +83,14 @@ class FileHandler
     private function move( $photo, $filename )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->save(storage_path('../public/images/upload/') . $filename );
+        $image = $manager->make( $photo )->save(storage_path($this->path) . $filename );
         return $image;
     }
 
     private function icons( $photo, $filename, $width, $height, $path )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->resize($width,$height)->save(storage_path($path) . $filename );
+        $image = $manager->make( $photo )->resize($width,$height)->save(storage_path($this->pathIcon) . $filename );
         return $image;
     }
 }
