@@ -73,6 +73,20 @@
                 this.isVisible=false;
             },
         },
+        /*watch: {
+            items: function(newItem) {
+                //console.log("New Item: "+JSON.stringify(newItem));
+                 if(newItem.length)
+                 {
+                    this.selectInput = newItem[0].title;
+                    this.val = newItem[0].id;
+                 }
+                 else {
+                    this.selectInput = "";
+                    this.val = 0;
+                 }
+            }
+        }*/
     }
 </script>
 <style>

@@ -1,4 +1,5 @@
 <template>
+    <div>
         <div class="form-group" >
             <label for="typeproducts">Тип продукции</label>
             <Tselect v-bind:nameelement="'type_product_id'" v-bind:items="type_product_el" v-on:selectelement="selectelement" v-bind:defaultId="defaultTypeProduct"  v-bind:placeholder="'Выбирите тип продукции'"></Tselect>
