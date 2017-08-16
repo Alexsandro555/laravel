@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <label for="producers">Производители</label>
-            <Tselect v-bind:nameelement="'producer_id'" v-bind:items="normalizeForSelectBox(this.elements, 'producer_id')" v-bind:defaultId="defaultProducer" v-bind:placeholder="''"></Tselect>
+            <Tselect v-bind:nameelement="'producer_id'" v-bind:items="normalizeForSelectBox(this.elements, 'producer_id')" v-bind:defaultId="defaultProducer"  v-bind:placeholder="''"></Tselect>
         </div>
         <div class="form-group" >
             <label for="lines">Линейка продукции</label>
@@ -30,11 +30,11 @@
             }
         },
         mounted() {
-          console.log("elementsArr: "+JSON.stringify(this.elementsArr));
+          //console.log("elementsArr: "+JSON.stringify(this.elementsArr));
         },
         methods: {
             startVal: function(elementsVal) {
-                if(elementsVal.length > 0 ) {
+                if(elementsVal.type_product_id.length > 0 ) {
                     let def = this.defaultTypeProduct;
                     let filteredVal = [];
                     let id = 1;
@@ -59,6 +59,7 @@
                         });
                     }
                     let resFilteredVal = {"type_product_id":minItem};
+                    console.log(resFilteredVal);
                     return resFilteredVal;
                 }
                 else return [];
@@ -101,6 +102,7 @@
                     });
                 });
                 items.sort(this.asc('sort'));
+                //console.log(items);
                 return items;
             },
             asc: function(field) {

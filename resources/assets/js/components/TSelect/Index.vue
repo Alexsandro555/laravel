@@ -39,10 +39,13 @@
         },
         mounted: function ()
         {
+            //console.log(this.items);
             let that = this;
             if(this.defaultId) {
+                //console.log(this.items);
                 this.items.forEach(function(item) {
                     if(item.id === that.defaultId) {
+                        console.log('selected');
                         that.selectInput = item.title;
                         that.val = item.id;
                     }
