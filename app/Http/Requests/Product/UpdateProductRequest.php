@@ -30,7 +30,6 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url_key' => 'required|unique:products',
             'price' => 'required|numeric',
             'description' => '',
             'qty' => 'numeric',

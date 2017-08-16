@@ -100,6 +100,7 @@ class ProductController extends Controller
     {
       $request["producer_type_product_id"] = null;
     }
+    $request['url_key'] = \Slug::make($request["title"]);
     $product = Product::create($request);
     $id = $product->id;
     foreach ($arr_id as $item) {
@@ -185,6 +186,7 @@ class ProductController extends Controller
     {
       $productRequest["producer_type_product_id"] = null;
     }
+    $productRequest['url_key'] = \Slug::make($productRequest["title"]);
     Product::where('id', $id)->update($productRequest);
     foreach ($arr_id as $item) {
       File::where('id', $item)->update(['fileable_id'=>$id, 'fileable_type'=>$model_name]);

@@ -51,10 +51,6 @@
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('url_key','URL-адрес') !!}
-                {!! Form::text('url_key', null, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
                 {!! Form::label('article','Артикул') !!}
                 {!! Form::text('article', null, ['class' => 'form-control']) !!}
             </div>
