@@ -25,7 +25,7 @@
             return {
                 csrfToken: Laravel.csrfToken,
                 dzOptions: {
-                    dictDefaultMessage: '<br>Переместите файлы для загрузки',
+                    dictDefaultMessage: '<br>Переместите файлы для загрузки ',
                 },
             }
         },
