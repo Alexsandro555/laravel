@@ -2,7 +2,7 @@
     <div>
         <p>Загрузчик файлов</p>
 
-        <dropzone id="myVueDropzone" acceptedFileTypes="image/*" :url="url" v-on:vdropzone-success="showSuccess" v-on:vdropzone-error="showError"  v-on:vdropzone-mounted="dropzoneMounted"  v-bind:useFontAwesome=true v-bind:language=dzOptions ref="myVueDropzone" v-on:vdropzone-removed-file="fileRemoved">
+        <dropzone id="myVueDropzone" acceptedFileTypes="image/*" :url="url" v-on:vdropzone-success="showSuccess" v-on:vdropzone-error="showError"  v-on:vdropzone-mounted="dropzoneMounted"  v-bind:useFontAwesome=true v-bind:language=dzOptions ref="myVueDropzone" v-on:vdropzone-removed-file="fileRemoved" v-bind:maxNumberOfFiles="10">
             <!-- Optional parameters if any! -->
             <input type="hidden" name="_token" :value="csrfToken">
         </dropzone>
@@ -69,7 +69,7 @@
                         let filename = image.filename;
                         let size = image.size;
                         let mockFile = {id: id, name: filename, size: size};
-                        dropzone.manuallyAddFile(mockFile,"/storage/icons/"+filename);
+                        dropzone.manuallyAddFile(mockFile,"/storage/icons/"+filename,null,null,{dontSubstractMaxFiles: false, addToFiles: true});
                     }
                 }).catch(function (error)
                 {
