@@ -39,20 +39,16 @@
         },
         mounted: function ()
         {
-            //console.log(this.items);
             let that = this;
             if(this.defaultId) {
-                //console.log(this.items);
                 this.items.forEach(function(item) {
                     if(item.id === that.defaultId) {
-                        console.log('selected');
                         that.selectInput = item.title;
                         that.val = item.id;
                     }
                 });
             }
             this.$watch('items', function(newItem) {
-                //console.log('wo');
                 if(newItem.length)
                 {
                     this.selectInput = newItem[0].title;
@@ -76,29 +72,7 @@
             close: function() {
                 this.isVisible=false;
             },
-            /*updateVal: function() {
-                console.log(this.items);
-                if(this.items.length>0) {
-                    console.log('change');
-                    this.selectInput = this.items[0].title;
-                    this.val = this.items[0].id;
-                }
-            }*/
         },
-        /*watch: {
-            items: function(newItem) {
-                //console.log("New Item: "+JSON.stringify(newItem));
-                 if(newItem.length)
-                 {
-                    this.selectInput = newItem[0].title;
-                    this.val = newItem[0].id;
-                 }
-                 else {
-                    this.selectInput = "";
-                    this.val = 0;
-                 }
-            }
-        }*/
     }
 </script>
 <style>

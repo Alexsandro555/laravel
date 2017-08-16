@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="form-group" >
             <label for="typeproducts">Тип продукции</label>
             <Tselect v-bind:nameelement="'type_product_id'" v-bind:items="type_product_el" v-on:selectelement="selectelement" v-bind:defaultId="defaultTypeProduct"  v-bind:placeholder="'Выбирите тип продукции'"></Tselect>
@@ -29,9 +28,6 @@
                 type_product_el: this.normalizeForSelectBox(this.elementsArr, 'type_product_id'),
             }
         },
-        mounted() {
-          //console.log("elementsArr: "+JSON.stringify(this.elementsArr));
-        },
         methods: {
             startVal: function(elementsVal) {
                 if(elementsVal.type_product_id.length > 0 ) {
@@ -59,7 +55,6 @@
                         });
                     }
                     let resFilteredVal = {"type_product_id":minItem};
-                    console.log(resFilteredVal);
                     return resFilteredVal;
                 }
                 else return [];
@@ -102,7 +97,6 @@
                     });
                 });
                 items.sort(this.asc('sort'));
-                //console.log(items);
                 return items;
             },
             asc: function(field) {
