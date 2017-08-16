@@ -29,13 +29,13 @@ class UploadController extends Controller
                                ],500);
         }
 
-        $uploadiconSuccess = $this->icons( $file, $allowed_filename );
+        /*$uploadiconSuccess = $this->icons( $file, $allowed_filename );
         if(!$uploadiconSuccess) {
             return response()->json([
                 'error' => true,
                 'code' => 500
             ],500);
-        }
+        }*/
 
         $size = $this->size($file);
         $file = File::create([

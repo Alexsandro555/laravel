@@ -48,7 +48,7 @@
                 console.log(file);
             },
             'fileRemoved': function(file)  {
-                console.log('Deleting: '+file.id);
+                //console.log('Deleting: '+file.id);
                 let id = file.id;
                 this.axios.get('/deleteFile/'+id, {}).then(function (response) {
                 }).catch(function (error)
@@ -69,7 +69,7 @@
                         let filename = image.filename;
                         let size = image.size;
                         let mockFile = {id: id, name: filename, size: size};
-                        dropzone.manuallyAddFile(mockFile,"/storage/icons/"+filename,null,null,{dontSubstractMaxFiles: false, addToFiles: true});
+                        dropzone.manuallyAddFile(mockFile,"/storage/"+filename,null,null,{dontSubstractMaxFiles: false, addToFiles: true});
                     }
                 }).catch(function (error)
                 {
