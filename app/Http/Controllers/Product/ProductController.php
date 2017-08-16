@@ -92,6 +92,14 @@ class ProductController extends Controller
     $arr_id = json_decode($files_id);
     $model_name = $productRequest->model;
     $request = $productRequest->all();
+    if($request["producer_id"]== "0")
+    {
+      $request["producer_id"] = null;
+    }
+    if($request["producer_type_product_id"] == "0")
+    {
+      $request["producer_type_product_id"] = null;
+    }
     $product = Product::create($request);
     $id = $product->id;
     foreach ($arr_id as $item) {
