@@ -191,7 +191,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /* Slug */
-        Alexusmai\Ruslug\RuslugServiceProvider::class,
+        //Alexusmai\Ruslug\RuslugServiceProvider::class,
     ],
 
     /*
@@ -244,7 +244,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-        'Slug' => Alexusmai\Ruslug\RuslugFacade::class,
+        //'Slug' => Alexusmai\Ruslug\RuslugFacade::class,
     ],
 
 ];
