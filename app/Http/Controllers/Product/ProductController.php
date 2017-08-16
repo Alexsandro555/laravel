@@ -177,6 +177,14 @@ class ProductController extends Controller
     $model_name = $request->model;
     $id = (int)$id;
     $productRequest = $request->except('_token','files_ids','model');
+    if($productRequest["producer_id"]== "0")
+    {
+      $productRequest["producer_id"] = null;
+    }
+    if($productRequest["producer_type_product_id"] == "0")
+    {
+      $productRequest["producer_type_product_id"] = null;
+    }
     Product::where('id', $id)->update($productRequest);
     foreach ($arr_id as $item) {
       File::where('id', $item)->update(['fileable_id'=>$id, 'fileable_type'=>$model_name]);
