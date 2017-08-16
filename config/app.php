@@ -190,7 +190,7 @@ return [
         /* Cart */
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
-        /* Slug */
+
         //Alexusmai\Ruslug\RuslugServiceProvider::class,
     ],
 
