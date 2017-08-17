@@ -46,8 +46,8 @@
                     }
                     else
                     {
-                        console.log("ElementsVal: "+elementsVal.type_product_id);
                         let sort = elementsVal.type_product_id[0].sort;
+                        minItem = elementsVal.type_product_id[0];
                         elementsVal.type_product_id.forEach(function(item, i, arr)
                         {
                             if(item.sort < sort)
@@ -57,7 +57,6 @@
                         });
                     }
                     let resFilteredVal = {"type_product_id":minItem};
-                    console.log(resFilteredVal);
                     return resFilteredVal;
                 }
                 else return [];
