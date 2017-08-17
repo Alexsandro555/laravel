@@ -46,6 +46,7 @@
                     }
                     else
                     {
+                        console.log("ElementsVal: "+elementsVal.type_product_id);
                         let sort = elementsVal.type_product_id[0].sort;
                         elementsVal.type_product_id.forEach(function(item, i, arr)
                         {
