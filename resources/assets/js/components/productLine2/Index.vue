@@ -56,6 +56,7 @@
                         });
                     }
                     let resFilteredVal = {"type_product_id":minItem};
+                    console.log(resFilteredVal);
                     return resFilteredVal;
                 }
                 else return [];
