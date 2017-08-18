@@ -1,10 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\File;
+use App\TypeProduct;
+
 class WackerController extends Controller
 {
     public function index() {
-        return view('wacker.index');
+      $typeProducts = TypeProduct::with('files')->get();
+      return view('wacker.index', compact('typeProducts'));
     }
 
     public function catalog() {

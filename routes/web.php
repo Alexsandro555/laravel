@@ -155,6 +155,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'as'=>'csv-upload'
         ]);
 
+  Route::get('/product/{id}', ['uses' => 'Product\ProductController@elements', 'as' => 'product-elements']);
+
     /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
     // установка атрибутов для типа продукта
     Route::get('/product/setAttributes', ['uses' => 'Product\ProductController@setAttributes', 'as' => 'set-attributes']);
@@ -188,25 +190,33 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('product/line', ['uses' => 'Product\ProductController@line', 'as' => 'line-product']);
     Route::get('/product/getAllTypeProducts', ['uses' => 'Product\ProductController@allTypeProduct', 'as' => 'type-product']);
 
+
+    ////////////////////////////////////ТИП ПРОДУКЦИИ/////////////////////////////////////////////
     // Добавление типа продукции
-    Route::get('product/typeProduct/add', ['uses' => 'Product\ProductController@addTypeProduct', 'as' => 'type-product-add']);
+    Route::get('product/typeProduct/add', ['uses' => 'TypeProduct\TypeProductController@add', 'as' => 'type-product-add']);
     // Обработка добавления типа продукции
     Route::post('/product/typeProduct/add',
         [
             'before' => 'csrf',
-            'uses' => 'Product\ProductController@addTypeProductHandler',
+            'uses' => 'TypeProduct\TypeProductController@addHandler',
             'as'=>'type-product-add'
         ]);
     // Обновление типа продукции
-    Route::get('product/typeProduct/update/{id}', ['uses' => 'Product\ProductController@updateTypeProduct', 'as' => 'type-product-update']);
+    Route::get('product/typeProduct/update/{id}', ['uses' => 'TypeProduct\TypeProductController@update', 'as' => 'type-product-update']);
     // Обработка обновления типа продукции
     Route::post('/product/typeProduct/update/{id}',
         [
             'before' => 'csrf',
-            'uses' => 'Product\ProductController@updateTypeProductHandler',
+            'uses' => 'TypeProduct\TypeProductController@updateHandler',
             'as'=>'type-product-update'
         ]);
+    // Список типов продукции
+    Route::get('/product/typeProduct/list',['uses' => 'TypeProduct\TypeProductController@list', 'as' => 'list-type-product']);
 
+
+
+
+    ///////////////////////////////////////АТРИБУТЫ/////////////////////////////////////////////////////
     // Создание нового атрибута
     Route::get('product/attribute/create', ['uses' => 'Product\ProductController@createAttribute', 'as' => 'create-attribute']);
     // Обработка создания нового атрибута
@@ -227,14 +237,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'as'=>'add-producer'
         ]);
 
-    // Добавление линейки продукции
-    Route::get('product/line/add', ['uses' => 'Product\ProductController@addLine', 'as' => 'add-line']);
-    Route::post('/product/line/add',
-        [
-            'before' => 'csrf',
-            'uses' => 'Product\ProductController@addProductLineHandler',
-            'as'=>'add-line'
-        ]);
+
+
+  /////////////////////////ЛИНЕЙКА ПРОДУКЦИИ///////////////////////////////////////
+  // Добавление линейки продукции
+  Route::get('product/line/add', ['uses' => 'LineProduct\LineProductController@add', 'as' => 'add-line']);
+  Route::post('/product/line/add',
+      [
+          'before' => 'csrf',
+          'uses' => 'LineProduct\LineProductController@addHandler',
+          'as'=>'add-line'
+      ]);
+  // Обновление линейки продукции
+  Route::get('product/line/update/{id}', ['uses' => 'LineProduct\LineProductController@update', 'as' => 'update-line']);
+  // Обработка обновления линейки продукции
+  Route::post('/product/line/update/{id}',
+    [
+      'before' => 'csrf',
+      'uses' => 'LineProduct\LineProductController@updateHandler',
+      'as'=>'update-line'
+    ]);
+  // Список линейки продукции
+  Route::get('/product/line/list',['uses' => 'LineProduct\LineProductController@list', 'as' => 'list-line']);
 
     ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
     Route::get('/testAdminLTE', function(){

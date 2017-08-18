@@ -527,15 +527,7 @@ class ProductController extends Controller
   }
 
 
-  /**
-   *
-   * Add TypeProduct
-   */
-  public function addTypeProduct()
-  {
-    $tnved = Tnved::all()->pluck('title','id');
-    return view('product.typeProduct.add', compact('tnved'));
-  }
+
 
   /**
    *
@@ -583,13 +575,26 @@ class ProductController extends Controller
         $typeProductRequest = $request->except('_token','file');
         TypeProduct::where('id', $id)->update($typeProductRequest);
         if($file) {
-            $currentFile = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
+          $currentFile = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
+          if($currentFile)
+          {
             $currentFile->delete();
-            $fileHandler = new FileHandler();
-            $fileHandler->upload($file, false, 'App\TypeProduct',$id);
+          }
+          $fileHandler = new FileHandler();
+          $fileHandler->upload($file, false, 'App\TypeProduct',$id);
         }
         return redirect()->route('list-categories',['id' => 1]);
     }
+
+
+  /**
+   * List Type Products
+   * @return \Illuminate\Http\Response
+   */
+  public function listTypeProduct() {
+    $typeProducts = TypeProduct::All();
+    return view('product.typeProduct.list',compact('typeProducts'));
+  }
 
   /**
    *
@@ -636,27 +641,15 @@ class ProductController extends Controller
     return redirect()->route('list-categories',['id' => 1]);
   }
 
-    /**
-     *
-     * Add Product Line
-     */
-    public function addLine()
-    {
-        $typeProducts = TypeProduct::all()->pluck('title','id');
-        $producers = Producer::all()->pluck('title','id');
-        return view('product.line.add', compact('typeProducts','producers'));
-    }
 
-    /**
-     *
-     * Add Product Line Handler
-     * @param StoreProductLineRequest $productLineRequest
-     * @return \Illuminate\Http\Redirect
-     */
-    public function addProductLineHandler(StoreProductLineRequest $productLineRequest)
-    {
-        $request = $productLineRequest->except(['_token']);
-        $producer = ProducerTypeProduct::create($request);
-        return redirect()->route('list-categories',['id' => 1]);
-    }
+  /**
+   * Get Product Elements
+   * @param int $id
+   * @return JSON
+   */
+  public function elements($id) {
+    $products = Product::where('producer_type_product_id',$id)->first();
+    $id = $products->id;
+    return $products->toJson();
+  }
 }

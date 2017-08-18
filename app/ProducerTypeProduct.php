@@ -28,4 +28,8 @@ class ProducerTypeProduct extends Model
     public function products() {
         return $this->hasMany(Product::class);
     }
+
+  public function files() {
+    return $this->morphMany('App\File', 'fileable');
+  }
 }

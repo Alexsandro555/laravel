@@ -1,0 +1,41 @@
+<template>
+    <div>
+        <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
+            <slide v-for="item in items" :key="item.id">
+                <div class="service__content-slider">
+                    <div class="service__image">
+                        <img src="/css/wacker/img/service-slider1.png"/>
+                    </div><br><br>
+                    <a href="#">{{item.title}}</a><br><br>
+                    <span>{{item.price}} </span> р.
+                </div>
+            </slide>
+        </carousel>
+    </div>
+</template>
+<script>
+    export default {
+        props: {
+            url: String,
+        },
+        data: function() {
+            return {
+                items:[],
+            }
+        },
+        mounted() {
+            let that = this;
+            this.axios.get(this.url, {}).then(function (response)
+            {
+                let elements = response.data;
+                console.log(elements);
+                elements.forEach(function(element) {
+                    that.items.push(element);
+                });
+            }).catch(function (error)
+            {
+                console.log(error);
+            });
+        }
+    }
+</script>

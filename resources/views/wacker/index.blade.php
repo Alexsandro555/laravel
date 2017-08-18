@@ -147,15 +147,19 @@
                 <div class="service__content">
                     <div class="service__menu-slider" style="display: flex;">
                         <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :per-page-custom="[[480, 3], [768, 3]]">
+                            @foreach($typeProducts as $typeProduct)
                             <slide>
                                 <div class="service__content-slider">
                                     <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                                        @foreach($typeProduct->files as $file)
+                                            <img src="{{asset('/storage/'.$file->filename)}}"/>
+                                        @endforeach
                                     </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
+                                    <a href="#">{{$typeProduct->title}}</a><br><br>
                                     <span>3 123 456 </span> р.
                                 </div>
                             </slide>
+                            @endforeach
                             <slide>
                                 <div class="service__content-slider">
                                     <div class="service__image">

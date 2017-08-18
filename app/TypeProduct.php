@@ -41,4 +41,8 @@ class TypeProduct extends Model
     public function attributes() {
         return $this->belongsToMany('App\Attribute')->withPivot('type_product_id','attribute_id');
     }
+
+  public function files() {
+    return $this->morphMany('App\File', 'fileable');
+  }
 }

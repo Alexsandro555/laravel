@@ -119,7 +119,6 @@
 </div>
 @stop
 
-
 @section('content')
     <div class="sub-catalog-wrapper">
         <div class="sub-catalog">
@@ -300,73 +299,8 @@
                         <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
                         <img src="{{asset('css/wacker/img/gears-orange.png')}}" />
                     </div>
-                    <div class="service__menu-slider" style="display: flex;">
-                        <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                        </carousel>
-                    </div>
+                    <?php $first = 3; ?>
+                    <leader-slider :url="'/admin/product/{{$first}}'"></leader-slider>
                 </div>
             </div>
         </div>

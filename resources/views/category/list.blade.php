@@ -46,18 +46,80 @@
         </tbody>
     </table>
     <div>
-        <div style="float: left;: left">
-            <a href="{{route('add-product')}}" class="btn btn-info btn-sm">Добавить</a>
-            <div class="btn-group btn-group-sm">
-                <a href="{{route('tnved-csv')}}" class="btn btn-info">Загрузить ТНВЭД</a>
-                <a href="{{route('type-product-add')}}" class="btn btn-info">Добавить тип продукции</a>
-                <a href="{{route('add-producer')}}" class="btn btn-info">Добавить производителя</a>
-                <a href="{{route('add-line')}}" class="btn btn-info">Добавить линейку продукции</a>
+        <div style="float: left; width: 79%">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Линейка продукции</div>
+                <div class="panel-body">
+                    <a href="{{route('add-product')}}" class="btn btn-info">Добавить</a>
+
+                    <div class="btn-group btn-group">
+                        <a href="{{route('tnved-csv')}}" class="btn btn-info">Загрузить ТНВЭД</a>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Тип продукции
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{route('type-product-add')}}">Добавить</a></li>
+                                <li><a href="{{route('list-type-product')}}">Список</a></li>
+                            </ul>
+                        </div>
+                        <a href="{{route('add-producer')}}" class="btn btn-info">Добавить производителя</a>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Линейка продукции
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{route('add-line')}}">Добавить</a></li>
+                                <li><a href="{{route('list-line')}}">Список</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Атрибуты</div>
+                <div class="panel-body">
+                    <div class="btn-group btn-group">
+
+                        <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
+                        <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Dropdown link</a></li>
+                                <li><a href="#">Dropdown link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="btn-group btn-group">
+
                 <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
                 <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown link</a></li>
+                        <li><a href="#">Dropdown link</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div style="float:right">{{ $products->links() }}</div>
+        <div style="float:right; width: 19%; text-align: right">{{ $products->links() }}</div>
         <div style="clear:both"></div>
     </div>
 

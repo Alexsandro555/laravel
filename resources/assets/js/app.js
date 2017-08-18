@@ -58,14 +58,15 @@ Vue.component('selectbox', require('./components/selectbox/Index.vue'));
 Vue.component('attributes-product', require('./components/attributesProduct/Index.vue'));
 Vue.component('lselect', require('./components/lSelect/Index.vue'));
 Vue.component('Tselect', require('./components/TSelect/Index.vue'));
+Vue.component('leader-slider', require('./components/leader-slider/Index.vue'));
 //Vue.component('alex-carousel', require('./components/alex-carousel/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
 
-axios.interceptors.request.use(function (config) {
+/*axios.interceptors.request.use(function (config) {
     config.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
     return config;
-});
+});*/
 
 window.bus = new Vue();
 

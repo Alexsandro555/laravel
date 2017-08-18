@@ -28,14 +28,14 @@
     <!--Конец сообщений валидации-->
 
     @if (isset($line))
-        {!! Form::model($line, ['route' => ['update-line', $line->id]]) !!}
+        {!! Form::model($line, ['route' => ['update-line', $line->id], 'files' => true]) !!}
     @else
-        {!! Form::open(['route' => 'add-line', 'method' => 'post']) !!}
+        {!! Form::open(['route' => 'add-line', 'method' => 'post', 'files' => true]) !!}
     @endif
     <div class="form-group">
-        {!! Form::label('type_product_id','Товарный номер вида экономической деятельности') !!}
+        {!! Form::label('type_product_id','Тип продукции') !!}
         @if(isset($line))
-            {!! Form::select('type_product_id', $typeProducts, $lines->type_product_id, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
+            {!! Form::select('type_product_id', $typeProducts, $line->type_product_id, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
         @else
             {!! Form::select('type_product_id', $typeProducts, null, ['placeholder' => 'Выберите тип продукции','class' => 'form-control']) !!}
         @endif
@@ -43,7 +43,7 @@
     <div class="form-group">
         {!! Form::label('producer_id','Производитель') !!}
         @if(isset($line))
-            {!! Form::select('producer_id', $producers, $lines->producer_id, ['placeholder' => 'Выберите производителя','class' => 'form-control']) !!}
+            {!! Form::select('producer_id', $producers, $line->producer_id, ['placeholder' => 'Выберите производителя','class' => 'form-control']) !!}
         @else
             {!! Form::select('producer_id', $producers, null, ['placeholder' => 'Выберите производителя','class' => 'form-control']) !!}
         @endif
@@ -55,6 +55,14 @@
     <div class="form-group">
         {!! Form::label('sort','Сортировка') !!}
         {!! Form::text('sort', null, ['class' => 'form-control']) !!}
+        @if(isset($file))
+            <br>
+            <img src="{{ asset('storage/'.$file->filename) }}" width="98px" height="173px"/>
+        @endif
+    </div>
+    <div class="form-group">
+        {!! Form::label('file','Изображение') !!}
+        {!! Form::file('file') !!}
     </div>
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
     {!! Form::token() !!}

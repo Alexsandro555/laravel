@@ -20,7 +20,7 @@ class FileHandler
         $filename = $this->sanitize($originalNameWithoutExt);
         $allowed_filename = $this->createUniqueFilename( $filename, $extension );
         if($resize) {
-            $uploadiconSuccess = $this->icons( $file, $allowed_filename, $width, $height, $path );
+            $uploadiconSuccess = $this->icons( $file, $allowed_filename, $width, $height, $this->path );
             if(!$uploadiconSuccess) {
                 return false;
             }
@@ -90,7 +90,7 @@ class FileHandler
     private function icons( $photo, $filename, $width, $height, $path )
     {
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->resize($width,$height)->save(storage_path($this->pathIcon) . $filename );
+        $image = $manager->make( $photo )->resize($width,$height)->save(storage_path($this->path) . $filename );
         return $image;
     }
 }
