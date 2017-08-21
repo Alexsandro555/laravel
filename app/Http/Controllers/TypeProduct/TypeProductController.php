@@ -83,7 +83,7 @@ class TypeProductController extends Controller
    * List Type Products
    * @return \Illuminate\Http\Response
    */
-  public function list() {
+  public function showList() {
     $typeProducts = TypeProduct::All();
     return view('product.typeProduct.list',compact('typeProducts'));
   }

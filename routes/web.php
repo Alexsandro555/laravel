@@ -211,7 +211,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'as'=>'type-product-update'
         ]);
     // Список типов продукции
-    Route::get('/product/typeProduct/list',['uses' => 'TypeProduct\TypeProductController@list', 'as' => 'list-type-product']);
+    Route::get('/product/typeProduct/list',['uses' => 'TypeProduct\TypeProductController@showList', 'as' => 'list-type-product']);
 
 
 
@@ -258,7 +258,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
       'as'=>'update-line'
     ]);
   // Список линейки продукции
-  Route::get('/product/line/list',['uses' => 'LineProduct\LineProductController@list', 'as' => 'list-line']);
+  Route::get('/product/line/list',['uses' => 'LineProduct\LineProductController@showList', 'as' => 'list-line']);
 
     ////////////////////////////СОЗДАНИЕ ТАБЛИЦ//////////////////////////////
     Route::get('/testAdminLTE', function(){

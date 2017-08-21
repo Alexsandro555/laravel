@@ -86,7 +86,7 @@ class LineProductController extends Controller
    * Line Products
    * @return \Illuminate\Http\Response
    */
-  public function list() {
+  public function showList() {
     $producerTypeProducts = ProducerTypeProduct::All();
     return view('product.line.list',compact('producerTypeProducts'));
   }
