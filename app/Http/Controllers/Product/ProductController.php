@@ -647,9 +647,8 @@ class ProductController extends Controller
    * @param int $id
    * @return JSON
    */
-  public function elements($id) {
-    $products = Product::where('producer_type_product_id',$id)->first();
-    $id = $products->id;
+  public function elementsLine($id) {
+    $products = Product::with('files')->where('producer_type_product_id',$id)->get();
     return $products->toJson();
   }
 }

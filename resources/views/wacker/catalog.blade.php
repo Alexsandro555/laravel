@@ -299,8 +299,8 @@
                         <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
                         <img src="{{asset('css/wacker/img/gears-orange.png')}}" />
                     </div>
-                    <?php $first = 3; ?>
-                    <leader-slider :url="'/admin/product/{{$first}}'"></leader-slider>
+                    <?php $first = 5; ?>
+                    <leader-slider :url="'/admin/product-line/{{$first}}'"></leader-slider>
                 </div>
             </div>
         </div>

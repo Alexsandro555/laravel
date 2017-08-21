@@ -4,7 +4,7 @@
             <slide v-for="item in items" :key="item.id">
                 <div class="service__content-slider">
                     <div class="service__image">
-                        <img src="/css/wacker/img/service-slider1.png"/>
+                        <img :src="'/storage/'+item.file" height="100px"/>
                     </div><br><br>
                     <a href="#">{{item.title}}</a><br><br>
                     <span>{{item.price}} </span> р.
@@ -28,9 +28,9 @@
             this.axios.get(this.url, {}).then(function (response)
             {
                 let elements = response.data;
-                console.log(elements);
                 elements.forEach(function(element) {
-                    that.items.push(element);
+                    let obj = {'id': element.id, 'title': element.title, 'price': element.price, 'file': element.files.shift().filename};
+                    that.items.push(obj);
                 });
             }).catch(function (error)
             {

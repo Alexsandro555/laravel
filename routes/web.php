@@ -155,7 +155,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'as'=>'csv-upload'
         ]);
 
-  Route::get('/product/{id}', ['uses' => 'Product\ProductController@elements', 'as' => 'product-elements']);
+  Route::get('/product-line/{id}', ['uses' => 'Product\ProductController@elementsLine', 'as' => 'product-elements-line']);
 
     /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
     // установка атрибутов для типа продукта
