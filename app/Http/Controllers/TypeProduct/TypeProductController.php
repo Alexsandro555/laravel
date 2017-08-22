@@ -37,7 +37,7 @@ class TypeProductController extends Controller
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
     $fileHandler = new FileHandler();
-    $fileHandler->upload($file, true, 'App\TypeProduct',$id, 72, 89);
+    $fileHandler->upload($file, false, 'App\TypeProduct',$id);
     return redirect()->route('type-product-update',['id' => $id]);
   }
 
@@ -77,7 +77,7 @@ class TypeProductController extends Controller
         $currentFile->delete();
       }
       $fileHandler = new FileHandler();
-      $fileHandler->upload($file, true, 'App\TypeProduct',$id, 72, 89);
+      $fileHandler->upload($file, false, 'App\TypeProduct',$id);
     }
     return redirect()->route('list-categories',['id' => 1]);
   }
