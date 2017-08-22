@@ -18,7 +18,7 @@ class TypeProductController extends Controller
    */
   public function add()
   {
-    $tnved = Tnved::all()->pluck('title','id');
+    $tnved = Tnved::orderBy('active','DESC')->get()->pluck('title','id');
     return view('product.typeProduct.add', compact('tnved'));
   }
 
@@ -31,6 +31,8 @@ class TypeProductController extends Controller
   public function addHandler(StoreTypeProductRequest $typeProductRequest)
   {
     $request = $typeProductRequest->except(['_token','file']);
+    $tnved_id = $typeProductRequest->tnved_id;
+    Tnved::where('id',$tnved_id)->where('active',0)->update(['active' => 1]);
     $typeProduct = TypeProduct::create($request);
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
@@ -47,7 +49,7 @@ class TypeProductController extends Controller
   public function update($id)
   {
     $id = (int)$id;
-    $tnved = Tnved::all()->pluck('title','id');
+    $tnved = Tnved::orderBy('active','DESC')->get()->pluck('title','id');
     $typeProduct = TypeProduct::find($id);
     $file = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
     return view('product.typeProduct.add', compact('typeProduct', 'file', 'tnved'));
@@ -66,6 +68,8 @@ class TypeProductController extends Controller
     $id = (int)$id;
     $typeProductRequest = $request->except('_token','file');
     TypeProduct::where('id', $id)->update($typeProductRequest);
+    $tnved_id = $request->tnved_id;
+    Tnved::where('id',$tnved_id)->where('active',0)->update(['active' => 1]);
     if($file) {
       $currentFile = File::where('fileable_id',$id)->where('fileable_type','App\TypeProduct')->first();
       if($currentFile)

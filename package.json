@@ -26,6 +26,7 @@
     "webpack": "^2.6.0"
   },
   "dependencies": {
+    "bootstrap-select": "^1.12.4",
     "ckeditor": "^4.6.2",
     "clonedeep": "^2.0.0",
     "laravel-elixir-vue-2": "^0.3.0",

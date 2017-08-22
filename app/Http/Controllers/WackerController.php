@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\ProducerTypeProduct;
 use App\TypeProduct;
 
 class WackerController extends Controller
@@ -11,8 +12,13 @@ class WackerController extends Controller
       return view('wacker.index', compact('typeProducts'));
     }
 
-    public function catalog() {
-        return view('wacker.catalog');
+    public function catalog($id) {
+      $producerTypeProducts = ProducerTypeProduct::with('files')->where('type_product_id',$id)->get();
+      foreach ($producerTypeProducts as $producerTypeProduct)
+      {
+
+      }
+      return view('wacker.catalog', compact('producerTypeProducts'));
     }
 
     public function detail() {

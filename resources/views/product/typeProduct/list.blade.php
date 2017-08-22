@@ -24,6 +24,7 @@
         @endforeach
         </tbody>
     </table>
+    <a href="{{route('type-product-add')}}" class="btn btn-primary">Добавить</a>
     <a href="{{route('list-categories',['id' => 1])}}" class="btn btn-info">К спииску продукции</a>
 @section('view.scripts')
 

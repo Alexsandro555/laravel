@@ -87,35 +87,7 @@
 
                         <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
                         <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Dropdown link</a></li>
-                                <li><a href="#">Dropdown link</a></li>
-                            </ul>
-                        </div>
                     </div>
-                </div>
-            </div>
-
-
-
-            <div class="btn-group btn-group">
-
-                <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
-                <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li>
-                    </ul>
                 </div>
             </div>
         </div>

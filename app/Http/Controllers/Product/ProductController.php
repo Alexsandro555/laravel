@@ -515,9 +515,9 @@ class ProductController extends Controller
     $SqlStr = '';
     if (($handle = fopen("../public/images/csv/tnved.csv", "r")) !== FALSE)
     {
-      while (($data = fgetcsv($handle, 5000, ";")) !== FALSE)
+      while (($data = fgetcsv($handle, 5000, ",")) !== FALSE)
       {
-        $tnved = DB::table('tnved')->insert(['title' => $data[0], 'service' => $data[1],'active' => $data[2]]);
+        $tnved = DB::table('tnved')->insert(['title' => $data[0], 'service' => $data[1],'active' => $data[2], 'code' => $data[3]]);
       }
       echo "Успешно загружено";
       return;

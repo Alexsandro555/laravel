@@ -50,72 +50,21 @@
 </div>
 <div class="clear"></div>
 <div class="main_products">
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
-    <div class="main_products__item">
-        <div class="main_products__image">
-            <img src="{{asset('css/wacker/img/main_product__image.png')}}"/>
-        </div><br>
-        <div class="main_products__line">Высокочастотные вибраторы (от сети 220 V~)</div>
-    </div>
+    @foreach($producerTypeProducts as $producerTypeProduct)
+        <div class="main_products__item">
+            <div class="main_products__image">
+                @if(!empty($product->files))
+                    @foreach($producerTypeProduct->files as $file)
+                        <img src="{{asset('../storage/'.$file->filename)}}"/>
+                        <?php break; ?>
+                    @endforeach
+                @else
+                    <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
+                @endif
+            </div><br>
+            <div class="main_products__line"><a href="#">{{$producerTypeProduct->name_line}}</a></div>
+        </div>
+    @endforeach
 </div>
 @stop
 

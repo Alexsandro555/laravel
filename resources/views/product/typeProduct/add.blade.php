@@ -59,6 +59,8 @@
         {!! Form::file('file') !!}
     </div>
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
+    {{link_to_route('list-type-product','К списку типов',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
     {!! Form::token() !!}
     {!! Form::close() !!}
 @stop
+
