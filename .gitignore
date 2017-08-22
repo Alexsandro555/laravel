@@ -14,5 +14,6 @@ npm-debug.log
 /public/build
 /public/images/upload
 /public/images/icon
+/public/images/csv/tnved.csv
 
 
