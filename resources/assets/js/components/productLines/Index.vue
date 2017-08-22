@@ -84,6 +84,7 @@
                 }
             },
             selectelement: function(id) {
+                console.log('work');
                 this.producers = this.normalizeForSelectBox(this.arrProducers[id]);
                 this.producerTypeProducts = this.normalizeForSelectBox(this.arrProducerTypeProducts[id]);
             },

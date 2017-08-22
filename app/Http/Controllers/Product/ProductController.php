@@ -12,6 +12,7 @@ use App\Producer;
 use App\File;
 use App\ProducerTypeProduct;
 use App\Tnved;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
@@ -23,6 +24,7 @@ use App\Http\Requests\Product\AttributeRequest;
 use App\Http\Requests\Product\StoreProductLineRequest;
 use App\Http\Requests\Product\StoreAttributeRequest;
 use App\Http\Requests\Product\UpdateTypeProductRequest;
+use Mockery\CountValidator\Exception;
 use Mockery\Matcher\Type;
 use Illuminate\Support\Facades\DB;
 use App\FileHandler;
@@ -517,7 +519,12 @@ class ProductController extends Controller
     {
       while (($data = fgetcsv($handle, 5000, ",")) !== FALSE)
       {
-        $tnved = DB::table('tnved')->insert(['title' => $data[0], 'service' => $data[1],'active' => $data[2], 'code' => $data[3]]);
+        try {
+          $tnved = DB::table('tnved')->insert(['id'=> $data[3], 'title' => $data[0], 'service' => $data[1],'active' => $data[2]]);
+        }
+        catch (QueryException $e) {
+            echo "Возникла ошибка";
+        }
       }
       echo "Успешно загружено";
       return;
@@ -525,8 +532,6 @@ class ProductController extends Controller
     echo "Загрузка не удалась, не найден файл";
     return;
   }
-
-
 
 
   /**

@@ -20,7 +20,7 @@ class CreateTypeProductsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
-            $table->foreign('tnved_id')->references('id')->on('tnved')->onDelete('cascade');
+            //$table->foreign('tnved_id')->references('id')->on('tnved')->onDelete('cascade');
         });
     }
 
@@ -31,9 +31,9 @@ class CreateTypeProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('type_products', function (Blueprint $table) {
+        /*Schema::table('type_products', function (Blueprint $table) {
             $table->dropForeign('type_products_tnved_id_foreign');
-        });
+        });*/
         Schema::dropIfExists('type_products');
     }
 }

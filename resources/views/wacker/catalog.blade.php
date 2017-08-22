@@ -53,171 +53,51 @@
     @foreach($producerTypeProducts as $producerTypeProduct)
         <div class="main_products__item">
             <div class="main_products__image">
-                @if(!empty($product->files))
+                @if(!empty($producerTypeProduct->files))
                     @foreach($producerTypeProduct->files as $file)
-                        <img src="{{asset('../storage/'.$file->filename)}}"/>
+                        <img class="main_products__img img-flex main_products_img-align" src="{{asset('../storage/'.$file->filename)}}"/>
                         <?php break; ?>
                     @endforeach
                 @else
                     <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
                 @endif
             </div><br>
-            <div class="main_products__line"><a href="#">{{$producerTypeProduct->name_line}}</a></div>
+            <div class="main_products__line"><a href="#">{{(strlen($producerTypeProduct->name_line) > 100)?substr($producerTypeProduct->name_line,0,50)."...":$producerTypeProduct->name_line}}</a></div>
         </div>
     @endforeach
 </div>
 @stop
 
 @section('content')
-    <div class="sub-catalog-wrapper">
+    <?php $firstProductLines = array_shift($productLine); ?>
+    @if ($firstProductLines)
+        <div class="sub-catalog-wrapper">
         <div class="sub-catalog">
             <br>
             <div class="about__header-catalog">
                 <h2>Модульные глубинные вибраторы</h2>
                 <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
+            <?php print_r($productLine); ?>
+            @foreach($firstProductLines as $firstProductLine)
+                <div class="sub-catalog__content-slider">
+                    <div class="wrap">
+                        <div class="sub-catalog__image">
+                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
+                        </div><br><br>
+                        <a href="#">{{$firstProductLine->title}}</a><br><br>
+                        <span>{{$firstProductLine->price}}</span> р.<br><br>
+                        <div class="sub-catalog__adv-info">
+                            <span class="sub-catalog__IEC">{{$firstProdutLine->IEC}}</span><br>
+                            <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
+                            <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-catalog__content-slider">
-                <div class="wrap">
-                    <div class="sub-catalog__image">
-                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                    </div><br><br>
-                    <a href="#">Название товара может быть длинным</a><br><br>
-                    <span>3 123 456 </span> р.<br><br>
-                    <div class="sub-catalog__adv-info">
-                        <span class="sub-catalog__IEC">IEC 38/230/5/15</span><br>
-                        <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                        <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
+    @endif
     <div class="wacker">
         <div class="wacker__wrapper">
             <div class="wacker__content">

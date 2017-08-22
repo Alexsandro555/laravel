@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="form-group" >
+        <div class="form-group">
             <label for="typeproducts">Тип продукции</label>
             <Tselect v-bind:nameelement="'type_product_id'" v-bind:items="type_product_el" v-on:selectelement="selectelement" v-bind:defaultId="defaultTypeProduct"  v-bind:placeholder="'Выбирите тип продукции'"></Tselect>
         </div>
@@ -68,7 +68,7 @@
                 {
                     if(item.id === id)
                     {
-                        filteredVal = arr.slice(id-1,id);
+                        filteredVal = arr.slice(i,i+1);
                     }
                 });
                 let resFilteredVal = {"type_product_id":filteredVal};
