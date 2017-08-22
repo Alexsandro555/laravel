@@ -37,7 +37,7 @@ class LineProductController extends Controller
     $producerTypeProduct = ProducerTypeProduct::create($request);
     $id = $producerTypeProduct->id;
     $fileHandler = new FileHandler();
-    $fileHandler->upload($file, true, 'App\ProducerTypeProduct',$id, 98, 173);
+    $fileHandler->upload($file, false, 'App\ProducerTypeProduct',$id);
     return redirect()->route('update-line',['id' => $id]);
   }
 
@@ -76,7 +76,7 @@ class LineProductController extends Controller
         $currentFile->delete();
       }
       $fileHandler = new FileHandler();
-      $fileHandler->upload($file, true, 'App\ProducerTypeProduct',$id, 98, 173);
+      $fileHandler->upload($file, false, 'App\ProducerTypeProduct',$id);
     }
     return redirect()->route('list-categories',['id' => 1]);
   }
