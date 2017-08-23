@@ -47,8 +47,9 @@
   z-index: 2;
 }
 
-.sub-catalog__content-slider .wrap:hover .sub-catalog__adv-info{
+.sub-catalog__content-slider .wrap:hover .sub-catalog__adv-info {
   display: inline-block;
+  padding-top: 10px;
 }
 
 
@@ -75,22 +76,28 @@
   font-family: $font-sans-bold;
 }
 
+.sub-catalog__price {
+  padding-top: 10px;
+}
+
 .sub-catalog__content-slider span {
   color: #FCDE4F;
   font-weigh: bold;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .sub-catalog__content-slider .wrap:hover .sub-catalog__IEC {
   font-size: 1.2em;
+  font-family: $font-sans-bold;
   color: #484848;
-  font-weight: bold;
 }
 
 .sub-catalog__content-slider .wrap:hover .sub-catalog-desc {
   font-size: 1em;
   color: #484848;
   text-align: center;
+  display: block;
+  padding: 5px 10px;
 }
 
 .sub-catalog__content-slider .wrap:hover .sub-catalog__detail{
