@@ -36,8 +36,11 @@ class TypeProductController extends Controller
     $typeProduct = TypeProduct::create($request);
     $id = $typeProduct->id;
     $file = $typeProductRequest->file('file');
-    $fileHandler = new FileHandler();
-    $fileHandler->upload($file, false, 'App\TypeProduct',$id);
+    if($file)
+    {
+      $fileHandler = new FileHandler();
+      $fileHandler->upload($file, false, 'App\TypeProduct',$id);
+    }
     return redirect()->route('type-product-update',['id' => $id]);
   }
 

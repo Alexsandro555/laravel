@@ -18,7 +18,13 @@ class WackerController extends Controller
       $productLine = [];
       foreach ($producerTypeProducts as $producerTypeProduct)
       {
-        $productLine[] = Product::where('producer_type_product_id',$producerTypeProduct->type_product_id)->get();
+        $tempArr['products'] = Product::with('files')->where('producer_type_product_id',$producerTypeProduct->id)->get();
+        if($tempArr['products']->first())
+        {
+          $tempArr['id'] = $producerTypeProduct->id;
+          $tempArr['title']= $producerTypeProduct->name_line;
+          $productLine[] = $tempArr;
+        }
       }
       return view('wacker.catalog', compact('producerTypeProducts','productLine'));
     }

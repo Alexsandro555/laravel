@@ -47,6 +47,10 @@
         @endif
     </div>
     <div class="form-group">
+        {!! Form::label('description','Описание') !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
         {!! Form::label('sort','Сортировка') !!}
         {!! Form::text('sort', null, ['class' => 'form-control']) !!}
         @if(isset($file))

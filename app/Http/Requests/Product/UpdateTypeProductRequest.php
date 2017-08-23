@@ -32,6 +32,7 @@ class UpdateTypeProductRequest extends FormRequest
             'title' => 'required',
             'tnved_id' => 'required',
             'sort' => 'required',
+            'description' => 'required'
         ];
     }
 

@@ -31,8 +31,9 @@ class StoreTypeProductRequest extends FormRequest
         return [
             'title' => 'required',
             'tnved_id' => 'required',
-            'file' => 'required',
             'sort' => 'required',
+            'description' => 'required'
+
         ];
     }
 

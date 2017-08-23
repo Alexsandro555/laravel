@@ -156,6 +156,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
         ]);
 
   Route::get('/product-line/{id}', ['uses' => 'Product\ProductController@elementsLine', 'as' => 'product-elements-line']);
+  Route::get('/special-product/', ['uses' => 'Product\ProductController@special', 'as' => 'special']);
 
     /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
     // установка атрибутов для типа продукта

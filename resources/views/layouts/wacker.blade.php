@@ -130,7 +130,17 @@
             </carousel>
         </div>
         <div class="menu-left-wrapper">
-            @yield('menu-left')
+            <div class="menu-left-wrapper">
+                <div class="menu-left">
+                    <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
+                    <ul>
+                        @foreach(App\MenuLeft::getMenu() as $menu)
+                            <li><a href="/wacker/catalog/{{$menu->id}}">{{$menu->title}}</a></li>
+                        @endforeach
+                    </ul>
+                    <div class="menu-left__toggle">СВЕРНУТЬ</div>
+                </div>
+            </div>
         </div>
 
             @yield('content-item')
@@ -155,36 +165,18 @@
     <div class="footer__container">
         <div class="footer__menu">
             <ul>
-                <li>ГЛУБИННЫЕ ВИБРАТОРЫ</li>
-                <li>ПРЕОБРАЗОВАТЕЛИ ЧАСТОТЫ</li>
-                <li>ВНЕШНИЕ ВИБРАТОРЫ</li>
-                <li>ЗАТИРОЧНЫЕ МАШИНЫ</li>
-                <li>ВИБРОРЕЙКИ</li>
-                <li>АРМАТУРНЫЙ ИНСТРУМЕНТ</li>
-                <li>ТЕЛЕСКОПИЧЕСКИЕ ПОРУЗЧИКИ</li>
-                <li>ДУМПЕРЫ</li>
-            </ul>
-        </div>
-        <div class="footer__menu">
-            <ul>
-                <li>ВИБРОПЛИТЫ</li>
-                <li>ВИБРОТРАМБОВКА</li>
-                <li>КАТКИ</li>
-                <li>ОСВЕТИТЕЛЬНЫЕ МАЧТЫ И ВЫШКИ</li>
-                <li>ТЕПЛОВОЕ ОБОРУДОВАНИЕ</li>
-                <li>ОТБОЙНЫЕ МОЛОТКИ</li>
-                <li>МИНИ ПОГРУЗЧИКИ</li>
-            </ul>
-        </div>
-        <div class="footer__menu">
-            <ul>
-                <li>ОСУШИТЕЛИ ВОЗДУХА</li>
-                <li>ШОВРЕЗЧИКИ И БЕНЗОРЕЗЫ</li>
-                <li>МОТОПОМПЫ</li>
-                <li>НАСОСЫ</li>
-                <li>ГЕНЕРАТОРЫ</li>
-                <li>ЭКСКАВАТОРЫ</li>
-                <li>ПОГРУЗЧИКИ</li>
+                <?php $counterMenu = 1; ?>
+                @foreach(App\MenuLeft::getMenu() as $menu)
+                    <li><a href="/wacker/catalog/{{$menu->id}}">{{$menu->title}}</a></li>
+                    <?php
+                        $counterMenu++;
+                        if($counterMenu>7)
+                        {
+                            echo "</ul></div><div class='footer__menu'><ul>";
+                            $counterMenu=1;
+                        }
+                    ?>
+                @endforeach
             </ul>
         </div>
         <div class="footer__info">

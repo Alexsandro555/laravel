@@ -655,4 +655,10 @@ class ProductController extends Controller
     $products = Product::with('files')->where('producer_type_product_id',$id)->get();
     return $products->toJson();
   }
+
+
+  public function special() {
+    $specialProducts = Product::with('files')->where('special',1)->get();
+    return $specialProducts->toJson();
+  }
 }

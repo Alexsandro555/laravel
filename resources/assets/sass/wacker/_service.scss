@@ -140,7 +140,14 @@
 	margin: auto;
 	display: inline-block;
 	width: 100%;
+	height: 180px;
+	line-height: 180px;
 	background: url(img/service-arrow.png) top center no-repeat;
+}
+
+.service__image img {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .service__content-slider a {

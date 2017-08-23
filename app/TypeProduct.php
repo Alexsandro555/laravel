@@ -13,6 +13,7 @@ class TypeProduct extends Model
         'title',
         'sort',
         'tnved_id',
+        'description'
 
     ];
 

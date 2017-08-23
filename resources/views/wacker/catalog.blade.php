@@ -1,37 +1,5 @@
 @extends('layouts.wacker')
 
-
-@section('menu-left')
-    <div class="menu-left">
-        <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
-        <ul>
-            <li>глубинные вибраторы</li>
-            <li>преобразователи частоты</li>
-            <li>внешние вибраторы</li>
-            <li>затирочные швы</li>
-            <li>виброрейки</li>
-            <li>арматурный инструмент</li>
-            <li>виброплиты</li>
-            <li>вибротрамбовка</li>
-            <li>катки</li>
-            <li>осветительные мачты и вышки</li>
-            <li>тепловое оборудование</li>
-            <li>отбойные молотки</li>
-            <li>осушители воздуха</li>
-            <li>шоврезчики и бензорезы</li>
-            <li>мотопомпы</li>
-            <li>насосы</li>
-            <li>генераторы</li>
-            <li>экскаваторы</li>
-            <li>погрузчики</li>
-            <li>думперы</li>
-            <li>телескопические погрузчики</li>
-            <li>мини погрузчики</li>
-        </ul>
-        <div class="menu-left__toggle">РАЗВЕРНУТЬ</div>
-    </div>
-@stop
-
 @section('content-item')
 <div class="content__catalog">
     <p class="breadrcumbs">
@@ -55,7 +23,7 @@
             <div class="main_products__image">
                 @if(!empty($producerTypeProduct->files))
                     @foreach($producerTypeProduct->files as $file)
-                        <img class="main_products__img img-flex main_products_img-align" src="{{asset('../storage/'.$file->filename)}}"/>
+                        <img src="{{asset('../storage/'.$file->filename)}}"/>
                         <?php break; ?>
                     @endforeach
                 @else
@@ -72,32 +40,40 @@
     <?php $firstProductLines = array_shift($productLine); ?>
     @if ($firstProductLines)
         <div class="sub-catalog-wrapper">
-        <div class="sub-catalog">
-            <br>
-            <div class="about__header-catalog">
-                <h2>Модульные глубинные вибраторы</h2>
-                <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
-            </div>
-            <?php print_r($productLine); ?>
-            @foreach($firstProductLines as $firstProductLine)
-                <div class="sub-catalog__content-slider">
-                    <div class="wrap">
-                        <div class="sub-catalog__image">
-                            <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                        </div><br><br>
-                        <a href="#">{{$firstProductLine->title}}</a><br><br>
-                        <span>{{$firstProductLine->price}}</span> р.<br><br>
-                        <div class="sub-catalog__adv-info">
-                            <span class="sub-catalog__IEC">{{$firstProdutLine->IEC}}</span><br>
-                            <span class="sub-catalog-desc">Описание товара будет располагаться тут</span><br>
-                            <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
+            <div class="sub-catalog">
+                <br>
+                <div class="about__header-catalog">
+                    <h2>{{$firstProductLines["title"]}}</h2>
+                    <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
+                </div>
+                @foreach($firstProductLines["products"] as $firstProductLine)
+                    <div class="sub-catalog__content-slider">
+                        <div class="wrap">
+                            <div class="sub-catalog__image">
+                                @if(!empty($firstProductLine->files))
+                                    @foreach($firstProductLine->files as $file)
+                                        <img src="{{asset('../storage/'.$file->filename)}}" width="194px"/>
+                                        <?php break; ?>
+                                    @endforeach
+                                @else
+                                    <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
+                                @endif
+                            </div><br><br>
+                            <a href="#">{{(strlen($firstProductLine->title) > 100)?substr($firstProductLine->title,0,50)."...":$firstProductLine->title}}</a><br><br>
+                            <span>{{$firstProductLine->price}}</span> р.<br><br>
+                            <div class="sub-catalog__adv-info">
+                                <span class="sub-catalog__IEC">IEC {{$firstProductLine->IEC}}</span><br>
+                                <span class="sub-catalog-desc">{{(strlen($firstProductLine->description) > 200)?substr($firstProductLine->description,0,50)."...":$firstProductLine->description}}</span><br>
+                                <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
     @endif
+    <?php $secondProductLines = array_shift($productLine); ?>
+    @if ($secondProductLines)
     <div class="wacker">
         <div class="wacker__wrapper">
             <div class="wacker__content">
@@ -125,165 +101,41 @@
                 </div>
                 <div class="wacker__carousel">
                     <div class="wacker__header">
-                        <h2>Высокочастотные вибраторы со встроенным преобразователем</h2>
+                        <h2>{{$secondProductLines["title"]}}</h2>
                         <img src="{{asset('css/wacker/img/gears-orange.png')}}" />
                     </div>
-                    <?php $first = 5; ?>
-                    <leader-slider :url="'/admin/product-line/{{$first}}'"></leader-slider>
+                    <leader-slider :url="'/admin/product-line/{{$secondProductLines["id"]}}'"></leader-slider>
                 </div>
             </div>
         </div>
     </div>
+    @endif
+    <?php $thirdProductLines = array_shift($productLine); ?>
+    @if ($thirdProductLines)
     <div class="product-line-1-wrapper">
         <div class="product-line-1">
             <div class="product-line-1__header-catalog">
-                <h2>Высокочастотные глубинные вибраторы</h2>
+                <h2>{{$thirdProductLines["title"]}}</h2>
                 <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
-            <div class="service__menu-slider" style="display: flex; padding-left:60px;">
-                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4  :per-page-custom="[[480, 4], [768, 4]]">
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="product-line-1__content-slider">
-                            <div class="product-line-1__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                </carousel>
-            </div>
+            <leader-slider :url="'/admin/product-line/{{$thirdProductLines["id"]}}'"></leader-slider>
         </div>
     </div>
+    @endif
+    <?php $fourProductLines = array_shift($productLine); ?>
+    @if ($fourProductLines)
     <div class="sub-catalog-wrapper">
         <div class="sub-catalog">
             <div class="sub-catalog__header-catalog">
-                <h2>Пневматические глубинные вибраторы</h2>
+                <h2>{{$fourProductLines["title"]}}</h2>
                 <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
             </div>
             <div class="sub-catalog__menu-slider" style="display: flex; padding-left:60px;">
-                <carousel name="carousel2" style="width: 1150px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=4 :per-page-custom="[[480, 4], [768, 4]]">
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                    <slide>
-                        <div class="sub-catalog__content-slider">
-                            <div class="sub-catalog__image">
-                                <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                            </div><br><br>
-                            <a href="#">Название товара может быть длинным</a><br><br>
-                            <span>3 123 456 </span> р.
-                        </div>
-                    </slide>
-                </carousel>
+                <leader-slider :url="'/admin/product-line/{{$fourProductLines["id"]}}'"></leader-slider>
             </div>
         </div>
     </div>
+    @endif
     <div class="catalog-description-wrapper">
         <div class="catalog-description">
             <div class="catalog-text">

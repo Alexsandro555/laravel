@@ -17,39 +17,6 @@
      </div>
 @stop
 
-@section('menu-left')
-    <div class="menu-left-wrapper">
-        <div class="menu-left">
-            <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
-            <ul>
-                <li>глубинные вибраторы</li>
-                <li>преобразователи частоты</li>
-                <li>внешние вибраторы</li>
-                <li>затирочные швы</li>
-                <li>виброрейки</li>
-                <li>арматурный инструмент</li>
-                <li>виброплиты</li>
-                <li>вибротрамбовка</li>
-                <li>катки</li>
-                <li>осветительные мачты и вышки</li>
-                <li>тепловое оборудование</li>
-                <li>отбойные молотки</li>
-                <li>осушители воздуха</li>
-                <li>шоврезчики и бензорезы</li>
-                <li>мотопомпы</li>
-                <li>насосы</li>
-                <li>генераторы</li>
-                <li>экскаваторы</li>
-                <li>погрузчики</li>
-                <li>думперы</li>
-                <li>телескопические погрузчики</li>
-                <li>мини погрузчики</li>
-            </ul>
-            <div class="menu-left__toggle">СВЕРНУТЬ</div>
-        </div>
-    </div>
-@stop
-
 @section('content')
     <div class="about-wrapper">
         <div class="about">
@@ -146,75 +113,7 @@
                 </div>
                 <div class="service__content">
                     <div class="service__menu-slider" style="display: flex;">
-                        <carousel name="carousel2" style="width: 750px; height: 326px"  :pagination-enabled=false :navigation-enabled=true :per-page=3 :per-page-custom="[[480, 3], [768, 3]]">
-                            @foreach($typeProducts as $typeProduct)
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        @foreach($typeProduct->files as $file)
-                                            <img src="{{asset('/storage/'.$file->filename)}}"/>
-                                        @endforeach
-                                    </div><br><br>
-                                    <a href="#">{{$typeProduct->title}}</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            @endforeach
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="service__content-slider">
-                                    <div class="service__image">
-                                        <img src="{{asset('css/wacker/img/service-slider1.png')}}"/>
-                                    </div><br><br>
-                                    <a href="#">Название товара может быть длинным</a><br><br>
-                                    <span>3 123 456 </span> р.
-                                </div>
-                            </slide>
-                        </carousel>
+                        <leader-slider :url="'/admin/special-product/'"></leader-slider>
                     </div>
                 </div>
             </div>

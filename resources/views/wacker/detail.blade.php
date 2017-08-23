@@ -4,37 +4,6 @@
     <button class="cart"><img src="{{asset('css/wacker/img/cart.png')}}"/>  10</button>
 @stop
 
-@section('menu-left')
-    <div class="menu-left">
-        <div class="menu-left__header">КАТАЛОГ ПРОДУКЦИИ</div>
-        <ul>
-            <li>глубинные вибраторы</li>
-            <li>преобразователи частоты</li>
-            <li>внешние вибраторы</li>
-            <li>затирочные швы</li>
-            <li>виброрейки</li>
-            <li>арматурный инструмент</li>
-            <li>виброплиты</li>
-            <li>вибротрамбовка</li>
-            <li>катки</li>
-            <li>осветительные мачты и вышки</li>
-            <li>тепловое оборудование</li>
-            <li>отбойные молотки</li>
-            <li>осушители воздуха</li>
-            <li>шоврезчики и бензорезы</li>
-            <li>мотопомпы</li>
-            <li>насосы</li>
-            <li>генераторы</li>
-            <li>экскаваторы</li>
-            <li>погрузчики</li>
-            <li>думперы</li>
-            <li>телескопические погрузчики</li>
-            <li>мини погрузчики</li>
-        </ul>
-        <div class="menu-left__toggle">РАЗВЕРНУТЬ</div>
-    </div>
-@stop
-
 @section('content-item')
         <div class="detail">
             <div>

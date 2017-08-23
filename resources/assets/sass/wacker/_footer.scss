@@ -28,6 +28,11 @@
 	line-height: 2;
 }
 
+.footer__menu ul li a {
+	text-decoration: none;
+	color: white;
+}
+
 .footer__info {
 	background: url(img/footer-info.png) right bottom no-repeat, url(img/footer-address-left-layout.png) left bottom no-repeat;
 	height: 200px;
