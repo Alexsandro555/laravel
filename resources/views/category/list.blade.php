@@ -51,7 +51,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Линейка продукции</div>
                 <div class="panel-body">
-                    <a href="{{route('add-product')}}" class="btn btn-info">Добавить</a>
+                    <a href="{{route('add-product')}}" class="btn btn-info">Добавить новый продукт</a>
 
                     <div class="btn-group btn-group">
                         <a href="{{route('tnved-csv')}}" class="btn btn-info">Загрузить ТНВЭД</a>

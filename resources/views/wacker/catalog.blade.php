@@ -27,7 +27,7 @@
                         <?php break; ?>
                     @endforeach
                 @else
-                    <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
+                    <img src="{{asset('css/wacker/img/no-image-product.png')}}" width="170px"/>
                 @endif
             </div><br>
             <div class="main_products__line"><a href="#">{{(strlen($producerTypeProduct->name_line) > 100)?substr($producerTypeProduct->name_line,0,50)."...":$producerTypeProduct->name_line}}</a></div>
