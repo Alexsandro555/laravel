@@ -15,7 +15,7 @@ class AddFieldsArticleIecProductTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('article');
-            $table->string('IEC');
+            $table->string('IEC')->nullable();
         });
     }
 

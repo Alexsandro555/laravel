@@ -39,8 +39,7 @@ class UpdateProductRequest extends FormRequest
             'special' => '',
             'need_order' => '',
             'category_id' => 'required',
-            'article' => 'required',
-            'IEC' => 'required'
+            'article' => 'required'
         ];
     }
 
