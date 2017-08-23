@@ -18,7 +18,7 @@ class CreateAttributesTable extends Migration
             $table->increments('id');
             $table->integer('sort')->length(11)->unsigned();
             $table->string('title', 255);
-            $table->string('alias', 255);
+            $table->string('alias', 255)->nullable();
             $table->smallInteger('inshort')->length(1)->unsigned()->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

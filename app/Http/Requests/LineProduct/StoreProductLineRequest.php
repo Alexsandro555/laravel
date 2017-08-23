@@ -32,8 +32,7 @@ class StoreProductLineRequest extends FormRequest
             'type_product_id' => 'required',
             'producer_id' => 'required',
             'name_line' => 'required',
-            'sort' => 'required',
-            'file' => 'required'
+            'sort' => 'required'
         ];
     }
 

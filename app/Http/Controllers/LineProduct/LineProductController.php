@@ -36,8 +36,10 @@ class LineProductController extends Controller
     $request = $productLineRequest->except(['_token','file']);
     $producerTypeProduct = ProducerTypeProduct::create($request);
     $id = $producerTypeProduct->id;
-    $fileHandler = new FileHandler();
-    $fileHandler->upload($file, false, 'App\ProducerTypeProduct',$id);
+    if($file) {
+      $fileHandler = new FileHandler();
+      $fileHandler->upload($file, false, 'App\ProducerTypeProduct', $id);
+    }
     return redirect()->route('update-line',['id' => $id]);
   }
 

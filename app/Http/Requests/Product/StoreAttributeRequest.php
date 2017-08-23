@@ -30,8 +30,7 @@ class StoreAttributeRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'sort' => 'required',
-            'alias' => 'required',
+            'sort' => 'required'
         ];
     }
 
