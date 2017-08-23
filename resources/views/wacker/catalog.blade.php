@@ -59,7 +59,7 @@
                                     <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
                                 @endif
                             </div><br><br>
-                            <a href="#">{{(strlen($firstProductLine->title) > 100)?substr($firstProductLine->title,0,50)."...":$firstProductLine->title}}</a><br><br>
+                            <a href="#">{{(strlen($firstProductLine->title) > 50)?substr($firstProductLine->title,0,50)."...":$firstProductLine->title}}</a><br><br>
                             <span>{{$firstProductLine->price}}</span> р.<br><br>
                             <div class="sub-catalog__adv-info">
                                 <span class="sub-catalog__IEC">IEC {{$firstProductLine->IEC}}</span><br>
