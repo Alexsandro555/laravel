@@ -6,14 +6,11 @@
         Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs-img"> Внутреняя
     </p>
     <div class="content__header">
-        <h2>Глубинные вибраторы Wacker Neuson</h2>
+        <h2>{{$typeProduct->title}}</h2>
         <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
     </div>
     <p>
-        Компания Wacker Neuson зарекомендовала себя как производитель <br>
-        высочайших по уровню качества и надежности вибраторов для бетона.<br>
-        ПРИМЕР расчета стоимости эксплуатации глубинных вибраторов HMS по <br>
-        ссылке.
+        {{$typeProduct->description}}
     </p>
 </div>
 <div class="clear"></div>

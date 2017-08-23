@@ -34,7 +34,7 @@
                 <td class="col-xs-0.5" scope="row">{{ $product->id }}</td>
                 <td class="col-xs-4" scope="row"><a href="{{route('update-product',['id'=>$product->id])}}">{{ $product->title }}</a></td>
                 <td class="col-xs-2" scope="row">{{ $product->url_key }}</td>
-                <td class="col-xs-5" scope="row">{{ $product->description }}</td>
+                <td class="col-xs-5" scope="row">{{(strlen($product->description) > 200)?substr($product->description,0,200)."...":$firstProductLine->title}}</td>
                 <td class="col-xs-0.5" scope="row">{{ $product->active }}</td>
                 <td class="col-xs-0.5" scope="row">{{ $product->sort }}</td>
                 <td class="col-xs-1">
