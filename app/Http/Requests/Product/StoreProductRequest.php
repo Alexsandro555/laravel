@@ -39,8 +39,7 @@ class StoreProductRequest extends FormRequest
             'special' => '',
             'need_order' => '',
             'category_id' => 'required',
-            'type_product_id' => 'required',
-            'article' => 'required'
+            'type_product_id' => 'required'
         ];
     }
 

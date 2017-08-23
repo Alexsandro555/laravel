@@ -23,11 +23,11 @@
             <div class="main_products__image">
                 @if(!empty($producerTypeProduct->files))
                     @foreach($producerTypeProduct->files as $file)
-                        <img src="{{asset('../storage/'.$file->filename)}}"/>
+                        <img src="{{asset('../storage/'.$file->filename)}}" width="170px"/>
                         <?php break; ?>
                     @endforeach
                 @else
-                    <img src="{{asset('css/wacker/img/no-image-product.png')}}" width="170px"/>
+                    <img src="{{asset('css/wacker/img/no-image-product.png')}}" />
                 @endif
             </div><br>
             <div class="main_products__line"><a href="#">{{(strlen($producerTypeProduct->name_line) > 100)?substr($producerTypeProduct->name_line,0,50)."...":$producerTypeProduct->name_line}}</a></div>

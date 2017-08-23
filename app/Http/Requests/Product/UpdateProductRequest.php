@@ -38,8 +38,7 @@ class UpdateProductRequest extends FormRequest
             'onsale' => '',
             'special' => '',
             'need_order' => '',
-            'category_id' => 'required',
-            'article' => 'required'
+            'category_id' => 'required'
         ];
     }
 
