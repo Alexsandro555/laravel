@@ -16,7 +16,7 @@ class CreateTypeProductsTable extends Migration
         Schema::create('type_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('tnved_id')->length(11)->unsigned();
+            $table->bigInteger('tnved_id')->length(11)->unsigned();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();

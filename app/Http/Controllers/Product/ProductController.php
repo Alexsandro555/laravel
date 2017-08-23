@@ -24,7 +24,6 @@ use App\Http\Requests\Product\AttributeRequest;
 use App\Http\Requests\Product\StoreProductLineRequest;
 use App\Http\Requests\Product\StoreAttributeRequest;
 use App\Http\Requests\Product\UpdateTypeProductRequest;
-use Mockery\CountValidator\Exception;
 use Mockery\Matcher\Type;
 use Illuminate\Support\Facades\DB;
 use App\FileHandler;
@@ -522,7 +521,7 @@ class ProductController extends Controller
         try {
           $tnved = DB::table('tnved')->insert(['id'=> $data[3], 'title' => $data[0], 'service' => $data[1],'active' => $data[2]]);
         }
-        catch (QueryException $e) {
+        catch (\Exception $e) {
             echo "Возникла ошибка";
         }
       }

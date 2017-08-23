@@ -60,6 +60,7 @@
     </div>
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
     {{link_to_route('list-type-product','К списку типов',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
+    {{link_to_route('type-product-add','Новый',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
     {!! Form::token() !!}
     {!! Form::close() !!}
 @stop

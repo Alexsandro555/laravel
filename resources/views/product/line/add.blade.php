@@ -66,6 +66,7 @@
     </div>
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
     {{link_to_route('list-line','К списку линеек продукции',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
+    {{link_to_route('add-line','Новая',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
     {!! Form::token() !!}
     {!! Form::close() !!}
 @stop
