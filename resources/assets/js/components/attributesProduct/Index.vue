@@ -53,11 +53,11 @@
                         response.data.forEach(function(item)
                         {
                             that.items.forEach((elem) => {
-                                if(elem.title == item.title)
+                            if(elem.id == item.attribute_id)
                             {
                                 elem.value = item.value;
                             }
-                        });
+                            });
                             //let attribute = { attribute_id: item.id, title: item.title, value: item.value };
                             //that.items.push(attribute);
                         });
