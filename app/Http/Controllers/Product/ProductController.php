@@ -345,8 +345,10 @@ class ProductController extends Controller
    * Save Attributes
    * @return json
    */
-  public function saveAttributes($items, $productId)
+  public function saveAttributes(Request $request)
   {
+    $items = $request->data;
+    $productId = $request->productId;
     $arr = [];
     $attributes = json_decode($items, true);
     foreach ($attributes as $attribute) {

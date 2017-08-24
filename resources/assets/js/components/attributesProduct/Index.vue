@@ -72,7 +72,7 @@
                 let that = this;
                 //console.log(this.productId);
                 //console.log(JSON.stringify(this.items));
-                this.axios.post("/admin/product/saveAttributes/"+JSON.stringify(this.items)+"/"+this.productId, {}).then(function (response)
+                this.axios.post("/admin/product/saveAttributes", {data: JSON.stringify(this.items), productId: this.productId}).then(function (response)
                 {
                     that.isActive = true;
                 }).catch(function (error)

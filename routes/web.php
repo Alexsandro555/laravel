@@ -176,7 +176,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/product/getAttributes/{id}', ['uses' => 'Product\ProductController@getAttributes', 'as' => 'get-attributes']);
     Route::get('/product/attributes/{id}', ['uses' => 'Product\ProductController@attributes', 'as' => 'attributes']);
     Route::get('/product/existAttributes/{id}', ['uses' => 'Product\ProductController@existAttributes', 'as' => 'exist-attributes']);
-    Route::post('/product/saveAttributes/{items}/{productId}', ['before' => 'csrf', 'uses' => 'Product\ProductController@saveAttributes', 'as' => 'save-attributes']);
+    Route::post('/product/saveAttributes', ['before' => 'csrf', 'uses' => 'Product\ProductController@saveAttributes', 'as' => 'save-attributes']);
     Route::post('/product/addAttributeValue/{data}', ['uses' => 'Product\ProductController@addAttributeValue', 'as' => 'add-atribute-value']);
     Route::post('/porduct/updateAttribute',
         [
