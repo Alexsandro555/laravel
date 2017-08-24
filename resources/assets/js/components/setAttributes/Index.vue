@@ -111,6 +111,7 @@
             },
             save: function () {
                 if(this.update == true) {
+                    this.disabled = true;
                     this.axios.post("/admin/product/bindAttributesUpdate/"+JSON.stringify(this.attrVal)+"/"+this.typeProdId, {}).then(function (response)
                     {
                         location.reload();
@@ -121,6 +122,7 @@
                 }
                 else
                 {
+                    this.disabled = true;
                     this.axios.post("/admin/product/bindAttributes/"+JSON.stringify(this.attrVal), {}).then(function (response)
                     {
                         location.reload();

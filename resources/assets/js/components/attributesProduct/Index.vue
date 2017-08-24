@@ -70,8 +70,8 @@
         methods: {
             saveAttributes: function () {
                 let that = this;
-                console.log(this.productId);
-                console.log(JSON.stringify(this.items));
+                //console.log(this.productId);
+                //console.log(JSON.stringify(this.items));
                 this.axios.post("/admin/product/saveAttributes/"+JSON.stringify(this.items)+"/"+this.productId, {}).then(function (response)
                 {
                     that.isActive = true;
