@@ -47,6 +47,7 @@
             if(this.productId) {
                 this.axios.get("/admin/product/existAttributes/"+this.productId, {}).then(function (response)
                 {
+                    console.log(JSON.stringify(response.data));
                     if(response.data.length > 0)
                     {
                         response.data.forEach(function(item)

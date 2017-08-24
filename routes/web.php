@@ -16,7 +16,7 @@ Route::get('/test', function() {
   phpinfo();
 });
 Route::get('/wacker/catalog/{id}', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
-Route::get('/wacker/detail', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
+Route::get('/wacker/{slug}', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
 
 Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
 // Получение файлов

@@ -74,7 +74,7 @@
                                         }
                                     ?>
                                 </span>
-                                <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
+                                <a href="{{route('wacker-detail',['slug'=>$firstProductLine->url_key])}}" class="sub-catalog__detail">ПОДРОБНЕЕ</a>
                             </div>
                         </div>
                     </div>

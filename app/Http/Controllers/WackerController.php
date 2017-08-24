@@ -30,7 +30,8 @@ class WackerController extends Controller
       return view('wacker.catalog', compact('producerTypeProducts','productLine', 'typeProduct'));
     }
 
-    public function detail() {
-        return view('wacker.detail');
+    public function detail($slug) {
+        $product = Product::with(['files','attributes'])->where('url_key',$slug)->first();
+        return view('wacker.detail',compact('product'));
     }
 }

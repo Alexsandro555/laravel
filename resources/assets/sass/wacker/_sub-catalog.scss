@@ -103,10 +103,11 @@
 .sub-catalog__content-slider .wrap:hover .sub-catalog__detail{
   display: inline-block;
   margin-right: 20px;
-  vertical-align: center;
+  vertical-align: middle;
   background: url(/images/header-phone-btn.png?81ea2ed41fb33da382141301de2c592b) top center no-repeat;
   width: 166px;
   height: 37px;
+  line-height: 37px;
   text-decoration: none;
   border-style: solid none;
   border-width: 0px 0px 3px 0px;

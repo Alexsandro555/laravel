@@ -11,10 +11,15 @@
                     Главная <img src="{{asset('css/wacker/img/breadcrumbs.png')}}" class="breadrcumbs-img"> Внутреняя
                 </p>
                 <div class="detail__header">
-                    <h1>Высокочастотный глубинный вибратор <br>Wacker Neuson</h1><br>  арт.5100010533
+                    <h1>{{$product->title}}</h1><br>
+                    @if($product->article)
+                        арт. {{$product->article}}
+                    @endif
                 </div>
                 <div class="detail__IEC">
-                    IEC 38/230/5/15
+                    @if($product->IEC)
+                        IEC {{$product->IEC}}
+                    @endif
                 </div>
             </div>
             <div class="sd">
@@ -74,8 +79,8 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Диаметр булавы: 38 мм</td>
-                            <td rowspan="4"><span>3 123 456</span> руб.</td>
+                            <td></td>
+                            <td rowspan="4"><span>{{$product->price}}</span> руб.</td>
                             <td rowspan="4" width="80px">
                                 <div class="detail-counter">
                                     <div class="detail-counter__left"><img src="{{asset('css/wacker/img/detail-counter-arrow-down.png')}}"/></div>
@@ -87,15 +92,13 @@
                                 <button class="table__btn">Купить</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Длина шланга: 5 м</td>
-                        </tr>
-                        <tr>
-                            <td>Подключение: 220 V</td>
-                        </tr>
-                        <tr>
-                            <td>Потребляемый ток: 4 A</td>
-                        </tr>
+                        <?php $counter=1; ?>
+                        @foreach($product->attributes as $attribute)
+                            <tr>
+                                <td>{{$attribute->title}}: {{$attribute->pivot->value}}</td>
+                            </tr>
+                            <?php $counter++; if($counter>3) break;?>
+                        @endforeach
                         </tbody>
                     </table><br>
                     <div class="tech-catalog">
@@ -129,74 +132,29 @@
     <div class="detail-characteristics-wrapper">
         <div class="detail-characteristics">
             <br>
-            <button class="detail-characteristics__btn-tech">Технические характеристики</button>
-            <button class="detail-characteristics__btn-tech">Описание</button>
-            <button class="detail-characteristics__btn-tech">Подробнее</button>
+            <button v-bind:class="{detailActive: CharacteristicActive}" class="">Технические характеристики</button>
             <br><br>
             <div class="detail-characteristics__left-table">
-                        <table class="detail-characteristics__table">
-                    <thead>
-                    <tr>
-                        <th >Тип вибратора</th>
-                        <th  class="tbl-left">высокочастотный</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td width="50%">Диаметр булавы,мм</td>
-                        <td width="50%">38</td>
-                    </tr>
-                    <tr>
-                        <td>Длина шланга,м</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Силовой кабель,м</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Подключение,V</td>
-                        <td>220</td>
-                    </tr>
-                    <tr>
-                        <td>Длина булавы,мм</td>
-                        <td>285</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="detail-characteristics__right-table">
                 <table class="detail-characteristics__table">
-                    <thead>
-                    <th>Тип вибратора</th>
-                    <th class="tbl-left">высокочастотный</th>
-                    </thead>
                     <tbody>
-                    <tr>
-                        <td>Диаметр булавы,мм</td>
-                        <td>38</td>
-                    </tr>
-                    <tr>
-                        <td>Длина шланга,м</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Силовой кабель,м</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Подключение,V</td>
-                        <td>220</td>
-                    </tr>
-                    <tr>
-                        <td>Длина булавы,мм</td>
-                        <td>285</td>
-                    </tr>
+                    <?php $counter=1; ?>
+                    @foreach($product->attributes as $attribute)
+                        <tr>
+                            <td>{{$attribute->title}}</td>
+                            <td  class="tbl-left">{{$attribute->pivot->value}}</td>
+                        </tr>
+                        <?php
+                            $counter++;
+                            if($counter>9)
+                            {
+                                echo "</tbody></table></div><div class='detail-characteristics__right-table'><table class='detail-characteristics__table'><tbody>";
+                                $counter=1;
+                            }
+                        ?>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
-
             <div class="clear"></div>
         </div>
     </div>
