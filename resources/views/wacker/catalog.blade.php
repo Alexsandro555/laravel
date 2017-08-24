@@ -62,7 +62,18 @@
                                 @if($firstProductLine->IEC)
                                     <span class="sub-catalog__IEC">IEC {{$firstProductLine->IEC}}</span><br>
                                 @endif
-                                <span class="sub-catalog-desc">{{(strlen(strip_tags($firstProductLine->description)) > 150)?substr(strip_tags($firstProductLine->description),0,150)."...":strip_tags($firstProductLine->description)}}</span>
+                                <span class="sub-catalog-desc">
+                                    <?php
+                                        if(strlen(strip_tags($firstProductLine->description)) > 150)
+                                        {
+                                            echo substr(strip_tags($firstProductLine->description),0,150)."...";
+                                        }
+                                        else
+                                        {
+                                           echo strip_tags($firstProductLine->description);
+                                        }
+                                    ?>
+                                </span>
                                 <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
                             </div>
                         </div>
