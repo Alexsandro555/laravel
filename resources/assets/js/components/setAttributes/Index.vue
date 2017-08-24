@@ -112,7 +112,7 @@
             save: function () {
                 if(this.update == true) {
                     this.disabled = true;
-                    this.axios.post("/admin/product/bindAttributesUpdate/"+JSON.stringify(this.attrVal)+"/"+this.typeProdId, {}).then(function (response)
+                    this.axios.post("/admin/product/bindAttributesUpdate", {data: JSON.stringify(this.attrVal), typeProdId: this.typeProdId}).then(function (response)
                     {
                         location.reload();
                     }).catch(function (error)

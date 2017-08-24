@@ -392,7 +392,9 @@ class ProductController extends Controller
   /**
    * Bind Attributes Update
    */
-  public function bindAttributesUpdate($attributes,$id) {
+  public function bindAttributesUpdate(Request $request) {
+    $attributes = $request->data;
+    $id = $request->typeProdId;
     $attributes = json_decode($attributes, true);
     $delRelations = AttributeTypeProduct::where('type_product_id',$id)->get();
     foreach ($delRelations as $delRelation)

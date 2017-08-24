@@ -162,7 +162,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     // установка атрибутов для типа продукта
     Route::get('/product/setAttributes', ['uses' => 'Product\ProductController@setAttributes', 'as' => 'set-attributes']);
     Route::post('/product/bindAttributes/{attributes}', ['uses' => 'Product\ProductController@bindAttributes', 'as' => 'bind-attributes']);
-    Route::post('/product/bindAttributesUpdate/{attributes}/{id}', ['uses' => 'Product\ProductController@bindAttributesUpdate', 'as' => 'bind-attributes']);
+    Route::post('/product/bindAttributesUpdate', ['before' => 'csrf','uses' => 'Product\ProductController@bindAttributesUpdate', 'as' => 'bind-attributes']);
     // Обработка добавления нового атрибута
     Route::post('/porduct/addAttribute',
         [
