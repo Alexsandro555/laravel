@@ -64,7 +64,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('description','Описание') !!}
-                {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'id' => 'desc-ckeditor']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('qty','Количество') !!}
@@ -141,4 +141,15 @@
             @endif
         </div>
     </div>
+@stop
+
+@section('view.scripts')
+    <script>
+
+        $(document).ready(function(){
+            CKEDITOR.replace('desc-ckeditor', {
+                language: 'ru'
+            });
+        });
+    </script>
 @stop

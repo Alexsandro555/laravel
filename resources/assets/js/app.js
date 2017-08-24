@@ -6,8 +6,8 @@
  */
 
 require('./bootstrap');
-//window.CKEDITOR_BASEPATH = '/js/ckeditor/';
-//require('ckeditor');
+window.CKEDITOR_BASEPATH = '/js/ckeditor/';
+require('ckeditor');
 window.Vue = require('vue');
 //import VeeValidate from 'vee-validate';
 //import VeeValidateMessagesRU from "vee-validate/dist/locale/ru";

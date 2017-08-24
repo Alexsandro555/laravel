@@ -18,7 +18,7 @@
                 <td class="col-xs-0.5" scope="row">{{ $page->id }}</td>
                 <td class="col-xs-4" scope="row"><a href="{{route('show-page', ['id'=>$page->id])}}">{{ $page->name }}</a></td>
                 <td class="col-xs-1.5" scope="row">{{ $page->url_key }}</td>
-                <td class="col-xs-5" scope="row">{{ $page->content }}</td>
+                <td class="col-xs-5" scope="row">{!! $page->content !!} </td>
                 <td class="col-xs-1">
                     <a href="{{route('update-page',['id'=>$page->id])}}" type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{route('delete-page',['id' => $page->id])}}" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-minus"></i></a>

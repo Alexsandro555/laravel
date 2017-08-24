@@ -41,9 +41,10 @@
         {!! Form::text('url_key', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
-
-        <ck-wysiwyg name="content"></ck-wysiwyg>
-        <!--<wysiwyg name="mycomp" v-model="myHTML"></wysiwyg>-->
+        {!! Form::label('content','Описание') !!}
+        {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'ckeditor']) !!}
+        <!--<ck-wysiwyg name="content"></ck-wysiwyg>-->
+        <!--<wysiwyg name="content" v-model="myHTML"></wysiwyg>-->
     </div>
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
     {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
@@ -56,7 +57,9 @@
     <script>
 
         $(document).ready(function(){
-            //CKEDITOR.replace('ckeditor');
+            CKEDITOR.replace('ckeditor', {
+                language: 'ru'
+            });
         });
     </script>
 @stop

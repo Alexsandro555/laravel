@@ -10,7 +10,7 @@
         <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
     </div>
     <p>
-        {{$typeProduct->description}}
+        {!! $typeProduct->description !!}
     </p>
 </div>
 <div class="clear"></div>
@@ -62,7 +62,7 @@
                                 @if($firstProductLine->IEC)
                                     <span class="sub-catalog__IEC">IEC {{$firstProductLine->IEC}}</span><br>
                                 @endif
-                                <span class="sub-catalog-desc">{{(strlen($firstProductLine->description) > 150)?substr($firstProductLine->description,0,150)."...":$firstProductLine->description}}</span>
+                                <span class="sub-catalog-desc">{{(strlen(strip_tags($firstProductLine->description)) > 150)?substr(strip_tags($firstProductLine->description),0,150)."...":strip_tags($firstProductLine->description)}}</span>
                                 <button class="sub-catalog__detail">ПОДРОБНЕЕ</button>
                             </div>
                         </div>

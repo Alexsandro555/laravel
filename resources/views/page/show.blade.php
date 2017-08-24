@@ -26,7 +26,7 @@
     <dl>
         <dt>id</dt><dd>{{$page->id}}</dd>
         <dt>Заголовок страницы</dt><dd>{{$page->name}}</dd>
-        <dt>Содержимое страницы</dt><dd>{{$page->content}}</dd>
+        <dt>Содержимое страницы</dt><dd>{!! $page->content !!}</dd>
     </dl>
     {{link_to_route('showlist-page','Назад к списку',null,['type'=>'buttons', 'class'=>'btn btn-info'])}}
 @stop
