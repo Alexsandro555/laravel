@@ -47,8 +47,6 @@
             if(this.productId) {
                 this.axios.get("/admin/product/existAttributes/"+this.productId, {}).then(function (response)
                 {
-                    console.log(JSON.stringify(response.data));
-                    console.log(JSON.stringify(that.items));
                     if(response.data.length > 0)
                     {
                         response.data.forEach(function(item)
@@ -72,6 +70,8 @@
         methods: {
             saveAttributes: function () {
                 let that = this;
+                console.log(this.productId);
+                console.log(JSON.stringify(this.items));
                 this.axios.post("/admin/product/saveAttributes/"+JSON.stringify(this.items)+"/"+this.productId, {}).then(function (response)
                 {
                     that.isActive = true;
