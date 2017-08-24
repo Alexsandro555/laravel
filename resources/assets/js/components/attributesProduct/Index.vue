@@ -53,7 +53,7 @@
                         response.data.forEach(function(item)
                         {
                             that.items.forEach((elem) => {
-                            if(elem.id == item.attribute_id)
+                            if(elem.attribute_id == item.id)
                             {
                                 elem.value = item.value;
                             }
