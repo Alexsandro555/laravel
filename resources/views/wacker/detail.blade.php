@@ -97,10 +97,12 @@
                         <tbody>
                         <?php $counter=1; ?>
                         @foreach($product->attributes as $attribute)
-                            <tr>
-                                <td>{{$attribute->title}}</td>
-                                <td  class="tbl-left">{{$attribute->pivot->value}}</td>
-                            </tr>
+                            @if($attribute->pivot->value)
+                                <tr>
+                                    <td>{{$attribute->title}}</td>
+                                    <td  class="tbl-left">{{$attribute->pivot->value}}</td>
+                                </tr>
+                            @endif
                             <?php
                                 $counter++;
                                 if($counter>9)

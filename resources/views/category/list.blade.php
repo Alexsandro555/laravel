@@ -106,6 +106,9 @@
         @endforeach
         </tbody>
     </table>
+    <div style="float:left; width: 78%"></div>
+    <div style="float:right; width: 19%; text-align: right">{{ $products->links() }}</div>
+    <div style="clear:both"></div>
 
 
 @section('view.scripts')

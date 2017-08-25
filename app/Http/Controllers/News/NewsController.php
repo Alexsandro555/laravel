@@ -26,8 +26,8 @@ class NewsController extends Controller
    */
   public function update($id, UpdateNewsRequest $request)
   {
-    $file = $request->file;
-    $id = (int)$id;
-    News::where('id', $id)->update($request);
+    //$file = $request->file;
+    //$id = (int)$id;
+    //News::where('id', $id)->update($request);
   }
 }
