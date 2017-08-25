@@ -102,15 +102,15 @@
                                     <td>{{$attribute->title}}</td>
                                     <td  class="tbl-left">{{$attribute->pivot->value}}</td>
                                 </tr>
+                                <?php
+                                    $counter++;
+                                    if($counter>9)
+                                    {
+                                        echo "</tbody></table></div><div class='detail-characteristics__right-table'><table class='detail-characteristics__table'><tbody>";
+                                        $counter=1;
+                                    }
+                                ?>
                             @endif
-                            <?php
-                                $counter++;
-                                if($counter>9)
-                                {
-                                    echo "</tbody></table></div><div class='detail-characteristics__right-table'><table class='detail-characteristics__table'><tbody>";
-                                    $counter=1;
-                                }
-                            ?>
                         @endforeach
                         </tbody>
                     </table>
