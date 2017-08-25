@@ -46,6 +46,7 @@
             this.axios.get("/admin/product/getAttributes/"+type_product, {}).then(function (response)
             {
                 if(response.data.length > 0) {
+                    that.update = true;
                     response.data.forEach(function(item) {
                         let attribute = {attribute_id: item.attribute_id, type_prodcut_id: item.type_product_id};
                         that.attrVal.push(attribute);
@@ -85,11 +86,8 @@
                     let options = event.target.options;
                     for (let i=0, l = options.length; i<l; i++) {
                         if(options[i].selected) {
-                            //if(this.notexistItem(this.attrVal,options[i].value))
-                            {
-                                let attribute = {attribute_id: options[i].value, type_product_id: type_product};
-                                this.attrVal.push(attribute);
-                            }
+                            let attribute = {attribute_id: options[i].value, type_product_id: type_product};
+                            this.attrVal.push(attribute);
                         }
                     }
                 }
