@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +76,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/page/autocoplete/{text}', ['uses' => 'PageController@autocomplete', 'as' => 'autocomplete']);
 
 
+  ////////////////////////////НОВОСТИ//////////////////////////////////////////////////
+  // Добавление новости
+  Route::get('/news/add', ['uses' => 'News\NewsController@add', 'as' => 'add-news']);
+  // Обновление существующей новости
+  Route::post('/news/update/{id}',
+    [
+      'before' => 'csrf',
+      'uses' => 'News\NewsController@update',
+      'as' => 'update-news'
+    ]);
 
     //////////////////////////КАТАЛОГ////////////////////////////////////
     // Добавление новой позиции каталога
