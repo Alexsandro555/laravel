@@ -15,7 +15,7 @@
         <div class="header-page__main">
             <div class="logo">
                 <div class="logo__layer">
-                    <img src="{{asset('css/wacker/img/logo.png')}}"/>
+                    <a href="/"><img src="{{asset('css/wacker/img/logo.png')}}"/></a>
                 </div>
             </div>
             <div class="header-center">

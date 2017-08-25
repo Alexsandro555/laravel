@@ -60,6 +60,7 @@ Vue.component('lselect', require('./components/lSelect/Index.vue'));
 Vue.component('Tselect', require('./components/TSelect/Index.vue'));
 Vue.component('leader-slider', require('./components/leader-slider/Index.vue'));
 Vue.component('leader-tabs', require('./components/leader-tabs/Index.vue'));
+Vue.component('leader-detail-image', require('./components/leader-detail-image/Index.vue'));
 //Vue.component('alex-carousel', require('./components/alex-carousel/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
@@ -99,6 +100,27 @@ new Vue({
             {
                 console.log(error);
             });
+        },
+        tabActive(state)
+        {
+            if(state == 'CharacteristicActive')
+            {
+                this.CharacteristicActive = true;
+                this.DescriptionActive = false;
+                this.DetailActive = false;
+            }
+            if(state == 'DescriptionActive')
+            {
+                this.CharacteristicActive = false;
+                this.DescriptionActive = true;
+                this.DetailActive = false;
+            }
+            if(state == 'DetailActive')
+            {
+                this.CharacteristicActive = false;
+                this.DescriptionActive = false;
+                this.DetailActive = true;
+            }
         }
     }
 });

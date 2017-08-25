@@ -16,7 +16,7 @@ Route::get('/test', function() {
   phpinfo();
 });
 Route::get('/wacker/catalog/{id}', ['uses' => 'WackerController@catalog', 'as' => 'wacker-catalog']);
-Route::get('/wacker/{slug}', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
+Route::get('/catalog/{slug}', ['uses' => 'WackerController@detail', 'as' => 'wacker-detail']);
 
 Route::post('/upload', ['before' => 'csrf', 'uses' => 'UploadController@uploadHandl', 'as' => 'upload']);
 // Получение файлов
@@ -238,6 +238,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
             'as'=>'add-producer'
         ]);
 
+  // Изображения продукта
+  Route::get('product-images/{id}', ['uses' => 'Product\ProductController@images', 'as' => 'product-images']);
 
 
   /////////////////////////ЛИНЕЙКА ПРОДУКЦИИ///////////////////////////////////////

@@ -56,7 +56,7 @@
                                     <img src="{{asset('css/wacker/img/no-image-product.png')}}"/>
                                 @endif
                             </div><br><br>
-                            <a href="#">{{(strlen($firstProductLine->title) > 65)?substr($firstProductLine->title,0,65)."...":$firstProductLine->title}}</a><br>
+                            <a href="{{route('wacker-detail',['slug'=>$firstProductLine->url_key])}}">{{(strlen($firstProductLine->title) > 65)?substr($firstProductLine->title,0,65)."...":$firstProductLine->title}}</a><br>
                             <div class="sub-catalog__price"><span>{{$firstProductLine->price}}</span> р.</div>
                             <div class="sub-catalog__adv-info">
                                 @if($firstProductLine->IEC)

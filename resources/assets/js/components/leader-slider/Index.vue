@@ -6,7 +6,7 @@
                     <div class="service__image">
                         <img :src="'/storage/'+item.file" height="100px"/>
                     </div><br><br>
-                    <a href="#">{{item.title}}</a><br><br>
+                    <a :href="'/catalog/'+item.slug">{{item.title}}</a><br><br>
                     <span>{{item.price}} </span> р.
                 </div>
             </slide>
@@ -27,11 +27,19 @@
             let that = this;
             this.axios.get(this.url, {}).then(function (response)
             {
-                let elements = response.data;
-                elements.forEach(function(element) {
-                    let obj = {'id': element.id, 'title': element.title, 'price': element.price, 'file': element.files.shift().filename};
-                    that.items.push(obj);
-                });
+                if(response.data.length > 0) {
+                    let elements = response.data;
+                    elements.forEach(function (element) {
+                        let obj = {
+                            'id': element.id,
+                            'title': element.title,
+                            'price': element.price,
+                            'file': element.files.shift().filename,
+                            'slug': element.url_key
+                        };
+                        that.items.push(obj);
+                    });
+                }
             }).catch(function (error)
             {
                 console.log(error);

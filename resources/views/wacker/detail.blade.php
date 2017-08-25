@@ -23,52 +23,7 @@
                 </div>
             </div>
             <div class="sd">
-                <div class="detail__images">
-                    <div class="detail-images-center">
-                        <img src="{{asset('css/wacker/img/product-detail-image.png')}}"/>
-                    </div>
-                </div>
-                <div class="detail__slider">
-                    <div class="service__menu-slider" style="display: flex; padding-left:30px; height: 400px;">
-                        <alex-carousel name="carousel3" style="width: 100px; height: 350px; margin-top: 30px"  :pagination-enabled=false :navigation-enabled=true :per-page=3  :per-page-custom="[[480, 3], [768, 3]]">
-                            <alex-slide>
-                                <div class="content__sliders  box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                            <alex-slide>
-                                <div class="content__sliders box-alex-slider">
-                                    <img src="{{asset('css/wacker/img/detail-carousel-image.png')}}"/>
-                                </div>
-                            </alex-slide>
-                        </alex-carousel>
-                    </div>
-                </div>
+                <leader-detail-image :url="'/admin/product-images/{{$product->id}}'"></leader-detail-image>
                 <div class="detail__characteristics">
                     <table class="detail__table">
                         <thead>
@@ -132,28 +87,35 @@
     <div class="detail-characteristics-wrapper">
         <div class="detail-characteristics">
             <br>
-            <button v-bind:class="{detailActive: CharacteristicActive}" class="">Технические характеристики</button>
+            <button class="detail-characteristics__btn-tech" v-bind:class="{detailActive: CharacteristicActive}" @click="tabActive('CharacteristicActive')">Технические характеристики</button>
+            <button class="detail-characteristics__btn-tech" v-bind:class="{detailActive: DescriptionActive}" @click="tabActive('DescriptionActive')">Описание</button>
+            <button class="detail-characteristics__btn-tech" v-bind:class="{detailActive: DetailActive}" @click="tabActive('DetailActive')">Подробнее</button>
             <br><br>
-            <div class="detail-characteristics__left-table">
-                <table class="detail-characteristics__table">
-                    <tbody>
-                    <?php $counter=1; ?>
-                    @foreach($product->attributes as $attribute)
-                        <tr>
-                            <td>{{$attribute->title}}</td>
-                            <td  class="tbl-left">{{$attribute->pivot->value}}</td>
-                        </tr>
-                        <?php
-                            $counter++;
-                            if($counter>9)
-                            {
-                                echo "</tbody></table></div><div class='detail-characteristics__right-table'><table class='detail-characteristics__table'><tbody>";
-                                $counter=1;
-                            }
-                        ?>
-                    @endforeach
-                    </tbody>
-                </table>
+            <div v-if="CharacteristicActive == true">
+                <div class="detail-characteristics__left-table">
+                    <table class="detail-characteristics__table">
+                        <tbody>
+                        <?php $counter=1; ?>
+                        @foreach($product->attributes as $attribute)
+                            <tr>
+                                <td>{{$attribute->title}}</td>
+                                <td  class="tbl-left">{{$attribute->pivot->value}}</td>
+                            </tr>
+                            <?php
+                                $counter++;
+                                if($counter>9)
+                                {
+                                    echo "</tbody></table></div><div class='detail-characteristics__right-table'><table class='detail-characteristics__table'><tbody>";
+                                    $counter=1;
+                                }
+                            ?>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="detail-characteristics__description" v-if="DescriptionActive == true">
+                {!! $product->description !!}
             </div>
             <div class="clear"></div>
         </div>

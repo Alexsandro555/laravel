@@ -665,4 +665,9 @@ class ProductController extends Controller
     $specialProducts = Product::with('files')->where('special',1)->get();
     return $specialProducts->toJson();
   }
+
+  public function images($id) {
+    $imageProducts = File::where('fileable_id',$id)->where('fileable_type','App\Product')->get();
+    return $imageProducts->toJson();
+  }
 }
